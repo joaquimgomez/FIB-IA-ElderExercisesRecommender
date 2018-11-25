@@ -1,4 +1,4 @@
-; Sun Nov 25 19:01:20 GMT+01:00 2018
+; Sun Nov 25 20:09:59 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,9 +21,9 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[practicaProtege_ProjectKB_Class285]
-		[practicaProtege_ProjectKB_Class286]
-		[practicaProtege_ProjectKB_Class287]))
+		[practicaProtege_ProjectKB_Class295]
+		[practicaProtege_ProjectKB_Class296]
+		[practicaProtege_ProjectKB_Class297]))
 
 ([CLSES_TAB] of  Widget
 
@@ -72,8 +72,8 @@
 
 ([KB_576220_Class1] of  Map
 
-	(entries [practicaProtege_ProjectKB_Class292])
-	(referenced_maps [practicaProtege_ProjectKB_Class288]))
+	(entries [practicaProtege_ProjectKB_Class302])
+	(referenced_maps [practicaProtege_ProjectKB_Class298]))
 
 ([KB_576220_Class10] of  Property_List
 )
@@ -1124,54 +1124,54 @@
 ([practicaProtege_ProjectKB_Class272] of  Property_List
 )
 
-([practicaProtege_ProjectKB_Class285] of  String
+([practicaProtege_ProjectKB_Class295] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([practicaProtege_ProjectKB_Class286] of  String
+([practicaProtege_ProjectKB_Class296] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([practicaProtege_ProjectKB_Class287] of  String
+([practicaProtege_ProjectKB_Class297] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([practicaProtege_ProjectKB_Class288] of  Map
+([practicaProtege_ProjectKB_Class298] of  Map
 
 	(entries
-		[practicaProtege_ProjectKB_Class289]
-		[practicaProtege_ProjectKB_Class290]
-		[practicaProtege_ProjectKB_Class291]))
+		[practicaProtege_ProjectKB_Class299]
+		[practicaProtege_ProjectKB_Class300]
+		[practicaProtege_ProjectKB_Class301]))
 
-([practicaProtege_ProjectKB_Class289] of  Map_Entry
+([practicaProtege_ProjectKB_Class299] of  Map_Entry
 
 	(key "KB_282909_Class5")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "139 615 202 23")
 	(value_class "java.awt.Rectangle"))
 
-([practicaProtege_ProjectKB_Class290] of  Map_Entry
+([practicaProtege_ProjectKB_Class300] of  Map_Entry
 
 	(key "KB_282909_Class6")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "122 697 202 123")
 	(value_class "java.awt.Rectangle"))
 
-([practicaProtege_ProjectKB_Class291] of  Map_Entry
+([practicaProtege_ProjectKB_Class301] of  Map_Entry
 
 	(key "KB_282909_Class31")
 	(key_class "edu.stanford.smi.protege.model.Frame")
 	(value "93 419 202 123")
 	(value_class "java.awt.Rectangle"))
 
-([practicaProtege_ProjectKB_Class292] of  Map_Entry
+([practicaProtege_ProjectKB_Class302] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "practicaProtege_ProjectKB_Class288")
+	(value "practicaProtege_ProjectKB_Class298")
 	(value_class "java.util.Map"))
 
 ([PROJECT] of  Project

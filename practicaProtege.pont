@@ -1,4 +1,4 @@
-; Sun Nov 25 19:01:20 GMT+01:00 2018
+; Sun Nov 25 20:09:53 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -66,6 +66,10 @@
 ;+		(allowed-parents Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot Series
 		(type INTEGER)
 ;+		(cardinality 0 1)
@@ -76,7 +80,7 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
-(defclass Subject
+(defclass Avi
 	(is-a USER)
 	(role concrete)
 	(single-slot Edad
@@ -93,6 +97,10 @@
 ;+		(allowed-parents Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot hasA
 		(type SYMBOL)
 ;+		(allowed-parents Enfermedad)
@@ -105,7 +113,7 @@
 		(create-accessor read-write)))
 
 (defclass Independiente
-	(is-a Subject)
+	(is-a Avi)
 	(role concrete)
 	(single-slot esFragil
 		(type SYMBOL)
@@ -114,7 +122,7 @@
 		(create-accessor read-write)))
 
 (defclass Dependiente
-	(is-a Subject)
+	(is-a Avi)
 	(role concrete))
 
 (defclass Enfermedad

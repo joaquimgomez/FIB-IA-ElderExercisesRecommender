@@ -1,0 +1,234 @@
+digraph practicaProtege {
+	node [label="\N"];
+	graph [bb="0,0,7593,1578"];
+	":DIRECT-TEMPLATE-SLOTS" [label=":DIRECT-TEMPLATE-SLOTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="382,1300", width="2.72", height="0.50"];
+	":STANDARD-SLOT" [label="{:STANDARD-SLOT|{:DOCUMENTATION|String*}|{:SLOT-CONSTRAINTS|Instance*|{:CONSTRAINT}}|{:SLOT-MAXIMUM-CARDINALITY|Integer}|{:SLOT-\
+MINIMUM-CARDINALITY|Integer}|{:SLOT-NUMERIC-MAXIMUM|Float}|{...}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="3950,1490", rects="3783,1552,4118,1577 3783,1527,3993,1552 3993,1527,4118,1552 3783,1502,3939,1527 3939,1502,4009,1527 4009,1502,4118,1527 3783,147\
+7,4038,1502 4038,1477,4118,1502 3783,1452,4036,1477 4036,1452,4118,1477 3783,1427,4028,1452 4028,1427,4118,1452 3783,1402,4118,1\
+427", width="4.64", height="2.43"];
+	":CLASS" [label="{:CLASS|{:DIRECT-TYPE|Class*|{:CLASS}}|{:DIRECT-INSTANCES|Instance*|{:THING}}|{:DIRECT-SUPERCLASSES|Class*|{:THING}}|{:DIRECT-SU\
+BCLASSES|Class*|{:THING}}|{:DIRECT-TEMPLATE-SLOTS|Instance*|{:SLOT}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1319,1123", rects="1159,1173,1480,1198 1159,1148,1300,1173 1300,1148,1385,1173 1385,1148,1480,1173 1159,1123,1323,1148 1323,1123,1405,1148 1405,112\
+3,1480,1148 1159,1098,1346,1123 1346,1098,1408,1123 1408,1098,1480,1123 1159,1073,1335,1098 1335,1073,1402,1098 1402,1073,1480,1\
+098 1159,1048,1355,1073 1355,1048,1425,1073 1425,1048,1480,1073", width="4.44", height="2.08"];
+	":META-CLASS" [label="{:META-CLASS|{:NAME|String}|{:DIRECT-TYPE|Class*|{:META-CLASS}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="671,457", rects="536,469,807,494 536,444,677,469 677,444,807,469 536,419,646,444 646,419,699,444 699,419,807,444", width="3.75", height="1.04"];
+	":THING" [label=":THING", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1661,978", width="0.86", height="0.50"];
+	":SLOT" [label="{:SLOT|{:DIRECT-TYPE|Class*|{:SLOT}}|{:DIRECT-DOMAIN|Instance*|{:CLASS}}|{:SLOT-VALUE-TYPE|Any*}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="743,1300", rects="610,1325,876,1350 610,1300,736,1325 736,1300,805,1325 805,1300,876,1325 610,1275,743,1300 743,1275,813,1300 813,1275,876,1300 61\
+0,1250,793,1275 793,1250,876,1275", width="3.69", height="1.39"];
+	Ejercicio [label="{Ejercicio|{partOf|Class|{Planilla}}|{FaseEjercicio|String}|{Dias a la Semana|Symbol|{}}|{trabaja|Class|{Parte del Cuerpo}}|{Dur\
+acion|Float}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1511,685", rects="1406,735,1616,760 1406,710,1476,735 1476,710,1539,735 1539,710,1616,735 1406,685,1532,710 1532,685,1616,710 1406,660,1524,685 15\
+24,660,1590,685 1590,660,1616,685 1406,635,1460,660 1460,635,1506,660 1506,635,1616,660 1406,610,1522,635 1522,610,1616,635", width="2.92", height="2.08"];
+	Planilla [label="{Planilla|{Fase|Symbol|{Inicial|Mejora|Mantenimiento}}|{practicaProtege_Class41|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1801,457", rects="1699,494,1903,519 1699,419,1741,494 1741,419,1801,494 1801,469,1903,494 1801,444,1903,469 1801,419,1903,444 1699,394,1853,419 18\
+53,394,1903,419", width="2.83", height="1.74"];
+	"Parte del Cuerpo" [label="Parte del Cuerpo", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1626,457", width="1.53", height="0.50"];
+	Diabetes [label=Diabetes, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2317,279", width="0.89", height="0.50"];
+	Enfermedad [label=Enfermedad, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2317,457", width="1.17", height="0.50"];
+	":ROLE" [label=":ROLE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="564,1300", width="0.78", height="0.50"];
+	":PAL-CONSTRAINT" [label="{:PAL-CONSTRAINT|{:PAL-NAME|String}|{:PAL-RANGE|String}|{:PAL-DESCRIPTION|String}|{:PAL-STATEMENT|String}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2803,279", rects="2707,316,2899,341 2707,291,2824,316 2824,291,2899,316 2707,266,2827,291 2827,266,2899,291 2707,241,2849,266 2849,241,2899,266 27\
+07,216,2845,241 2845,216,2899,241", width="2.67", height="1.74"];
+	":CONSTRAINT" [label=":CONSTRAINT", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2775,457", width="1.50", height="0.50"];
+	":DIRECT-DOMAIN" [label=":DIRECT-DOMAIN", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1079,1300", width="1.83", height="0.50"];
+	":SYSTEM-CLASS" [label=":SYSTEM-CLASS", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2211,685", width="1.69", height="0.50"];
+	":DOCUMENTATION-IN-FRAME" [label=":DOCUMENTATION-IN-FRAME", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="107,18", width="2.97", height="0.50"];
+	":STANDARD-FACET" [label="{:STANDARD-FACET|{:DOCUMENTATION|String*}|{:ASSOCIATED-SLOT|Instance|{:SLOT}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="875,126", rects="743,138,1008,163 743,113,918,138 918,113,1008,138 743,88,890,113 890,88,953,113 953,88,1008,113", width="3.67", height="1.04"];
+	":PAL-NAME" [label=":PAL-NAME", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1209,1300", width="1.28", height="0.50"];
+	FaseEjercicio [label=FaseEjercicio, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1319,1300", width="1.28", height="0.50"];
+	"Dias a la Semana" [label="Dias a la Semana", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1439,1300", width="1.56", height="0.50"];
+	practicaProtege_Class41 [label=practicaProtege_Class41, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1590,1300", width="2.14", height="0.50"];
+	Fragilidad [label=Fragilidad, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1958,279", width="1.03", height="0.50"];
+	Duracion [label=Duracion, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1719,1300", width="0.94", height="0.50"];
+	":SLOT-NUMERIC-MAXIMUM" [label=":SLOT-NUMERIC-MAXIMUM", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1871,1300", width="2.78", height="0.50"];
+	":MODIFIER" [label=":MODIFIER", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2033,1300", width="1.22", height="0.50"];
+	Cardiovascular [label=Cardiovascular, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2063,279", width="1.39", height="0.50"];
+	":INSTANCE-ANNOTATION" [label="{:INSTANCE-ANNOTATION|{:ANNOTATED-INSTANCE|Instance|{:THING}}|{:ANNOTATION-TEXT|String}|{:CREATOR|String}|{:CREATION-TIMESTAMP|S\
+tring}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2520,279", rects="2367,316,2673,341 2367,291,2547,316 2547,291,2610,316 2610,291,2673,316 2367,266,2571,291 2571,266,2673,291 2367,241,2537,266 25\
+37,241,2673,266 2367,216,2583,241 2583,216,2673,241", width="4.25", height="1.74"];
+	":ANNOTATION" [label=":ANNOTATION", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2434,457", width="1.56", height="0.50"];
+	Dependiente [label=Dependiente, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1964,457", width="1.19", height="0.50"];
+	Avi [label="{Avi|{Edad|Integer}|{Nivel de Forma|Symbol|{Bajo|Medio|Alto}}|{does|Class|{Planilla}}|{nombre|String}|{hasA|Class|{Enfermedad}}|\
+{...}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1964,685", rects="1856,772,2073,797 1856,747,1959,772 1959,747,2073,772 1856,672,1960,747 1960,672,2020,747 2020,722,2073,747 2020,697,2073,722 20\
+20,672,2073,697 1856,647,1921,672 1921,647,1990,672 1990,647,2073,672 1856,622,1969,647 1969,622,2073,647 1856,597,1915,622 1915\
+,597,1975,622 1975,597,2073,622 1856,572,2073,597", width="3.00", height="3.12"];
+	":SLOT-MINIMUM-CARDINALITY" [label=":SLOT-MINIMUM-CARDINALITY", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2208,1300", width="3.14", height="0.50"];
+	":SLOT-NUMERIC-MINIMUM" [label=":SLOT-NUMERIC-MINIMUM", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2437,1300", width="2.72", height="0.50"];
+	does [label=does, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2580,1300", width="0.75", height="0.50"];
+	":DIRECT-SUBCLASSES" [label=":DIRECT-SUBCLASSES", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2706,1300", width="2.25", height="0.50"];
+	":CREATOR" [label=":CREATOR", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2847,1300", width="1.17", height="0.50"];
+	":DIRECTED-BINARY-RELATION" [label="{:DIRECTED-BINARY-RELATION|{:FROM|Instance|{:THING}}|{:TO|Instance|{:THING}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1103,279", rects="992,291,1214,316 992,266,1064,291 1064,266,1139,291 1139,266,1214,291 992,241,1050,266 1050,241,1132,266 1132,241,1214,266", width="3.08", height="1.04"];
+	":RELATION" [label=":RELATION", shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2212,457", width="1.25", height="0.50"];
+	":ASSOCIATED-FACET" [label=":ASSOCIATED-FACET", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2985,1300", width="2.17", height="0.50"];
+	Sexo [label=Sexo, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3108,1300", width="0.75", height="0.50"];
+	":DOCUMENTATION" [label=":DOCUMENTATION", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3224,1300", width="1.97", height="0.50"];
+	Aerobico [label=Aerobico, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1165,457", width="0.94", height="0.50"];
+	":NUMERIC-MAXIMUM" [label=":NUMERIC-MAXIMUM", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="312,18", width="2.22", height="0.50"];
+	"Nivel de Forma" [label="Nivel de Forma", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3365,1300", width="1.44", height="0.50"];
+	":DIRECT-SUPERCLASSES" [label=":DIRECT-SUPERCLASSES", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3524,1300", width="2.47", height="0.50"];
+	":CREATION-TIMESTAMP" [label=":CREATION-TIMESTAMP", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3719,1300", width="2.44", height="0.50"];
+	":FACET" [label="{:FACET|{:DIRECT-TYPE|Class*|{:FACET}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="671,279", rects="558,279,785,304 558,254,668,279 668,254,721,279 721,254,785,279", width="3.14", height="0.69"];
+	":NUMERIC-MINIMUM" [label=":NUMERIC-MINIMUM", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="488,18", width="2.17", height="0.50"];
+	Equilibrio [label=Equilibrio, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1253,457", width="1.00", height="0.50"];
+	":STANDARD-CLASS" [label="{:STANDARD-CLASS|{:ROLE|Symbol|{Abstract|Concrete}}|{:DOCUMENTATION|String*}|{:SLOT-CONSTRAINTS|Instance*|{:CONSTRAINT}}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2743,879", rects="2576,916,2911,941 2576,866,2682,916 2682,866,2793,916 2793,891,2911,916 2793,866,2911,891 2576,841,2786,866 2786,841,2911,866 25\
+76,816,2732,841 2732,816,2802,841 2802,816,2911,841", width="4.64", height="1.74"];
+	trabaja [label=trabaja, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="3890,1300", width="0.75", height="0.50"];
+	":ANNOTATION-TEXT" [label=":ANNOTATION-TEXT", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4011,1300", width="2.11", height="0.50"];
+	":DIRECT-SUBSLOTS" [label=":DIRECT-SUBSLOTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4177,1300", width="2.00", height="0.50"];
+	":MODIFICATION-TIMESTAMP" [label=":MODIFICATION-TIMESTAMP", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4371,1300", width="2.89", height="0.50"];
+	Edad [label=Edad, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4520,1300", width="0.75", height="0.50"];
+	Repeticiones [label=Repeticiones, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4609,1300", width="1.22", height="0.50"];
+	":ANNOTATED-INSTANCE" [label=":ANNOTATED-INSTANCE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4761,1300", width="2.50", height="0.50"];
+	":SLOT-CONSTRAINTS" [label=":SLOT-CONSTRAINTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="4947,1300", width="2.17", height="0.50"];
+	hasA [label=hasA, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5070,1300", width="0.75", height="0.50"];
+	":PAL-RANGE" [label=":PAL-RANGE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5164,1300", width="1.36", height="0.50"];
+	":VALUE-TYPE" [label=":VALUE-TYPE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="637,18", width="1.47", height="0.50"];
+	KB_282909_Class5 [label=KB_282909_Class5, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2661,126", width="1.78", height="0.50"];
+	KB_282909_Class6 [label=KB_282909_Class6, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2361,126", width="1.78", height="0.50"];
+	":DIRECT-SUPERSLOTS" [label=":DIRECT-SUPERSLOTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5311,1300", width="2.22", height="0.50"];
+	esFragil [label=esFragil, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5439,1300", width="0.83", height="0.50"];
+	KB_282909_Class29 [label=KB_282909_Class29, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2199,279", width="1.89", height="0.50"];
+	":FROM" [label=":FROM", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5517,1300", width="0.83", height="0.50"];
+	":DIRECT-INSTANCES" [label=":DIRECT-INSTANCES", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5641,1300", width="2.11", height="0.50"];
+	":SLOT-VALUE-TYPE" [label=":SLOT-VALUE-TYPE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5808,1300", width="2.03", height="0.50"];
+	":MINIMUM-CARDINALITY" [label=":MINIMUM-CARDINALITY", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="801,18", width="2.58", height="0.50"];
+	Fortalecimiento [label="{Fortalecimiento|{Repeticiones|Integer}|{Series|Integer}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1379,457", rects="1307,469,1451,494 1307,444,1395,469 1395,444,1451,469 1307,419,1376,444 1376,419,1451,444", width="2.00", height="1.04"];
+	":VALUES" [label=":VALUES", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="949,18", width="1.03", height="0.50"];
+	":SLOT-INVERSE" [label=":SLOT-INVERSE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="5958,1300", width="1.64", height="0.50"];
+	":SLOT-DEFAULTS" [label=":SLOT-DEFAULTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6100,1300", width="1.81", height="0.50"];
+	KB_282909_Class31 [label=KB_282909_Class31, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2511,126", width="1.89", height="0.50"];
+	":TO" [label=":TO", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6210,1300", width="0.75", height="0.50"];
+	KB_282909_Class30 [label=KB_282909_Class30, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="2811,126", width="1.89", height="0.50"];
+	":MAXIMUM-CARDINALITY" [label=":MAXIMUM-CARDINALITY", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1100,18", width="2.67", height="0.50"];
+	partOf [label=partOf, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6282,1300", width="0.75", height="0.50"];
+	":ASSOCIATED-SLOT" [label=":ASSOCIATED-SLOT", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6400,1300", width="2.03", height="0.50"];
+	":SLOT-MAXIMUM-CARDINALITY" [label=":SLOT-MAXIMUM-CARDINALITY", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6607,1300", width="3.22", height="0.50"];
+	nombre [label=nombre, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6770,1300", width="0.81", height="0.50"];
+	":DEFAULTS" [label=":DEFAULTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1259,18", width="1.25", height="0.50"];
+	Series [label=Series, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6844,1300", width="0.75", height="0.50"];
+	":CONSTRAINTS" [label=":CONSTRAINTS", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1380,18", width="1.61", height="0.50"];
+	":DIRECT-TYPE" [label=":DIRECT-TYPE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="6944,1300", width="1.53", height="0.50"];
+	Independiente [label="{Independiente|{esFragil|Boolean}}", shape=record, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="2087,457", rects="2025,457,2149,482 2025,432,2086,457 2086,432,2149,457", width="1.72", height="0.69"];
+	":NAME" [label=":NAME", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="7047,1300", width="0.83", height="0.50"];
+	Flexibilidad [label=Flexibilidad, shape=box, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="1511,457", width="1.17", height="0.50"];
+	":INVERSE" [label=":INVERSE", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="1495,18", width="1.08", height="0.50"];
+	Fase [label=Fase, shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="7122,1300", width="0.75", height="0.50"];
+	":SLOT-VALUES" [label=":SLOT-VALUES", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="7224,1300", width="1.58", height="0.50"];
+	":PAL-STATEMENT" [label=":PAL-STATEMENT", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="7366,1300", width="1.86", height="0.50"];
+	":PAL-DESCRIPTION" [label=":PAL-DESCRIPTION", shape=box, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="7522,1300", width="1.97", height="0.50"];
+	":STANDARD-SLOT" -> ":DIRECT-TEMPLATE-SLOTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1488 3773,1488 3087,1479 639,1442 484,1384 449,1370 416,1338 397,1318", lp="490,1376"];
+	":META-CLASS" -> ":CLASS" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,700,494 706,503 713,514 721,526 727,538 820,708 756,803 892,942 964,1015 1070,1060 1159,1087", lp="900,879"];
+	":CLASS" -> ":CLASS" [label=":DIRECT-TYPE*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1480,1110 1480,1136 1491,1133 1497,1129 1497,1123 1497,1119 1494,1116 1490,1113", lp="1548,1123"];
+	":CLASS" -> ":THING" [label=":DIRECT-INSTANCES*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1630,981 1445,1048 1454,1042 1464,1036 1473,1030 1484,1023 1485,1018 1496,1014 1536,996 1586,987 1620,982", lp="1568,1022"];
+	":CLASS" -> ":THING" [label=":DIRECT-SUPERCLASSES*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1658,996 1480,1090 1547,1073 1614,1052 1639,1030 1646,1023 1651,1014 1655,1006", lp="1736,1022"];
+	":CLASS" -> ":THING" [label=":DIRECT-SUBCLASSES*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1630,979 1300,1048 1301,1035 1305,1023 1313,1014 1334,992 1532,983 1620,979", lp="1390,1022"];
+	":CLASS" -> ":SLOT" [label=":DIRECT-TEMPLATE-SLOTS*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,876,1259 1159,1172 1073,1199 968,1230 886,1256", lp="1109,1224"];
+	":THING" -> Ejercicio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1645,960 1639,952 1637,949 1634,945 1632,942 1596,883 1564,813 1541,760", lp="1643,879"];
+	Ejercicio -> Planilla [label=partOf, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1699,517 1586,610 1611,586 1641,560 1669,538 1675,533 1683,528 1690,523", lp="1688,546"];
+	Ejercicio -> "Parte del Cuerpo" [label=trabaja, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1607,475 1524,610 1530,586 1538,560 1550,538 1557,526 1580,501 1600,482", lp="1570,546"];
+	Enfermedad -> Diabetes [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2317,439 2317,429 2317,392 2317,328 2317,297", lp="2325,368"];
+	":STANDARD-SLOT" -> ":ROLE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1488 3773,1488 3137,1479 995,1443 693,1384 651,1375 636,1376 601,1350 590,1341 580,1329 574,1318", lp="699,1376"];
+	":CONSTRAINT" -> ":PAL-CONSTRAINT" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2778,439 2780,429 2784,405 2789,371 2793,341", lp="2799,368"];
+	":STANDARD-SLOT" -> ":DIRECT-DOMAIN" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1487 3773,1487 3259,1479 1780,1449 1299,1384 1234,1375 1215,1376 1154,1350 1135,1342 1116,1329 1102,1318", lp="1305,1376"];
+	":SYSTEM-CLASS" -> ":CONSTRAINT" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2219,667 2224,658 2238,632 2263,593 2295,572 2304,566 2598,498 2721,469", lp="2425,546"];
+	":STANDARD-FACET" -> ":DOCUMENTATION-IN-FRAME" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,743,108 733,107 600,89 398,61 223,36 220,36 217,35 214,35", lp="481,62"];
+	":STANDARD-SLOT" -> ":PAL-NAME" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1487 3773,1487 3275,1478 1868,1447 1410,1384 1344,1375 1323,1380 1264,1350 1249,1342 1235,1329 1225,1318", lp="1416,1376"];
+	":STANDARD-SLOT" -> FaseEjercicio [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1486 3773,1486 3293,1473 1978,1436 1547,1384 1470,1374 1445,1385 1374,1350 1359,1342 1345,1329 1335,1318", lp="1553,1376"];
+	":STANDARD-SLOT" -> "Dias a la Semana" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1488 3773,1488 3394,1483 2480,1462 1717,1384 1622,1374 1593,1387 1504,1350 1487,1342 1470,1329 1458,1318", lp="1723,1376"];
+	":STANDARD-SLOT" -> practicaProtege_Class41 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1487 3773,1487 3328,1477 2176,1446 1797,1384 1742,1375 1728,1371 1676,1350 1656,1341 1634,1328 1618,1318", lp="1803,1376"];
+	Enfermedad -> Fragilidad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2308,439 2303,431 2294,417 2282,402 2266,394 2220,367 2200,386 2147,376 2083,363 2059,378 2004,342 1988,330 1975,311 1967,297", lp="2168,368"];
+	":THING" -> Enfermedad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1692,977 1702,976 1806,971 2072,957 2109,942 2202,904 2235,885 2281,798 2340,687 2326,529 2320,475", lp="2335,685"];
+	":STANDARD-SLOT" -> Duracion [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1485 3773,1485 3434,1472 2672,1441 2032,1384 1912,1373 1869,1407 1762,1350 1749,1343 1738,1329 1730,1318", lp="2038,1376"];
+	":STANDARD-SLOT" -> ":SLOT-NUMERIC-MAXIMUM" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1484 3773,1484 3379,1468 2439,1430 2124,1384 2059,1374 2043,1371 1980,1350 1955,1341 1927,1328 1906,1318", lp="2130,1376"];
+	":STANDARD-SLOT" -> ":MODIFIER" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1480 3773,1479 3486,1463 2903,1426 2410,1384 2266,1371 2218,1410 2086,1350 2071,1343 2057,1329 2047,1318", lp="2416,1376"];
+	Enfermedad -> Cardiovascular [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2307,439 2301,431 2292,418 2280,404 2266,394 2211,354 2179,379 2122,342 2104,330 2087,311 2076,297", lp="2248,368"];
+	":ANNOTATION" -> ":INSTANCE-ANNOTATION" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2443,439 2447,430 2459,406 2476,372 2490,341", lp="2489,368"];
+	":INSTANCE-ANNOTATION" -> ":THING" [label=":ANNOTATED-INSTANCE", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1692,977 2522,341 2522,391 2517,461 2499,520 2433,739 2411,847 2201,942 2156,961 1821,973 1702,977", lp="2578,546"];
+	Avi -> Dependiente [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1964,572 1964,562 1964,527 1964,495 1964,475", lp="1972,546"];
+	":STANDARD-SLOT" -> ":SLOT-MINIMUM-CARDINALITY" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1480 3773,1479 3511,1464 3004,1429 2576,1384 2467,1372 2437,1378 2330,1350 2301,1342 2270,1329 2246,1318", lp="2582,1376"];
+	":STANDARD-SLOT" -> ":SLOT-NUMERIC-MINIMUM" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1482 3773,1481 3466,1465 2853,1428 2641,1384 2579,1370 2510,1338 2471,1318", lp="2647,1376"];
+	":STANDARD-SLOT" -> does [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1477 3773,1476 3553,1458 3169,1424 2840,1384 2741,1371 2702,1402 2616,1350 2604,1342 2595,1329 2589,1318", lp="2846,1376"];
+	":STANDARD-SLOT" -> ":DIRECT-SUBCLASSES" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1479 3773,1478 3569,1464 3226,1434 2935,1384 2873,1373 2856,1373 2796,1350 2775,1341 2752,1329 2734,1318", lp="2941,1376"];
+	":STANDARD-SLOT" -> ":CREATOR" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1470 3773,1469 3602,1449 3338,1416 3110,1384 3016,1370 2984,1392 2898,1350 2884,1342 2870,1329 2861,1318", lp="3116,1376"];
+	":RELATION" -> ":DIRECTED-BINARY-RELATION" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2202,439 2196,431 2187,417 2174,402 2158,394 2148,388 1483,319 1214,291", lp="2032,368"];
+	":DIRECTED-BINARY-RELATION" -> ":THING" [label=":FROM", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1630,977 1096,316 1094,330 1091,345 1089,360 1078,438 1072,458 1066,538 1061,628 1051,880 1117,942 1136,959 1496,972 1620,977", lp="1088,546"];
+	":DIRECTED-BINARY-RELATION" -> ":THING" [label=":TO", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1630,969 1098,316 1094,365 1092,453 1122,520 1236,767 1331,803 1565,942 1583,952 1603,960 1620,966", lp="1152,546"];
+	":STANDARD-SLOT" -> ":ASSOCIATED-FACET" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1475 3773,1474 3616,1459 3380,1429 3178,1384 3130,1373 3118,1369 3072,1350 3052,1341 3031,1328 3014,1318", lp="3184,1376"];
+	":STANDARD-SLOT" -> Sexo [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1476 3773,1475 3568,1455 3247,1414 3144,1350 3132,1342 3123,1329 3117,1318", lp="3226,1376"];
+	":STANDARD-SLOT" -> ":DOCUMENTATION" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1470 3773,1468 3640,1448 3456,1411 3304,1350 3284,1342 3264,1329 3248,1318", lp="3396,1376"];
+	Ejercicio -> Aerobico [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1406,642 1397,638 1336,610 1263,569 1208,520 1194,507 1182,489 1174,475", lp="1261,546"];
+	":STANDARD-FACET" -> ":NUMERIC-MAXIMUM" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,743,101 733,99 639,81 513,57 401,36 398,35 395,35 392,34", lp="591,62"];
+	":STANDARD-SLOT" -> "Nivel de Forma" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1464 3773,1462 3668,1441 3534,1405 3426,1350 3410,1342 3394,1329 3383,1318", lp="3514,1376"];
+	":STANDARD-SLOT" -> ":DIRECT-SUPERCLASSES" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3783,1421 3774,1417 3724,1396 3671,1373 3622,1350 3601,1340 3577,1328 3558,1318", lp="3701,1376"];
+	":STANDARD-SLOT" -> ":CREATION-TIMESTAMP" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3833,1402 3825,1396 3820,1392 3815,1388 3811,1384 3785,1362 3756,1335 3738,1318", lp="3817,1376"];
+	":FACET" -> ":STANDARD-FACET" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,705,254 713,248 746,223 791,189 825,163", lp="807,190"];
+	":STANDARD-FACET" -> ":SLOT" [label=":ASSOCIATED-SLOT", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,837,1250 893,163 900,179 908,198 912,216 933,293 930,314 934,394 938,449 937,464 934,520 933,543 931,548 929,572 921,708 921,7\
+42 921,879 921,1123 921,1123 921,1123 921,1173 885,1214 846,1244", lp="995,685"];
+	":STANDARD-FACET" -> ":NUMERIC-MINIMUM" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,743,89 733,86 671,69 601,50 553,36", lp="677,62"];
+	":SYSTEM-CLASS" -> ":META-CLASS" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2197,667 2190,659 2167,632 2126,591 2081,572 2033,551 1898,558 1845,554 1783,548 1768,542 1705,538 1447,519 1381,541 1122,520 \
+1016,511 897,494 807,480", lp="1963,546"];
+	":META-CLASS" -> ":META-CLASS" [label=":DIRECT-TYPE*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,807,445 807,469 818,467 824,463 824,457 824,454 822,451 817,448", lp="875,457"];
+	Ejercicio -> Equilibrio [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1406,613 1398,607 1364,581 1329,551 1298,520 1285,506 1273,488 1264,475", lp="1345,546"];
+	":CLASS" -> ":STANDARD-CLASS" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1480,1106 1490,1105 1727,1078 2165,1024 2533,942 2547,939 2562,935 2576,931", lp="2140,1022"];
+	":STANDARD-CLASS" -> ":CONSTRAINT" [label=":SLOT-CONSTRAINTS*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,2774,475 2748,816 2756,723 2768,553 2773,485", lp="2841,685"];
+	":STANDARD-SLOT" -> trabaja [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3922,1402 3919,1392 3911,1364 3901,1336 3896,1318", lp="3923,1376"];
+	":STANDARD-SLOT" -> ":ANNOTATION-TEXT" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,3978,1402 3981,1392 3990,1364 4000,1336 4005,1318", lp="3995,1376"];
+	":STANDARD-SLOT" -> ":DIRECT-SUBSLOTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4055,1402 4063,1395 4098,1366 4134,1337 4155,1318", lp="4098,1376"];
+	":SYSTEM-CLASS" -> ":RELATION" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2211,667 2211,657 2211,609 2212,515 2212,475", lp="2220,546"];
+	":STANDARD-SLOT" -> ":MODIFICATION-TIMESTAMP" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1414 4127,1410 4203,1376 4284,1339 4331,1318", lp="4218,1376"];
+	":STANDARD-SLOT" -> Edad [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1475 4128,1474 4239,1457 4379,1422 4484,1350 4496,1342 4505,1329 4511,1318", lp="4454,1376"];
+	":STANDARD-SLOT" -> Repeticiones [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1461 4128,1459 4227,1441 4353,1415 4462,1384 4505,1371 4519,1373 4556,1350 4570,1341 4584,1329 4593,1318", lp="4524,1376"];
+	":STANDARD-SLOT" -> ":ANNOTATED-INSTANCE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1463 4128,1461 4244,1441 4398,1413 4532,1384 4591,1371 4607,1371 4662,1350 4686,1341 4711,1328 4730,1318", lp="4610,1376"];
+	":STANDARD-SLOT" -> ":SLOT-CONSTRAINTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1483 4128,1482 4315,1469 4615,1435 4860,1350 4882,1342 4905,1329 4922,1318", lp="4796,1376"];
+	":STANDARD-SLOT" -> hasA [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1470 4128,1469 4301,1449 4572,1415 4804,1384 4907,1370 4946,1403 5034,1350 5046,1342 5056,1329 5062,1318", lp="5002,1376"];
+	":STANDARD-SLOT" -> ":PAL-RANGE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1486 4128,1486 4341,1476 4705,1452 5010,1384 5055,1374 5067,1372 5106,1350 5121,1341 5135,1329 5146,1318", lp="5074,1376"];
+	":STANDARD-FACET" -> ":VALUE-TYPE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,791,88 782,84 745,67 706,49 677,36", lp="757,62"];
+	":INSTANCE-ANNOTATION" -> KB_282909_Class5 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,2578,216 2585,209 2607,185 2629,160 2644,144", lp="2615,190"];
+	":INSTANCE-ANNOTATION" -> KB_282909_Class6 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,2454,216 2447,209 2422,185 2396,160 2380,144", lp="2443,190"];
+	":STANDARD-SLOT" -> ":DIRECT-SUPERSLOTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1482 4128,1481 4352,1468 4748,1440 5082,1384 5146,1373 5163,1373 5222,1350 5244,1341 5266,1329 5283,1318", lp="5173,1376"];
+	":THING" -> Planilla [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1671,960 1675,951 1677,948 1678,945 1679,942 1734,794 1772,612 1790,519", lp="1789,685"];
+	":STANDARD-SLOT" -> esFragil [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1479 4128,1478 4369,1462 4807,1428 5181,1384 5279,1372 5316,1399 5400,1350 5413,1342 5423,1329 5429,1318", lp="5366,1376"];
+	Enfermedad -> KB_282909_Class29 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,2305,439 2299,430 2275,394 2232,328 2211,297", lp="2269,368"];
+	":STANDARD-SLOT" -> ":FROM" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1483 4128,1483 4455,1466 5140,1430 5374,1384 5422,1374 5438,1377 5478,1350 5490,1341 5500,1329 5506,1318", lp="5443,1376"];
+	":SYSTEM-CLASS" -> ":ANNOTATION" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2210,667 2210,657 2210,623 2217,568 2250,538 2290,502 2321,543 2368,520 2390,509 2409,490 2421,475", lp="2258,546"];
+	":STANDARD-SLOT" -> ":DIRECT-INSTANCES" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1483 4128,1483 4470,1468 5204,1433 5452,1384 5499,1374 5511,1369 5556,1350 5575,1341 5596,1328 5613,1318", lp="5512,1376"];
+	":STANDARD-SLOT" -> ":SLOT-VALUE-TYPE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1484 4128,1484 4420,1471 5018,1442 5521,1384 5612,1373 5639,1382 5726,1350 5747,1342 5768,1329 5784,1318", lp="5664,1376"];
+	":STANDARD-FACET" -> ":MINIMUM-CARDINALITY" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,849,88 843,79 833,64 822,48 814,36", lp="843,62"];
+	":SLOT" -> ":STANDARD-SLOT" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,876,1327 886,1329 924,1336 965,1344 1004,1350 1068,1360 1086,1352 1148,1368 1168,1372 1171,1380 1190,1384 1443,1435 3224,1475 \
+3783,1487", lp="1198,1376"];
+	":STANDARD-SLOT" -> ":CONSTRAINT" [label=":SLOT-CONSTRAINTS*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,2829,463 3870,1402 3851,1372 3835,1336 3835,1300 3835,1300 3835,1300 3835,685 3835,583 3069,490 2839,464", lp="3909,1022"];
+	":STANDARD-SLOT" -> ":SLOT" [label=":SLOT-INVERSE", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,708,1350 3783,1488 3127,1478 766,1439 712,1384 705,1377 704,1369 705,1360", lp="764,1376"];
+	":STANDARD-SLOT" -> ":FACET" [label=":ASSOCIATED-FACET", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,624,304 3783,1487 3153,1477 943,1438 631,1384 566,1372 508,1366 508,1300 508,1300 508,1300 508,457 508,391 568,340 615,310", lp="578,978"];
+	":STANDARD-SLOT" -> ":SLOT" [label=":DIRECT-SUBSLOTS*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,797,1350 3783,1487 3156,1477 975,1439 837,1384 833,1382 820,1371 805,1357", lp="906,1376"];
+	":STANDARD-SLOT" -> ":SLOT" [label=":DIRECT-SUPERSLOTS*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,876,1329 3783,1487 3177,1476 1123,1434 992,1384 982,1380 983,1373 973,1368 946,1354 916,1342 886,1332", lp="1069,1376"];
+	":META-CLASS" -> ":SLOT" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,682,494 685,504 697,549 713,621 713,685 713,1123 713,1123 713,1123 713,1166 722,1214 730,1250", lp="721,978"];
+	":SLOT" -> ":SLOT" [label=":DIRECT-TYPE*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,876,1289 876,1311 887,1309 894,1305 894,1300 894,1297 891,1294 886,1292", lp="945,1300"];
+	":SLOT" -> ":CLASS" [label=":DIRECT-DOMAIN*", color="0.6666667,1.0,1.0", fontcolor="0.6666667,1.0,1.0", style=filled, pos="e,1255,1198 876,1272 917,1264 962,1256 1004,1250 1049,1243 1165,1250 1205,1232 1220,1225 1234,1215 1247,1205", lp="1291,1224"];
+	Ejercicio -> Fortalecimiento [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1467,610 1462,601 1441,564 1418,523 1400,494", lp="1443,546"];
+	":STANDARD-FACET" -> ":VALUES" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,901,88 907,79 917,64 928,48 936,36", lp="930,62"];
+	":STANDARD-SLOT" -> ":SLOT-INVERSE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1485 4128,1485 4442,1473 5111,1445 5673,1384 5770,1373 5799,1387 5890,1350 5908,1342 5925,1329 5938,1318", lp="5837,1376"];
+	":STANDARD-SLOT" -> ":SLOT-DEFAULTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4466,1482 5219,1460 5846,1384 5926,1374 5950,1380 6026,1350 6045,1342 6064,1329 6078,1318", lp="5969,1376"];
+	":INSTANCE-ANNOTATION" -> KB_282909_Class31 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,2516,216 2516,206 2515,183 2513,160 2512,144", lp="2522,190"];
+	":STANDARD-SLOT" -> ":TO" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4483,1482 5299,1460 5978,1384 6065,1374 6099,1396 6174,1350 6186,1342 6195,1329 6201,1318", lp="6140,1376"];
+	":THING" -> "Parte del Cuerpo" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1662,960 1662,950 1665,879 1669,692 1647,538 1644,516 1637,491 1632,475", lp="1674,685"];
+	":PAL-CONSTRAINT" -> KB_282909_Class30 [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,2806,216 2807,206 2808,183 2809,160 2810,144", lp="2815,190"];
+	":THING" -> ":SYSTEM-CLASS" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1692,976 1702,975 1765,970 1880,958 1917,942 2045,883 2158,751 2197,703", lp="2098,879"];
+	":STANDARD-FACET" -> ":MAXIMUM-CARDINALITY" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,954,88 963,84 998,67 1035,49 1063,36", lp="1027,62"];
+	":STANDARD-SLOT" -> partOf [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4580,1482 5763,1458 6149,1384 6193,1375 6209,1377 6246,1350 6257,1341 6266,1329 6272,1318", lp="6217,1376"];
+	":STANDARD-SLOT" -> ":ASSOCIATED-SLOT" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1489 4128,1489 4592,1484 5825,1464 6226,1384 6268,1375 6278,1368 6318,1350 6337,1341 6357,1328 6373,1318", lp="6280,1376"];
+	":STANDARD-SLOT" -> ":SLOT-MAXIMUM-CARDINALITY" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1485 4128,1485 4600,1471 5870,1430 6289,1384 6375,1374 6398,1373 6482,1350 6511,1341 6543,1329 6567,1318", lp="6406,1376"];
+	":THING" -> Avi [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1692,976 1702,974 1730,970 1766,961 1793,942 1844,905 1884,848 1913,797", lp="1906,879"];
+	Avi -> Planilla [label=does, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,1845,519 1883,572 1872,557 1861,541 1851,527", lp="1882,546"];
+	Avi -> Enfermedad [label=hasA, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,2307,475 2073,599 2106,576 2143,554 2180,538 2216,522 2233,540 2266,520 2281,511 2293,496 2301,483", lp="2195,546"];
+	":STANDARD-SLOT" -> nombre [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1486 4128,1486 4534,1477 5560,1448 6415,1384 6556,1373 6608,1419 6732,1350 6745,1343 6754,1329 6761,1318", lp="6694,1376"];
+	":STANDARD-FACET" -> ":DEFAULTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,1008,92 1018,89 1077,73 1144,55 1205,36 1208,35 1211,34 1214,33", lp="1149,62"];
+	":STANDARD-SLOT" -> Series [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1486 4128,1486 4699,1472 6451,1429 6703,1384 6751,1375 6768,1378 6808,1350 6819,1341 6828,1329 6835,1318", lp="6779,1376"];
+	":STANDARD-FACET" -> ":CONSTRAINTS" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,1008,101 1018,99 1104,82 1215,59 1313,36 1316,35 1319,34 1322,34", lp="1236,62"];
+	":STANDARD-SLOT" -> ":DIRECT-TYPE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1487 4128,1487 4709,1476 6529,1435 6788,1384 6830,1375 6841,1371 6880,1350 6896,1341 6912,1328 6924,1318", lp="6844,1376"];
+	Avi -> Independiente [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,2025,572 2030,563 2046,532 2062,502 2073,482", lp="2049,546"];
+	":STANDARD-SLOT" -> ":NAME" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4675,1480 6321,1452 6853,1384 6922,1375 6948,1387 7008,1350 7020,1342 7030,1329 7037,1318", lp="6973,1376"];
+	":META-CLASS" -> ":FACET" [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,671,419 671,409 671,375 671,331 671,304", lp="679,368"];
+	":FACET" -> ":FACET" [label=":DIRECT-TYPE*", color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", style=filled, pos="e,785,266 785,292 796,289 802,285 802,279 802,275 799,272 795,269", lp="853,279"];
+	Ejercicio -> Flexibilidad [dir=back, label=isa, color="0.0,0.0,0.0", fontcolor="0.0,0.0,0.0", pos="s,1511,610 1511,600 1511,554 1511,502 1511,475", lp="1519,546"];
+	":STANDARD-FACET" -> ":INVERSE" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,1008,113 1018,112 1135,99 1304,74 1447,36 1450,35 1453,34 1456,33", lp="1363,62"];
+	":STANDARD-SLOT" -> Fase [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1487 4128,1487 4735,1475 6702,1433 6982,1384 7029,1375 7046,1378 7086,1350 7097,1341 7106,1329 7113,1318", lp="7057,1376"];
+	":STANDARD-SLOT" -> ":SLOT-VALUES" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1487 4128,1487 4747,1477 6779,1440 7066,1384 7108,1375 7119,1370 7158,1350 7174,1341 7191,1328 7203,1318", lp="7122,1376"];
+	":STANDARD-SLOT" -> ":PAL-STATEMENT" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4709,1482 6542,1456 7131,1384 7202,1375 7223,1377 7290,1350 7309,1342 7329,1329 7343,1318", lp="7238,1376"];
+	":STANDARD-SLOT" -> ":PAL-DESCRIPTION" [dir=back, label=io, color="0.0,1.0,1.0", fontcolor="0.0,1.0,1.0", pos="s,4118,1488 4128,1488 4724,1479 6634,1447 7247,1384 7334,1375 7359,1381 7442,1350 7462,1342 7483,1329 7498,1318", lp="7384,1376"];
+}
