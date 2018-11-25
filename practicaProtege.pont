@@ -1,0 +1,201 @@
+; Sun Nov 25 19:01:20 GMT+01:00 2018
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+
+(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+	(is-a USER)
+	(role abstract)
+	(single-slot FaseEjercicio
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Dias+a+la+Semana
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot practicaProtege_Class41
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Duracion
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot does
+		(type SYMBOL)
+;+		(allowed-parents Planilla)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Sexo
+		(type SYMBOL)
+		(allowed-values Hombre Mujer)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nivel+de+Forma
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot trabaja
+		(type SYMBOL)
+;+		(allowed-parents Parte+del+Cuerpo)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Edad
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Repeticiones
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hasA
+		(type SYMBOL)
+;+		(allowed-parents Enfermedad)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot esFragil
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot partOf
+		(type SYMBOL)
+;+		(allowed-parents Planilla)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Series
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Fase
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Subject
+	(is-a USER)
+	(role concrete)
+	(single-slot Edad
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Nivel+de+Forma
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot does
+		(type SYMBOL)
+;+		(allowed-parents Planilla)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot hasA
+		(type SYMBOL)
+;+		(allowed-parents Enfermedad)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Sexo
+		(type SYMBOL)
+		(allowed-values Hombre Mujer)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Independiente
+	(is-a Subject)
+	(role concrete)
+	(single-slot esFragil
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Dependiente
+	(is-a Subject)
+	(role concrete))
+
+(defclass Enfermedad
+	(is-a USER)
+	(role concrete))
+
+(defclass Fragilidad
+	(is-a Enfermedad)
+	(role concrete))
+
+(defclass Cardiovascular
+	(is-a Enfermedad)
+	(role concrete))
+
+(defclass Diabetes
+	(is-a Enfermedad)
+	(role concrete))
+
+(defclass Planilla
+	(is-a USER)
+	(role concrete)
+	(single-slot Fase
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot practicaProtege_Class41
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Ejercicio
+	(is-a USER)
+	(role concrete)
+	(single-slot partOf
+		(type SYMBOL)
+;+		(allowed-parents Planilla)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot FaseEjercicio
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Dias+a+la+Semana
+		(type SYMBOL)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot trabaja
+		(type SYMBOL)
+;+		(allowed-parents Parte+del+Cuerpo)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Duracion
+		(type FLOAT)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Aerobico
+	(is-a Ejercicio)
+	(role concrete))
+
+(defclass Equilibrio
+	(is-a Ejercicio)
+	(role concrete))
+
+(defclass Fortalecimiento
+	(is-a Ejercicio)
+	(role concrete)
+	(single-slot Repeticiones
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot Series
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Flexibilidad
+	(is-a Ejercicio)
+	(role concrete))
+
+(defclass Parte+del+Cuerpo
+	(is-a USER)
+	(role concrete))

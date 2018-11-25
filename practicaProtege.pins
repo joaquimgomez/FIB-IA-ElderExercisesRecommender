@@ -1,0 +1,27 @@
+; Sun Nov 25 19:01:20 GMT+01:00 2018
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([KB_282909_Class29] of  Enfermedad
+)
+
+([KB_282909_Class30] of  %3APAL-CONSTRAINT
+)
+
+([KB_282909_Class31] of  %3AINSTANCE-ANNOTATION
+
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
+
+([KB_282909_Class5] of  %3AINSTANCE-ANNOTATION
+
+	(%3AANNOTATED-INSTANCE [Independiente])
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
+
+([KB_282909_Class6] of  %3AINSTANCE-ANNOTATION
+
+	(%3AANNOTATED-INSTANCE [Independiente])
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
