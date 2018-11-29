@@ -1,4 +1,4 @@
-; Wed Nov 28 22:28:27 GMT+01:00 2018
+; Thu Nov 29 23:05:14 GMT+01:00 2018
 ;
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -8,63 +8,89 @@
 	(is-a USER)
 	(role abstract)
 	(single-slot diasALaSemana
-		(type SYMBOL)
-;+		(cardinality 0 1)
+		(type INTEGER)
+		(range 1 7)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreEjercicio
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot fase
 		(type SYMBOL)
 		(allowed-values Inicial Mejora Mantenimiento)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot does
-		(type SYMBOL)
-;+		(allowed-parents Planilla)
+		(type INSTANCE)
+;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot parte
+		(type SYMBOL)
+		(allowed-values Superior Inferior)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
+		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot faseEjercicio
-		(type STRING)
-;+		(cardinality 0 1)
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot duracion
-		(type FLOAT)
-;+		(cardinality 0 1)
+		(type INTEGER)
+		(range 1 90)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot trabaja
-		(type SYMBOL)
-;+		(allowed-parents Parte+del+Cuerpo)
-;+		(cardinality 0 1)
+	(multislot trabaja
+		(type INSTANCE)
+;+		(allowed-classes Parte+del+Cuerpo)
 		(create-accessor read-write))
 	(single-slot sexo
 		(type SYMBOL)
 		(allowed-values Hombre Mujer)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot hasA
-		(type SYMBOL)
-;+		(allowed-parents Enfermedad)
-;+		(cardinality 0 1)
+	(multislot hasA
+		(type INSTANCE)
+;+		(allowed-classes Enfermedad)
 		(create-accessor read-write))
 	(single-slot nivelDeForma
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot grupoMuscular
+		(type SYMBOL)
+		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot esFragil
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot nombreParteCuerpo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot porcentajeFCmax
+		(type INTEGER)
+		(range 0 100)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot partOf
-		(type SYMBOL)
-;+		(allowed-parents Planilla)
+		(type INSTANCE)
+;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot repeticiones
 		(type INTEGER)
+		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
@@ -85,8 +111,8 @@
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot does
-		(type SYMBOL)
-;+		(allowed-parents Planilla)
+		(type INSTANCE)
+;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
@@ -97,10 +123,9 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot hasA
-		(type SYMBOL)
-;+		(allowed-parents Enfermedad)
-;+		(cardinality 0 1)
+	(multislot hasA
+		(type INSTANCE)
+;+		(allowed-classes Enfermedad)
 		(create-accessor read-write))
 	(single-slot nivelDeForma
 		(type SYMBOL)
@@ -143,38 +168,49 @@
 	(single-slot fase
 		(type SYMBOL)
 		(allowed-values Inicial Mejora Mantenimiento)
-;+		(cardinality 0 1)
+;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
 (defclass Ejercicio
 	(is-a USER)
 	(role concrete)
 	(single-slot partOf
-		(type SYMBOL)
-;+		(allowed-parents Planilla)
+		(type INSTANCE)
+;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot faseEjercicio
-		(type STRING)
-;+		(cardinality 0 1)
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot duracion
-		(type FLOAT)
-;+		(cardinality 0 1)
+		(type INTEGER)
+		(range 1 90)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot diasALaSemana
-		(type SYMBOL)
-;+		(cardinality 0 1)
+		(type INTEGER)
+		(range 1 7)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot trabaja
-		(type SYMBOL)
-;+		(allowed-parents Parte+del+Cuerpo)
-;+		(cardinality 0 1)
+	(single-slot nombreEjercicio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot trabaja
+		(type INSTANCE)
+;+		(allowed-classes Parte+del+Cuerpo)
 		(create-accessor read-write)))
 
 (defclass Aerobico
 	(is-a Ejercicio)
-	(role concrete))
+	(role concrete)
+	(single-slot porcentajeFCmax
+		(type INTEGER)
+		(range 0 100)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
 
 (defclass Equilibrio
 	(is-a Ejercicio)
@@ -185,10 +221,12 @@
 	(role concrete)
 	(single-slot repeticiones
 		(type INTEGER)
+		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
+		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -198,36 +236,357 @@
 
 (defclass Parte+del+Cuerpo
 	(is-a USER)
-	(role concrete))
+	(role concrete)
+	(single-slot parte
+		(type SYMBOL)
+		(allowed-values Superior Inferior)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot grupoMuscular
+		(type SYMBOL)
+		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreParteCuerpo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write)))
 
-	; Wed Nov 28 22:28:27 GMT+01:00 2018
-	;
-	;+ (version "3.5")
-	;+ (build "Build 663")
+; Thu Nov 29 23:05:14 GMT+01:00 2018
+;
+;+ (version "3.5")
+;+ (build "Build 663")
 
-	([KB_282909_Class29] of  Enfermedad
-	)
+([KB_282909_Class30] of  %3APAL-CONSTRAINT
+)
 
-	([KB_282909_Class30] of  %3APAL-CONSTRAINT
-	)
+([KB_282909_Class31] of  %3AINSTANCE-ANNOTATION
 
-	([KB_282909_Class31] of  %3AINSTANCE-ANNOTATION
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
 
-		(%3ACREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
-		(%3ACREATOR "joaquimgomez"))
+([KB_282909_Class5] of  %3AINSTANCE-ANNOTATION
 
-	([KB_282909_Class5] of  %3AINSTANCE-ANNOTATION
+	(%3AANNOTATED-INSTANCE [Independiente])
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
 
-		(%3AANNOTATED-INSTANCE [Independiente])
-		(%3ACREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
-		(%3ACREATOR "joaquimgomez"))
+([KB_282909_Class6] of  %3AINSTANCE-ANNOTATION
 
-	([KB_282909_Class6] of  %3AINSTANCE-ANNOTATION
+	(%3AANNOTATED-INSTANCE [Independiente])
+	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
+	(%3ACREATOR "joaquimgomez"))
 
-		(%3AANNOTATED-INSTANCE [Independiente])
-		(%3ACREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
-		(%3ACREATOR "joaquimgomez"))
+([practicaProtege_Class10] of  Parte+del+Cuerpo
 
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "CuadricepIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class11] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "GemeloIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class12] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoDerecho)
+	(nombreParteCuerpo "BicepDerecho")
+	(parte Superior))
+
+([practicaProtege_Class13] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoDerecho)
+	(nombreParteCuerpo "TricepDerecho")
+	(parte Superior))
+
+([practicaProtege_Class14] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoIzquierdo)
+	(nombreParteCuerpo "BicepIzquierdo")
+	(parte Superior))
+
+([practicaProtege_Class15] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoIzquierdo)
+	(nombreParteCuerpo "TricepIzquierdo")
+	(parte Superior))
+
+([practicaProtege_Class16] of  Parte+del+Cuerpo
+
+	(grupoMuscular Espalda)
+	(nombreParteCuerpo "Espalda")
+	(parte Superior))
+
+([practicaProtege_Class17] of  Parte+del+Cuerpo
+
+	(grupoMuscular Torso)
+	(nombreParteCuerpo "Cadera")
+	(parte Superior))
+
+([practicaProtege_Class18] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "TobilloDerecho")
+	(parte Inferior))
+
+([practicaProtege_Class19] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "TobilloIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class21] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 10)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Caminar")
+	(porcentajeFCmax 60)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class17]))
+
+([practicaProtege_Class24] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoBicepDerecho")
+	(trabaja [practicaProtege_Class12]))
+
+([practicaProtege_Class26] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoBicepIzquierdo")
+	(trabaja [practicaProtege_Class14]))
+
+([practicaProtege_Class27] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCadera")
+	(trabaja [practicaProtege_Class17]))
+
+([practicaProtege_Class28] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuadricepDerecho")
+	(trabaja [practicaProtege_Class8]))
+
+([practicaProtege_Class29] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuadricepIzquierdo")
+	(trabaja [practicaProtege_Class10]))
+
+([practicaProtege_Class30] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuello")
+	(trabaja [practicaProtege_Class5]))
+
+([practicaProtege_Class31] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoEspalda")
+	(trabaja [practicaProtege_Class16]))
+
+([practicaProtege_Class32] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoGemeloDerecho")
+	(trabaja [practicaProtege_Class9]))
+
+([practicaProtege_Class33] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoGemeloIzquierdo")
+	(trabaja [practicaProtege_Class11]))
+
+([practicaProtege_Class34] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTobilloDerecho")
+	(trabaja [practicaProtege_Class18]))
+
+([practicaProtege_Class35] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTobilloIzquierdo")
+	(trabaja [practicaProtege_Class19]))
+
+([practicaProtege_Class36] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTorso")
+	(trabaja [practicaProtege_Class6]))
+
+([practicaProtege_Class37] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTricepDerecho")
+	(trabaja [practicaProtege_Class13]))
+
+([practicaProtege_Class38] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTricepIzquierdo")
+	(trabaja [practicaProtege_Class15]))
+
+([practicaProtege_Class40] of  Aerobico Equilibrio
+
+	(diasALaSemana 2)
+	(duracion 45)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Tai Chi")
+	(diasALaSemana 2)
+	(duracion 45)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Tai Chi"))
+
+([practicaProtege_Class41] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 60)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Paseo")
+	(porcentajeFCmax 60)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class17]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class43] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 20)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Andar")
+	(porcentajeFCmax 65)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class17]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class44] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 20)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Bicicleta")
+	(porcentajeFCmax 65)
+	(trabaja
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class45] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaBicepDerecho")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class12]))
+
+([practicaProtege_Class46] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaBicepIzquierdo")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class14]))
+
+([practicaProtege_Class47] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaTricepDerecho")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class13]))
+
+([practicaProtege_Class48] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaTricepIzquierdo")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class15]))
+
+([practicaProtege_Class5] of  Parte+del+Cuerpo
+
+	(grupoMuscular Cuello)
+	(nombreParteCuerpo "Cuello")
+	(parte Superior))
+
+([practicaProtege_Class6] of  Parte+del+Cuerpo
+
+	(grupoMuscular Torso)
+	(nombreParteCuerpo "Torso")
+	(parte Superior))
+
+([practicaProtege_Class8] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "CuadricepDerecho")
+	(parte Inferior))
+
+([practicaProtege_Class9] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "GemeloDerecho")
+	(parte Inferior))
 
 ;;;
 ;;;						FUNCTIONS
@@ -265,7 +624,6 @@
 	(new_avi)
 	=>
 	(bind ?nombre (general-question "Nombre: "))
-	; COMPROBAR EXISTENCIA ANCIANO EN EL SYSTEM
 	(bind ?edad (general-question "Edad: "))
 	(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
 	(bind ?dependencia (question-with-default-values "Dependencia: " "Independiente/Dependiente"))
@@ -274,19 +632,42 @@
 																													(edad ?edad)
 																													(sexo ?sexo)
 																													(nivelDeForma ?nivelDeForma))
-	else
-	(bind ?esFragil (question-with-default-values "Es fragil: " "FALSE/TRUE"))
+	else (if (eq ?dependencia "Independiente") then (bind ?esFragil (question-with-default-values "Es fragil: " "FALSE/TRUE"))
 	(make-instance ?nombre of Independiente (nombre ?nombre)
 												 (edad ?edad)
 												 (sexo ?sexo)
 												 (nivelDeForma ?nivelDeForma)
-												 (esFragil ?esFragil))
+												 (esFragil ?esFragil)))
 	)
 	(assert (Avi ?nombre))
-	(focus ask_questions)
 )
 
+(defrule p
+	(new_avi)
+	?h <- (Avi ?nombre)
+	?aviFact <-(object (is-a Avi)(nombre ?nombreA))
+	(test (eq (str-compare  ?nombre ?nombreA) 0))
+	=>
+	(printout t (send ?aviFact get-edad))
+)
 
+(defrule noEjercicioSi ""
+	(new_avi)
+	=>
+	(printout t "Esta usted alguna de las siguiente condiciones?" crlf)
+	(printout t "1. No ha tomado su medicación." crlf)
+	(printout t "2. Infección aguda." crlf)
+	(printout t "3. Presión arterial fuera de los valores normales." crlf)
+	(printout t "4. Náuseas, vómitos, diarrea." crlf)
+	(printout t "5. Hipoglucemia." crlf)
+	(printout t "6. Mareo y/o síncope." crlf)
+	(printout t "7. Síntomas de angina o taquicardia")
+	(bind ?res question-with-default-values "Respuesta: " "Sí/No")
+	(if (eq ?res "Si") then
+	(printout "Recomendamos que no haga ejercicio y acuda a su médico de cabezera.")
+	(assert (FIN))
+	else (focus ask_questions))
+)
 
 
 ;;;
@@ -319,12 +700,68 @@
 	(if (eq ?fragilidad "Si") then (assert (fragilidad)))
 )
 
+(defrule check_partes_del_cuerpo ""
+	(new_avi)
+	=>
+	(bind ?bicepDerecho (question-with-default-values "Presenta dolencia en el Bicep Derecho?" "Si/No"))
+	(if (eq ?bicepDerecho "Si") then (assert bicepDerechoCorrecto))
+	(bind ?bicepIzquierdo (question-with-default-values "Presenta dolencia en el Bicep Izquierdo?" "Si/No"))
+	(if (eq ?bicepIzquierdo "Si") then (assert bicepIzquierdoCorrecto))
+	(bind ?cadera (question-with-default-values "Presenta dolencia en la Cadera?" "Si/No"))
+	(if (eq ?cadera "Si") then (assert caderaCorrecta))
+	(bind ?cuadricepDerecho (question-with-default-values "Presenta dolencia en el Cuadricep Derecho?" "Si/No"))
+	(if (eq ?cuadricepDerecho "Si") then (assert cuadricepDerechoCorrecto))
+	(bind ?cuadricepIzquierdo (question-with-default-values "Presenta dolencia en el Cuadricep Izquierdo?" "Si/No"))
+	(if (eq ?cuadricepIzquierdo "Si") then (assert cuadricepIzquierdoCorrecto))
+	(bind ?cuello (question-with-default-values "Presenta dolencia en el Cuello?" "Si/No"))
+	(if (eq ?cuello "Si") then (assert cuelloCorrecto))
+	(bind ?espalda (question-with-default-values "Presenta dolencia en la Espalda?" "Si/No"))
+	(if (eq ?espalda "Si") then (assert espaldaCorrecta))
+	(bind ?gemeloDerecho (question-with-default-values "Presenta dolencia en el Gemelo Derecho?" "Si/No"))
+	(if (eq ?gemeloDerecho "Si") then (assert gemeloDerechoCorrecto))
+	(bind ?gemeloIzquierdo (question-with-default-values "Presenta dolencia en el Gemelo IZquierdo?" "Si/No"))
+	(if (eq ?gemeloIzquierdo "Si") then (assert gemeloIzquierdoCorrecto))
+	(bind ?tobilloDerecho (question-with-default-values "Presenta dolencia en el Tobillo Derecho?" "Si/No"))
+	(if (eq ?tobilloDerecho "Si") then (assert tobilloDerechoCorrecto))
+	(bind ?tobilloIzquierdo (question-with-default-values "Presenta dolencia en el Tobillo Izquierdo?" "Si/No"))
+	(if (eq ?tobilloIzquierdo "Si") then (assert tobilloIzquierdoCorrecto))
+	(bind ?torso (question-with-default-values "Presenta dolencia en el Torso?" "Si/No"))
+	(if (eq ?torso "Si") then (assert torsoCorrecto))
+	(bind ?tricepDerecho (question-with-default-values "Presenta dolencia en el Tricep Derecho?" "Si/No"))
+	(if (eq ?tricepDerecho "Si") then (assert tricepDerechoCorrecto))
+	(bind ?tricepIzquierdo (question-with-default-values "Presenta dolencia en el Tricep Izquierdo?" "Si/No"))
+	(if (eq ?tricepIzquierdo "Si") then (assert tricepIzquierdoCorrecto))
+)
+
 (defrule lastOfHere ""
 	(new_avi)
 	=>
-	(printout t "FIN!")
+	(focus inference_of_data)
 )
 
+;;;
+;;;						INFERENCE MODULE
+;;;
+
+(defmodule inference_of_data
+	(import MAIN ?ALL)
+	(import ask_questions ?ALL)
+	(export ?ALL)
+)
+
+(defrule tieneEnfermedadCardiovascular ""
+	(new_avi)
+	(enfermedadCardiovascular)
+	=>
+
+)
+
+; Regla que pregunte estado de partes del cuerpo y assert de cada parte que este guay!
+; Regla por ejercicio, añadir ejercicio si Avi tiene alguna de esas enfermedades.
+
+;;;
+;;;						FILTER MODULE
+;;;
 
 ;;;
 ;;;						RECOMENDATIONS MODULE
