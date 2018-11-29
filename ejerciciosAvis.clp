@@ -664,7 +664,7 @@
 	(printout t "7. Síntomas de angina o taquicardia")
 	(bind ?res question-with-default-values "Respuesta: " "Sí/No")
 	(if (eq ?res "Si") then
-	(printout "Recomendamos que no haga ejercicio y acuda a su médico de cabezera.")
+	(printout t "Recomendamos que no haga ejercicio y acuda a su médico de cabezera.")
 	(assert (FIN))
 	else (focus ask_questions))
 )
@@ -759,6 +759,186 @@
 	(export ?ALL)
 )
 
+(defrule ejercicioEstiramientoBicepDerecho ""
+	(new_avi)
+	(bicepDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoBicepIzquierdo ""
+	(new_avi)
+	(bicepIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoCadera ""
+	(new_avi)
+	(caderaCorrecta)
+	=>
+)
+
+(defrule ejercicioEstiramientoCuadricepDerecho ""
+	(new_avi)
+	(cuadricepDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoCuadricepIzquierdo ""
+	(new_avi)
+	(cuadricepIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoCuello ""
+	(new_avi)
+	(cuelloCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoEspalda ""
+	(new_avi)
+	(espaldaCorrecta)
+	=>
+)
+
+(defrule ejercicioEstiramientoGemeloDerecho ""
+	(new_avi)
+	(gemeloDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoGemeloIzquierdo ""
+	(new_avi)
+	(gemeloIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoTobilloDerecho ""
+	(new_avi)
+	(tobilloDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoTobilloIzquierdo ""
+	(new_avi)
+	(tobilloIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoTorso ""
+	(new_avi)
+	(torsoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoTricepDerecho ""
+	(new_avi)
+	(tricepDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioEstiramientoTricepIzquierdo ""
+	(new_avi)
+	(tricepIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioFortalecimientoPesaBicepDerecho ""
+	(new_avi)
+	(bicepDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioFortalecimientoBicepIzquierdo ""
+	(new_avi)
+	(bicepIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioFortalecimientoTricepDerecho ""
+	(new_avi)
+	(tricepDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioFortalecimientoTricepIzquierdo ""
+	(new_avi)
+	(tricepIzquierdoCorrecto)
+	=>
+)
+
+(defrule ejercicioPaseo ""
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	=>
+)
+
+(defrule ejercicioAndar ""
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	=>
+
+)
+
+(defrule ejercicioBicicleta ""
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(espaldaCorrecta)
+	=>
+
+)
+
+(defrule ejercicioCaminar ""
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	=>
+
+)
+
+(defrule ejercicioTaichi ""
+	(new_avi)
+	(bicepDerechoCorrecto)
+	(bicepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(cuelloCorrecto)
+	(espaldaCorrecta)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(torsoCorrecto)
+	(tricepDerechoCorrecto)
+	(tricepIzquierdoCorrecto)
+	=>
+
+)
+
 (defrule tieneEnfermedadCardiovascular ""
 	(new_avi)
 	(enfermedadCardiovascular)
@@ -766,7 +946,9 @@
 
 )
 
-; Regla que pregunte estado de partes del cuerpo y assert de cada parte que este guay!
+
+
+
 ; Regla por ejercicio, añadir ejercicio si Avi tiene alguna de esas enfermedades.
 
 ;;;
