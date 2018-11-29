@@ -240,9 +240,7 @@
 
 (deffunction question-with-default-values "to ask questions with default answers values" (?pregunta ?defaultValues)
 	(format t "%s" ?pregunta)
-	(format t "%s" ?defaultValues)
-	(printout t "Valores posibles: ")
-	(printout t ?defaultValues)
+	(printout t "(" ?defaultValues "): ")
 	(bind ?respuesta (read))
 	?respuesta
 )
@@ -253,7 +251,7 @@
 
 (defmodule MAIN (export ?ALL))
 
-(defrule initial "intial rule"
+(defrule initial "initial rule"
 	(initial-fact)
 	=>
 	(printout t "--------------------------------------------------------------" crlf)
@@ -267,25 +265,28 @@
 	(new_avi)
 	=>
 	(bind ?nombre (general-question "Nombre: "))
+	; COMPROBAR EXISTENCIA ANCIANO EN EL SYSTEM
 	(bind ?edad (general-question "Edad: "))
-	(bind ?sexo (question-with-default-values "Sexo: " "Hombre/Mujer"))
+	(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
 	(bind ?dependencia (question-with-default-values "Dependencia: " "Independiente/Dependiente"))
 	(bind ?nivelDeForma (question-with-default-values "Nivel de Forma: " "Bajo/Medio/Alto"))
-	(if (eq ?dependencia "Dependiente") then (assert (Dependiente (nombre ?nombre)
+	(if (eq ?dependencia "Dependiente") then (make-instance ?nombre of Dependiente (nombre ?nombre)
 																													(edad ?edad)
 																													(sexo ?sexo)
-																													(nivelDeForma ?nivelDeForma)))
+																													(nivelDeForma ?nivelDeForma))
 	else
-	(bind ?esFragil ((question-with-defaultvalues "Es fragil: " "FALSE/TRUE")))
-	(assert (Independiente (nombre ?nombre)
+	(bind ?esFragil (question-with-default-values "Es fragil: " "FALSE/TRUE"))
+	(make-instance ?nombre of Independiente (nombre ?nombre)
 												 (edad ?edad)
 												 (sexo ?sexo)
 												 (nivelDeForma ?nivelDeForma)
-												 (esFragil ?esFragil)))
+												 (esFragil ?esFragil))
 	)
-	;; Enfermedades
+	(assert (Avi ?nombre))
 	(focus ask_questions)
 )
+
+
 
 
 ;;;
@@ -299,33 +300,31 @@
 
 (defrule enfermedadCardiovascular "rule to know if avi have cardiovascular disease"
 	(new_avi)
-	?
 	=>
 	(bind ?enfCard (question-with-default-values "Enfermedad Cardiovascular" "Si/No"))
-	(if (eq ?enfCard "Si") then
-	else
-	)
+	(if (eq ?enfCard "Si") then (assert (enfermedadCardiovascular)))
 )
 
 (defrule diabetes "rule to know if avi have diabetes"
 	(new_avi)
-	?
 	=>
-	(bind ?enfCard (question-with-default-values "Diabetes" "Si/No"))
-	(if (eq ?enfCard "Si") then
-	else
-	)
+	(bind ?diabetes (question-with-default-values "Diabetes" "Si/No"))
+	(if (eq ?diabetes "Si") then (assert (diabetes)))
 )
 
 (defrule fragilidad "rule to know if avi is fragile"
 	(new_avi)
-	?
 	=>
-	(bind ?enfCard (question-with-default-values "Fragil" "Si/No"))
-	(if (eq ?enfCard "Si") then
-	else
-	)
+	(bind ?fragilidad (question-with-default-values "Fragil" "Si/No"))
+	(if (eq ?fragilidad "Si") then (assert (fragilidad)))
 )
+
+(defrule lastOfHere ""
+	(new_avi)
+	=>
+	(printout t "FIN!")
+)
+
 
 ;;;
 ;;;						RECOMENDATIONS MODULE
