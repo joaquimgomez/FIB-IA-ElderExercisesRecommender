@@ -24,9 +24,57 @@
 	(printout t " (si/no/s/n): ")
 	(bind ?respuesta (read))
 	(if (or (eq (str-compare (lowcase ?respuesta) si) 0) (eq (str-compare (lowcase ?respuesta) s) 0))
-		then TRUE
-		else FALSE
+		then (return TRUE)
+		else (return FALSE)
 	)
+)
+
+(deffunction esNecesarioFiltrar "" ()
+	;(printout t "esNecesarioFiltrar" crlf)
+	(bind ?exercicis (find-all-instances ((?e Ejercicio))
+		(neq (send ?e get-partOf) [nil])
+	))
+
+	(bind ?sumaduracion 0)
+
+	(loop-for-count (?i 1 (length$ ?exercicis)) do
+		(bind ?exe (nth$ ?i ?exercicis))
+		(bind ?sumaduracion (+ ?sumaduracion (* (send ?exe get-diasALaSemana) (send ?exe get-duracion))))
+	)
+	;(printout t ?sumaduracion)
+	(if (<= ?sumaduracion 100)
+		then
+			(return TRUE)
+		else
+			(assert (finFiltroAss))
+			(return FALSE)
+	)
+
+)
+
+(deffunction eliminarUno "" ()
+
+	(bind ?exercicis (find-all-instances ((?e Ejercicio))
+		(neq (send ?e get-partOf) [nil])
+	))
+
+	(bind ?sumadias 0)
+
+	(loop-for-count (?i 1 (length$ ?exercicis)) do
+		(bind ?exe (nth$ ?i ?exercicis))
+		(bind ?sumadias (+ ?sumadias (send ?exe get-diasALaSemana)))
+	)
+
+	(loop-for-count (?j 1 (length$ ?exercicis)) do
+		(bind ?rand (random 1 (length$ ?exercicis)))
+		(bind ?exe (nth$ ?j ?exercicis))
+		(if (>= (- ?sumadias (send ?exe get-diasALaSemana)) 3)
+			then
+				(send ?exe put-partOf [nil])
+				(return TRUE)
+		)
+	)
+	;(assert (finFiltro))
 )
 
 ;;;
@@ -43,6 +91,7 @@
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t crlf)
 	(assert (new_avi))
+	(seed (round (time)))
 )
 
 (defrule avi_new "rule to add new avi to the system"
@@ -135,7 +184,9 @@
 	(if (eq (length$ ?abuelos) 1) then
 		(bind ?abu (nth$ 1 ?abuelos))
 		(bind ?fragilidad (send ?abu get-esFragil))
+		(if ?fragilidad then (assert (fragil)))
 	)
+
 )
 
 (defrule check_partes_del_cuerpo ""
@@ -179,6 +230,7 @@
 	(if ?colchoneta then (assert (tieneColchoneta)))
 	(bind ?mancuernas (binary-question "Mancuernas"))
 	(if ?mancuernas then (assert (tieneMancuernas)))
+
 )
 
 (defrule lastOfHere ""
@@ -202,110 +254,199 @@
 
 (defrule ejercicioEstiramientoBicepDerecho ""
 	(new_avi)
+	(fragil)
 	(bicepDerechoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoBicepIzquierdo ""
 	(new_avi)
+	(fragil)
 	(bicepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoCadera ""
 	(new_avi)
+	(fragil)
 	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCadera") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoCuadricepDerecho ""
 	(new_avi)
+	(fragil)
 	(cuadricepDerechoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoCuadricepIzquierdo ""
 	(new_avi)
+	(fragil)
 	(cuadricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoCuello ""
 	(new_avi)
+	(fragil)
 	(cuelloCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuello") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoEspalda ""
 	(new_avi)
+	(fragil)
 	(espaldaCorrecta)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoEspalda") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoGemeloDerecho ""
 	(new_avi)
+	(fragil)
 	(gemeloDerechoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoGemeloIzquierdo ""
 	(new_avi)
+	(fragil)
 	(gemeloIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoTobilloDerecho ""
 	(new_avi)
+	(fragil)
 	(tobilloDerechoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoTobilloIzquierdo ""
 	(new_avi)
 	(tobilloIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoTorso ""
 	(new_avi)
+	(fragil)
 	(torsoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTorso") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoTricepDerecho ""
 	(new_avi)
+	(fragil)
 	(tricepDerechoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioEstiramientoTricepIzquierdo ""
 	(new_avi)
+	(fragil)
 	(tricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioFortalecimientoPesaBicepDerecho ""
 	(new_avi)
 	(bicepDerechoCorrecto)
+	(tieneMancuernas)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoBicepIzquierdo ""
+(defrule ejercicioFortalecimientoPesaBicepIzquierdo ""
 	(new_avi)
 	(bicepIzquierdoCorrecto)
+	(tieneMancuernas)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoTricepDerecho ""
+(defrule ejercicioFortalecimientoPesaTricepDerecho ""
 	(new_avi)
 	(tricepDerechoCorrecto)
+	(tieneMancuernas)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoTricepIzquierdo ""
+(defrule ejercicioFortalecimientoPesaTricepIzquierdo ""
 	(new_avi)
 	(tricepIzquierdoCorrecto)
+	(tieneMancuernas)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioPaseo ""
@@ -317,7 +458,12 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
+	(enfermedadCardiovascular)
+	?p <- (planilla_avi ?planilla)
 	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioAndar ""
@@ -329,8 +475,12 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
+	(enfermedadCardiovascular)
+	?p <- (planilla_avi ?planilla)
 	=>
-
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Andar") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioBicicleta ""
@@ -343,8 +493,12 @@
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(espaldaCorrecta)
+	(enfermedadCardiovascular)
+	?p <- (planilla_avi ?planilla)
 	=>
-
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Bicicleta") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioCaminar ""
@@ -356,8 +510,12 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
+	(fragil)
+	?p <- (planilla_avi ?planilla)
 	=>
-
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule ejercicioTaichi ""
@@ -376,9 +534,11 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(fragil)
+	(tieneColchoneta)
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Tai Chi") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "TaiChi") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -387,7 +547,22 @@
 	(new_avi)
 	=>
 	(printout t "Fin" crlf crlf)
-	(focus recomendations)
+	;(watch all)
+
+	(bind ?exercicis (find-all-instances ((?e Ejercicio))
+		(neq (send ?e get-partOf) [nil])
+	))
+
+	(bind ?sumaduracion 0)
+
+	(loop-for-count (?i 1 (length$ ?exercicis)) do
+		(bind ?exe (nth$ ?i ?exercicis))
+		(bind ?sumaduracion (+ ?sumaduracion (* (send ?exe get-diasALaSemana) (send ?exe get-duracion))))
+	)
+	;(printout t ?sumaduracion)
+	(if (> ?sumaduracion 100) then (assert (necesitaFiltro ?sumaduracion)))
+
+	(focus filter)
 )
 
 ; Regla por ejercicio, añadir ejercicio si Avi tiene alguna de esas enfermedades.
@@ -395,6 +570,53 @@
 ;;;
 ;;;						FILTER MODULE
 ;;;
+
+(defmodule filter
+	(import MAIN ?ALL)
+	(import ask_questions ?ALL)
+	(import inference_of_data ?ALL)
+	(export ?ALL)
+)
+
+(defrule filtrar
+	?f <- (necesitaFiltro ?sumaduracion)
+
+	=>
+
+	(bind ?exercicis (find-all-instances ((?e Ejercicio))
+		(neq (send ?e get-partOf) [nil])
+	))
+
+	(bind ?sumadias 0)
+
+	(loop-for-count (?i 1 (length$ ?exercicis)) do
+		(bind ?exe (nth$ ?i ?exercicis))
+		(bind ?sumadias (+ ?sumadias (send ?exe get-diasALaSemana)))
+	)
+
+	(bind ?j 1)
+	(while (and (<= ?j (length$ ?exercicis)) (> ?sumaduracion 260))
+	 do
+		(bind ?rand (random 1 (length$ ?exercicis)))
+		(bind ?exe (nth$ ?rand ?exercicis))
+		(if (>= (- ?sumadias (send ?exe get-diasALaSemana)) 3)
+			then
+				(bind ?sumadias (- ?sumadias (send ?exe get-diasALaSemana)))
+				(bind ?sumaduracion (- ?sumaduracion (send ?exe get-duracion)))
+				(send ?exe put-partOf [nil])
+		)
+		(bind ?j (+ ?j 1))
+	)
+
+	(assert (finFiltroAss))
+)
+
+(defrule finFiltro
+	(finFiltroAss)
+	=>
+	(focus recomendations)
+)
+
 
 ;;;
 ;;;						RECOMENDATIONS MODULE
@@ -404,12 +626,12 @@
 	(import MAIN ?ALL)
 	(import ask_questions ?ALL)
 	(import inference_of_data ?ALL)
+	(import filter ?ALL)
 	(export ?ALL)
 )
 
 (defrule printPlanilla
 	(new_avi)
-	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?exercicis (find-all-instances ((?e Ejercicio))
 		(neq (send ?e get-partOf) [nil])
