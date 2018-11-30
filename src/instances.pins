@@ -1,27 +1,7 @@
-; Thu Nov 29 23:05:14 GMT+01:00 2018
-; 
+; Fri Nov 30 16:16:11 GMT+01:00 2018
+;
 ;+ (version "3.5")
 ;+ (build "Build 663")
-
-([KB_282909_Class30] of  %3APAL-CONSTRAINT
-)
-
-([KB_282909_Class31] of  %3AINSTANCE-ANNOTATION
-
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
-
-([KB_282909_Class5] of  %3AINSTANCE-ANNOTATION
-
-	(%3AANNOTATED-INSTANCE [Independiente])
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
-
-([KB_282909_Class6] of  %3AINSTANCE-ANNOTATION
-
-	(%3AANNOTATED-INSTANCE [Independiente])
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
 
 ([practicaProtege_Class10] of  Parte+del+Cuerpo
 
@@ -211,12 +191,8 @@
 	(nombreEjercicio "EstiramientoTricepIzquierdo")
 	(trabaja [practicaProtege_Class15]))
 
-([practicaProtege_Class40] of  Aerobico Equilibrio
+([practicaProtege_Class40] of Equilibrio
 
-	(diasALaSemana 2)
-	(duracion 45)
-	(faseEjercicio Inicial)
-	(nombreEjercicio "Tai Chi")
 	(diasALaSemana 2)
 	(duracion 45)
 	(faseEjercicio Inicial)

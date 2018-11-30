@@ -1,0 +1,315 @@
+; Fri Nov 30 16:09:06 GMT+01:00 2018
+; 
+;+ (version "3.5")
+;+ (build "Build 663")
+
+([practicaProtege_Class10] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "CuadricepIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class11] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "GemeloIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class12] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoDerecho)
+	(nombreParteCuerpo "BicepDerecho")
+	(parte Superior))
+
+([practicaProtege_Class13] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoDerecho)
+	(nombreParteCuerpo "TricepDerecho")
+	(parte Superior))
+
+([practicaProtege_Class14] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoIzquierdo)
+	(nombreParteCuerpo "BicepIzquierdo")
+	(parte Superior))
+
+([practicaProtege_Class15] of  Parte+del+Cuerpo
+
+	(grupoMuscular BrazoIzquierdo)
+	(nombreParteCuerpo "TricepIzquierdo")
+	(parte Superior))
+
+([practicaProtege_Class16] of  Parte+del+Cuerpo
+
+	(grupoMuscular Espalda)
+	(nombreParteCuerpo "Espalda")
+	(parte Superior))
+
+([practicaProtege_Class17] of  Parte+del+Cuerpo
+
+	(grupoMuscular Torso)
+	(nombreParteCuerpo "Cadera")
+	(parte Superior))
+
+([practicaProtege_Class18] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "TobilloDerecho")
+	(parte Inferior))
+
+([practicaProtege_Class19] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "TobilloIzquierdo")
+	(parte Inferior))
+
+([practicaProtege_Class21] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 10)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Caminar")
+	(porcentajeFCmax 60)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class17]))
+
+([practicaProtege_Class24] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoBicepDerecho")
+	(trabaja [practicaProtege_Class12]))
+
+([practicaProtege_Class26] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoBicepIzquierdo")
+	(trabaja [practicaProtege_Class14]))
+
+([practicaProtege_Class27] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCadera")
+	(trabaja [practicaProtege_Class17]))
+
+([practicaProtege_Class28] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuadricepDerecho")
+	(trabaja [practicaProtege_Class8]))
+
+([practicaProtege_Class29] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuadricepIzquierdo")
+	(trabaja [practicaProtege_Class10]))
+
+([practicaProtege_Class30] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCuello")
+	(trabaja [practicaProtege_Class5]))
+
+([practicaProtege_Class31] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoEspalda")
+	(trabaja [practicaProtege_Class16]))
+
+([practicaProtege_Class32] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoGemeloDerecho")
+	(trabaja [practicaProtege_Class9]))
+
+([practicaProtege_Class33] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoGemeloIzquierdo")
+	(trabaja [practicaProtege_Class11]))
+
+([practicaProtege_Class34] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTobilloDerecho")
+	(trabaja [practicaProtege_Class18]))
+
+([practicaProtege_Class35] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTobilloIzquierdo")
+	(trabaja [practicaProtege_Class19]))
+
+([practicaProtege_Class36] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTorso")
+	(trabaja [practicaProtege_Class6]))
+
+([practicaProtege_Class37] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTricepDerecho")
+	(trabaja [practicaProtege_Class13]))
+
+([practicaProtege_Class38] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoTricepIzquierdo")
+	(trabaja [practicaProtege_Class15]))
+
+([practicaProtege_Class40] of  Aerobico Equilibrio
+
+	(diasALaSemana 2)
+	(duracion 45)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Tai Chi")
+	(diasALaSemana 2)
+	(duracion 45)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Tai Chi"))
+
+([practicaProtege_Class41] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 60)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Paseo")
+	(porcentajeFCmax 60)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class17]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class43] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 20)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Andar")
+	(porcentajeFCmax 65)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class17]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class44] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 20)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Bicicleta")
+	(porcentajeFCmax 65)
+	(trabaja
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class45] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaBicepDerecho")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class12]))
+
+([practicaProtege_Class46] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaBicepIzquierdo")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class14]))
+
+([practicaProtege_Class47] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaTricepDerecho")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class13]))
+
+([practicaProtege_Class48] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "PesaTricepIzquierdo")
+	(repeticiones 8)
+	(series 2)
+	(trabaja [practicaProtege_Class15]))
+
+([practicaProtege_Class5] of  Parte+del+Cuerpo
+
+	(grupoMuscular Cuello)
+	(nombreParteCuerpo "Cuello")
+	(parte Superior))
+
+([practicaProtege_Class6] of  Parte+del+Cuerpo
+
+	(grupoMuscular Torso)
+	(nombreParteCuerpo "Torso")
+	(parte Superior))
+
+([practicaProtege_Class8] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "CuadricepDerecho")
+	(parte Inferior))
+
+([practicaProtege_Class9] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaDerecha)
+	(nombreParteCuerpo "GemeloDerecho")
+	(parte Inferior))
