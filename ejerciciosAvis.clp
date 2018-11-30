@@ -604,6 +604,16 @@
 	?respuesta
 )
 
+(deffunction binary-question "" (?pregunta)
+	(format t "%s" ?pregunta)
+	(printout t " (si/no/s/n): ")
+	(bind ?respuesta (read))
+	(if (or (eq (str-compare (lowcase ?respuesta) si) 0) (eq (str-compare (lowcase ?respuesta) s) 0))
+		then TRUE
+		else FALSE
+	)
+)
+
 ;;;
 ;;;						MAIN MODULE
 ;;;
@@ -628,19 +638,19 @@
 	(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
 	(bind ?dependencia (question-with-default-values "Dependencia " "Independiente/Dependiente"))
 	(bind ?nivelDeForma (question-with-default-values "Nivel de Forma " "Bajo/Medio/Alto"))
-	(if (eq ?dependencia "Dependiente")
+	(if (eq (str-compare ?dependencia "Dependiente") 0)
 		then (make-instance ?nombre of Dependiente (nombre ?nombre)
 																							 (edad ?edad)
 																							 (sexo ?sexo)
 																							 (nivelDeForma ?nivelDeForma))
-		else (if (eq ?dependencia "Independiente")
-			then (bind ?esFragil (question-with-default-values "Es fragil: " "FALSE/TRUE"))
+					(assert (Dependiente))
+		else (bind ?esFragil (binary-question "Es fragil"))
 			(make-instance ?nombre of Independiente (nombre ?nombre)
 														 (edad ?edad)
 														 (sexo ?sexo)
 														 (nivelDeForma ?nivelDeForma)
 														 (esFragil ?esFragil))
-		)
+			(assert (Independiente))
 	)
 	(assert (Avi ?nombre))
 )
@@ -654,22 +664,26 @@
 ;	(printout t (send ?aviFact get-edad))
 ;)
 
+
+
 (defrule noEjercicioSi ""
 	(new_avi)
 	=>
-	(printout t "Esta usted en alguna de las siguiente condiciones?" crlf
-	"1. No ha tomado su medicación." crlf
-	"2. Infección aguda." crlf
-	"3. Presión arterial fuera de los valores normales." crlf
-	"4. Náuseas, vómitos, diarrea." crlf
-	"5. Hipoglucemia." crlf
-	"6. Mareo y/o síncope." crlf
-	"7. Síntomas de angina o taquicardia." crlf)
-	(bind ?respuesta question-with-default-values "Respuesta " "Si/No")
-	(if (eq ?respuesta "Si")
-		then (printout t "Recomendamos que no haga ejercicio y acuda a su médico de cabezera.")
-	(assert (FIN))
-	else (focus ask_questions))
+	(printout t "Esta usted alguna de las siguiente condiciones?" crlf)
+	(printout t "1. No ha tomado su medicación." crlf)
+	(printout t "2. Infección aguda." crlf)
+	(printout t "3. Presión arterial fuera de los valores normales." crlf)
+	(printout t "4. Náuseas, vómitos, diarrea." crlf)
+	(printout t "5. Hipoglucemia." crlf)
+	(printout t "6. Mareo y/o síncope." crlf)
+	(printout t "7. Síntomas de angina o taquicardia." crlf)
+	(bind ?respuesta (binary-question "Respuesta" ))
+	(if ?respuesta
+		then
+			(printout t "Recomendamos que no haga ejercicio y acuda a su médico de cabecera.")
+			(assert (FIN))
+		else
+			(focus ask_questions))
 )
 
 
