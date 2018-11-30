@@ -184,6 +184,7 @@
 (defrule lastOfHere ""
 	(new_avi)
 	=>
+	(printout t "End of questions" crlf)
 	(bind ?planilla (make-instance planilla of Planilla (fase Inicial)))
 	(assert (planilla_avi ?planilla))
 	(focus inference_of_data)
@@ -382,15 +383,12 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule tieneEnfermedadCardiovascular ""
+(defrule finEjercicios
 	(new_avi)
-	(enfermedadCardiovascular)
 	=>
-
+	(printout t "Fin" crlf crlf)
+	(focus recomendations)
 )
-
-
-
 
 ; Regla por ejercicio, añadir ejercicio si Avi tiene alguna de esas enfermedades.
 
@@ -401,3 +399,25 @@
 ;;;
 ;;;						RECOMENDATIONS MODULE
 ;;;
+
+(defmodule recomendations
+	(import MAIN ?ALL)
+	(import ask_questions ?ALL)
+	(import inference_of_data ?ALL)
+	(export ?ALL)
+)
+
+(defrule printPlanilla
+	(new_avi)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?exercicis (find-all-instances ((?e Ejercicio))
+		(neq (send ?e get-partOf) [nil])
+	))
+
+	(loop-for-count (?i 1 (length$ ?exercicis)) do
+		(bind ?exe (nth$ ?i ?exercicis))
+		(send ?exe print)
+		(printout t crlf)
+	)
+)
