@@ -4,7 +4,7 @@
 ;+ (build "Build 663")
 
 
-(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+(defclass :CLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
 	(single-slot diasALaSemana
@@ -33,7 +33,7 @@
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot faseEjercicio
@@ -90,7 +90,7 @@
 		(create-accessor read-write))
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
@@ -221,12 +221,12 @@
 	(role concrete)
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
@@ -257,25 +257,25 @@
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
-([KB_282909_Class30] of  %3APAL-CONSTRAINT
+([KB_282909_Class30] of  :PAL-CONSTRAINT
 )
 
-([KB_282909_Class31] of  %3AINSTANCE-ANNOTATION
+([KB_282909_Class31] of  :INSTANCE-ANNOTATION
 
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
+	(:CREATION-TIMESTAMP "2018.11.25 17:58:09.204 GMT+01:00")
+	(:CREATOR "joaquimgomez"))
 
-([KB_282909_Class5] of  %3AINSTANCE-ANNOTATION
+([KB_282909_Class5] of  :INSTANCE-ANNOTATION
 
-	(%3AANNOTATED-INSTANCE [Independiente])
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
+	(:ANNOTATED-INSTANCE [Independiente])
+	(:CREATION-TIMESTAMP "2018.11.25 17:36:12.263 GMT+01:00")
+	(:CREATOR "joaquimgomez"))
 
-([KB_282909_Class6] of  %3AINSTANCE-ANNOTATION
+([KB_282909_Class6] of  :INSTANCE-ANNOTATION
 
-	(%3AANNOTATED-INSTANCE [Independiente])
-	(%3ACREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
-	(%3ACREATOR "joaquimgomez"))
+	(:ANNOTATED-INSTANCE [Independiente])
+	(:CREATION-TIMESTAMP "2018.11.25 17:36:13.291 GMT+01:00")
+	(:CREATOR "joaquimgomez"))
 
 ([practicaProtege_Class10] of  Parte+del+Cuerpo
 
