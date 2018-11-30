@@ -178,7 +178,7 @@
 (defrule lastOfHere ""
 	(new_avi)
 	=>
-	(make-instance planilla of Planilla (fase Inicial))
+	(bind ?planilla (make-instance planilla of Planilla (fase Inicial)))
 	(focus inference_of_data)
 )
 
@@ -369,15 +369,16 @@
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
 	=>
-
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Tai Chi") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
 )
 
 (defrule tieneEnfermedadCardiovascular ""
 	(new_avi)
 	(enfermedadCardiovascular)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare e:nombreEjercicio "ejercicioTaichi") 0)))
-	(send ?ex set-partOf planilla)
+
 )
 
 
