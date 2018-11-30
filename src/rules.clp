@@ -99,24 +99,31 @@
 	=>
 	(bind ?nombre (general-question "Nombre: "))
 	(bind ?edad (general-question "Edad: "))
-	(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
-	(bind ?dependencia (question-with-default-values "Dependencia " "Independiente/Dependiente"))
-	(bind ?nivelDeForma (question-with-default-values "Nivel de Forma " "Bajo/Medio/Alto"))
-	(if (eq (str-compare ?dependencia "Dependiente") 0)
-		then (make-instance ?nombre of Dependiente (nombre ?nombre)
-																							 (edad ?edad)
-																							 (sexo ?sexo)
-																							 (nivelDeForma ?nivelDeForma))
-					(assert (Dependiente))
-		else (bind ?esFragil (binary-question "Es fragil"))
-			(make-instance ?nombre of Independiente (nombre ?nombre)
-														 (edad ?edad)
-														 (sexo ?sexo)
-														 (nivelDeForma ?nivelDeForma)
-														 (esFragil ?esFragil))
-			(assert (Independiente))
+	(if (>= (integer ?edad) 65)
+		then
+			(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
+			(bind ?dependencia (question-with-default-values "Dependencia " "Independiente/Dependiente"))
+			(bind ?nivelDeForma (question-with-default-values "Nivel de Forma " "Bajo/Medio/Alto"))
+			(if (eq (str-compare ?dependencia "Dependiente") 0)
+				then (make-instance ?nombre of Dependiente (nombre ?nombre)
+																									 (edad ?edad)
+																									 (sexo ?sexo)
+																									 (nivelDeForma ?nivelDeForma))
+							(assert (Dependiente))
+				else (bind ?esFragil (binary-question "Es fragil"))
+					(make-instance ?nombre of Independiente (nombre ?nombre)
+																 (edad ?edad)
+																 (sexo ?sexo)
+																 (nivelDeForma ?nivelDeForma)
+																 (esFragil ?esFragil))
+					(assert (Independiente))
+			)
+			(assert (Avi ?nombre))
+		else
+			(printout t "No cumple los requisitos de edad para utilizar este programa." crlf)
+			(retract 1) ; El hecho 1 es new_avi.
+			(assert (FIN))
 	)
-	(assert (Avi ?nombre))
 )
 
 ;(defrule p
@@ -564,8 +571,6 @@
 
 	(focus filter)
 )
-
-; Regla por ejercicio, añadir ejercicio si Avi tiene alguna de esas enfermedades.
 
 ;;;
 ;;;						FILTER MODULE
