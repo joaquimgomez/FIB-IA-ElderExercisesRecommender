@@ -1,0 +1,12 @@
+	USO DEL PROGRAMA:
+Para ejecutar el programa se debe realizar el comando en la carpeta src:
+	clips -f “script.sh”
+
+	PROTOTIPO:
+- Inicia preguntando questiones varias sobre la persona y
+	crea una instancia de las subclases Dependiente o Independiente.
+- Realiza pregunta sobre situaciones en las que no debería realizar ejercicios de ninguna forma.
+- Realiza preguntas sobre las enfermedades de la persona.
+- Realiza peguntas sobre si tiene dolencias en alguna parte del cuerpo a ejercitar.
+- Pregunt sobre el materia del que dispone.
+- Realiza la inferencia instanciando los diferentes ejercicios como parte de la planilla.
