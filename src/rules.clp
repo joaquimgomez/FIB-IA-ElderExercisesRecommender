@@ -127,9 +127,15 @@
 
 (defrule fragilidad "rule to know if avi is fragile"
 	(new_avi)
+	?h <- (Avi ?nombre)
 	=>
-	(bind ?fragilidad (binary-question "Fragil"))
-	(if ?fragilidad then (assert (fragilidad)))
+	;(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Tai Chi") 0)))
+	;(bind ?exe (nth$ 1 ?ex))
+	(bind ?abuelos (find-instance ((?a Independiente)) (eq (str-compare ?a:nombre ?nombre) 0)))
+	(if (eq (length$ ?abuelos) 1) then
+		(bind ?abu (nth$ 1 ?abuelos))
+		(bind ?fragilidad (send ?abu get-esFragil))
+	)
 )
 
 (defrule check_partes_del_cuerpo ""
@@ -179,6 +185,7 @@
 	(new_avi)
 	=>
 	(bind ?planilla (make-instance planilla of Planilla (fase Inicial)))
+	(assert (planilla_avi ?planilla))
 	(focus inference_of_data)
 )
 
@@ -368,6 +375,7 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Tai Chi") 0)))
 	(bind ?exe (nth$ 1 ?ex))
