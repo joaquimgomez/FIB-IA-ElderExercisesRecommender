@@ -196,6 +196,62 @@
 
 )
 
+(defrule hipertension "rule to know if avi have hipertension"
+	(new_avi)
+	=>
+	(bind ?hipertension (binary-question "Hipertensión"))
+	(if ?hipertension then (assert (hipertension)))
+)
+
+(defrule sobrepeso "rule to know if avi have sobrepeso or obesidad"
+	(new_avi)
+	=>
+	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
+	(if ?sobrepeso then (assert (sobrepeso)))
+)
+
+(defrule pulmonar "rule to know if avi have a pulmonar disease"
+	(new_avi)
+	=>
+	(bind ?pulmonar (binary-question "Enfermedad Pulmonar Obstructiva"))
+	(if ?pulmonar then (assert (pulmonar)))
+)
+
+(defrule osteoporosis "rule to know if avi have osteoporosis"
+	(new_avi)
+	=>
+	(bind ?osteoporosis (binary-question "Osteoporosis"))
+	(if ?osteoporosis then (assert (osteoporosis)))
+)
+
+(defrule cancer "rule to know if avi have cancer"
+	(new_avi)
+	=>
+	(bind ?cancer (binary-question "Cáncer"))
+	(if ?cancer then (assert (cancer)))
+)
+
+(defrule artritis "rule to know if avi have artritis"
+	(new_avi)
+	=>
+	(bind ?artritis (binary-question "Artritis"))
+	(if ?artritis then (assert (artritis)))
+)
+
+(defrule fibrosis "rule to know if avi have fibrosis"
+	(new_avi)
+	=>
+	(bind ?fibrosis (binary-question "Fibrosis quística"))
+	(if ?fibrosis then (assert (fibrosis)))
+)
+
+(defrule depresion "rule to know if avi have depresion"
+	(new_avi)
+	=>
+	(bind ?depresion (binary-question "Depresión"))
+	(if ?depresion then (assert (depresion)))
+)
+
 (defrule check_partes_del_cuerpo ""
 	(new_avi)
 	=>
@@ -258,6 +314,8 @@
 	(import ask_questions ?ALL)
 	(export ?ALL)
 )
+
+;;;						FLEXIBILIDAD
 
 (defrule ejercicioEstiramientoBicepDerecho ""
 	(new_avi)
@@ -412,10 +470,13 @@
 	(send ?exe put-partOf ?planilla)
 )
 
+;;;						FUERZA
+
 (defrule ejercicioFortalecimientoPesaBicepDerecho ""
 	(new_avi)
 	(bicepDerechoCorrecto)
 	(tieneMancuernas)
+	(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
@@ -427,6 +488,7 @@
 	(new_avi)
 	(bicepIzquierdoCorrecto)
 	(tieneMancuernas)
+	(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
@@ -438,6 +500,7 @@
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(tieneMancuernas)
+	(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
@@ -449,12 +512,15 @@
 	(new_avi)
 	(tricepIzquierdoCorrecto)
 	(tieneMancuernas)
+	(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
+
+;;;						AERÓBICOS
 
 (defrule ejercicioPaseo ""
 	(new_avi)
@@ -465,7 +531,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(enfermedadCardiovascular)
+	(or (enfermedadCardiovascular) (hipertension) (sobrepeso))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
@@ -482,7 +548,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(enfermedadCardiovascular)
+	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Andar") 0)))
@@ -500,7 +566,7 @@
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(espaldaCorrecta)
-	(enfermedadCardiovascular)
+	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Bicicleta") 0)))
@@ -517,7 +583,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(fragil)
+	(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
@@ -541,7 +607,7 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
-	(fragil)
+	(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
 	(tieneColchoneta)
 	?p <- (planilla_avi ?planilla)
 	=>
