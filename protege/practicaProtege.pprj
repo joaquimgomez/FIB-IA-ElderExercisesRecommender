@@ -1,4 +1,4 @@
-; Fri Nov 30 16:09:06 GMT+01:00 2018
+; Mon Dec 03 20:29:12 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,13 +21,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[practicaProtege_ProjectKB_Class10054]
-		[practicaProtege_ProjectKB_Class10055]
-		[practicaProtege_ProjectKB_Class10056]
-		[practicaProtege_ProjectKB_Class10057]
-		[practicaProtege_ProjectKB_Class10058]
-		[practicaProtege_ProjectKB_Class10059]
-		[practicaProtege_ProjectKB_Class10060]))
+		[practicaProtege_ProjectKB_Class10105]
+		[practicaProtege_ProjectKB_Class10106]
+		[practicaProtege_ProjectKB_Class10107]
+		[practicaProtege_ProjectKB_Class10108]
+		[practicaProtege_ProjectKB_Class10109]
+		[practicaProtege_ProjectKB_Class10110]
+		[practicaProtege_ProjectKB_Class10111]
+		[practicaProtege_ProjectKB_Class10112]))
 
 ([CLSES_TAB] of  Widget
 
@@ -72,7 +73,7 @@
 	(is_hidden FALSE)
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
 
-([KB_277266_Class6] of  Map
+([KB_300848_Class5] of  Map
 )
 
 ([KB_576220_Class0] of  String
@@ -83,11 +84,11 @@
 ([KB_576220_Class1] of  Map
 
 	(entries
-		[practicaProtege_ProjectKB_Class10061]
-		[practicaProtege_ProjectKB_Class10062]
-		[practicaProtege_ProjectKB_Class10064]
-		[practicaProtege_ProjectKB_Class10065])
-	(referenced_maps [practicaProtege_ProjectKB_Class10063]))
+		[practicaProtege_ProjectKB_Class10113]
+		[practicaProtege_ProjectKB_Class10114]
+		[practicaProtege_ProjectKB_Class10116]
+		[practicaProtege_ProjectKB_Class10117])
+	(referenced_maps [practicaProtege_ProjectKB_Class10115]))
 
 ([KB_576220_Class100] of  Property_List
 )
@@ -294,66 +295,71 @@
 	(property_list [practicaProtege_ProjectKB_Class11])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
 
-([practicaProtege_ProjectKB_Class10054] of  String
+([practicaProtege_ProjectKB_Class10105] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([practicaProtege_ProjectKB_Class10055] of  String
+([practicaProtege_ProjectKB_Class10106] of  String
 
 	(name "Flexibilidad")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10056] of  String
+([practicaProtege_ProjectKB_Class10107] of  String
 
 	(name "Aerobico")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10057] of  String
+([practicaProtege_ProjectKB_Class10108] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([practicaProtege_ProjectKB_Class10058] of  String
+([practicaProtege_ProjectKB_Class10109] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([practicaProtege_ProjectKB_Class10059] of  String
+([practicaProtege_ProjectKB_Class10110] of  String
 
 	(name "Fortalecimiento")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10060] of  String
+([practicaProtege_ProjectKB_Class10111] of  String
+
+	(name "Equilibrio")
+	(string_value "nombreEjercicio"))
+
+([practicaProtege_ProjectKB_Class10112] of  String
 
 	(name "Parte del Cuerpo")
 	(string_value "nombreParteCuerpo"))
 
-([practicaProtege_ProjectKB_Class10061] of  Map_Entry
+([practicaProtege_ProjectKB_Class10113] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([practicaProtege_ProjectKB_Class10062] of  Map_Entry
+([practicaProtege_ProjectKB_Class10114] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([practicaProtege_ProjectKB_Class10063] of  Map
+([practicaProtege_ProjectKB_Class10115] of  Map
 )
 
-([practicaProtege_ProjectKB_Class10064] of  Map_Entry
+([practicaProtege_ProjectKB_Class10116] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "practicaProtege_ProjectKB_Class10063")
+	(value "practicaProtege_ProjectKB_Class10115")
 	(value_class "java.util.Map"))
 
-([practicaProtege_ProjectKB_Class10065] of  Map_Entry
+([practicaProtege_ProjectKB_Class10117] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
