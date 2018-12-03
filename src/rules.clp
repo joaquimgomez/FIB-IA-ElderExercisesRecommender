@@ -114,13 +114,14 @@
 																									 (nivelDeForma ?nivelDeForma))
 							(assert (Dependiente))
 				else (bind ?esFragil (binary-question "Es fragil"))
-					(make-instance ?nombre of Independiente (nombre ?nombre)
-																 (edad ?edad)
-																 (sexo ?sexo)
-																 (nivelDeForma ?nivelDeForma)
-																 (esFragil ?esFragil))
-					(assert (Independiente))
+							(make-instance ?nombre of Independiente (nombre ?nombre)
+																		 (edad ?edad)
+																		 (sexo ?sexo)
+																		 (nivelDeForma ?nivelDeForma)
+																		 (esFragil ?esFragil))
+							(assert (Independiente))
 			)
+			(bind ?esfuerzo (question-with-default-values "Esfuerzo dispuesto a asumir" "Bajo(0-2)/Moderado(2-4)/Alto(4-10)"))
 			(assert (Avi ?nombre))
 		else
 			(printout t "No cumple los requisitos de edad para utilizar este programa." crlf)
@@ -157,7 +158,8 @@
 			(printout t "Recomendamos que no haga ejercicio y acuda a su médico de cabecera.")
 			(assert (FIN))
 		else
-			(focus ask_questions))
+			(focus ask_questions)
+	)
 )
 
 
@@ -174,14 +176,22 @@
 	(new_avi)
 	=>
 	(bind ?enfCard (binary-question "Enfermedad Cardiovascular" ))
-	(if ?enfCard then (assert (enfermedadCardiovascular)))
+	(if ?enfCard
+		then
+			(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
+			(assert (enfermedadCardiovascular (lowcase ?prioridad)))
+	)
 )
 
 (defrule diabetes "rule to know if avi have diabetes"
 	(new_avi)
 	=>
 	(bind ?diabetes (binary-question "Diabetes"))
-	(if ?diabetes then (assert (diabetes)))
+	(if ?diabetes
+		then
+			(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+			(assert (diabetes (lowcase ?prioridad)))
+	)
 )
 
 (defrule fragilidad "rule to know if avi is fragile"
@@ -194,65 +204,95 @@
 	(if (eq (length$ ?abuelos) 1) then
 		(bind ?abu (nth$ 1 ?abuelos))
 		(bind ?fragilidad (send ?abu get-esFragil))
-		(if ?fragilidad then (assert (fragil)))
+		(if ?fragilidad
+			then
+			(bind ?nivel (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
+			(assert (fragil (lowcase ?prioridad)))
+		)
 	)
-
 )
 
 (defrule hipertension "rule to know if avi have hipertension"
 	(new_avi)
 	=>
 	(bind ?hipertension (binary-question "Hipertensión"))
-	(if ?hipertension then (assert (hipertension)))
+	(if ?hipertension
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (hipertension (lowcase ?prioridad)))
+	)
 )
 
 (defrule sobrepeso "rule to know if avi have sobrepeso or obesidad"
 	(new_avi)
 	=>
 	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
-	(if ?sobrepeso then (assert (sobrepeso)))
+	(if ?sobrepeso
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (sobrepeso (lowcase ?prioridad)))
+	)
 )
 
 (defrule pulmonar "rule to know if avi have a pulmonar disease"
 	(new_avi)
 	=>
-	(bind ?pulmonar (binary-question "Enfermedad Pulmonar Obstructiva"))
-	(if ?pulmonar then (assert (pulmonar)))
+	(bind ?pulmonar (binary-question "Enfermedad Pulmonar"))
+	(if ?pulmonar
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (pulmonar (lowcase ?prioridad)))
+	)
 )
 
 (defrule osteoporosis "rule to know if avi have osteoporosis"
 	(new_avi)
 	=>
 	(bind ?osteoporosis (binary-question "Osteoporosis"))
-	(if ?osteoporosis then (assert (osteoporosis)))
+	(if ?osteoporosis
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (osteoporosis (lowcase ?prioridad))))
 )
 
 (defrule cancer "rule to know if avi have cancer"
 	(new_avi)
 	=>
 	(bind ?cancer (binary-question "Cáncer"))
-	(if ?cancer then (assert (cancer)))
+	(if ?cancer
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (cancer (lowcase ?prioridad))))
 )
 
 (defrule artritis "rule to know if avi have artritis"
 	(new_avi)
 	=>
 	(bind ?artritis (binary-question "Artritis"))
-	(if ?artritis then (assert (artritis)))
+	(if ?artritis
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (artritis (lowcase ?prioridad))))
 )
 
 (defrule fibrosis "rule to know if avi have fibrosis"
 	(new_avi)
 	=>
 	(bind ?fibrosis (binary-question "Fibrosis quística"))
-	(if ?fibrosis then (assert (fibrosis)))
+	(if ?fibrosis
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (fibrosis (lowcase ?prioridad))))
 )
 
 (defrule depresion "rule to know if avi have depresion"
 	(new_avi)
 	=>
 	(bind ?depresion (binary-question "Depresión"))
-	(if ?depresion then (assert (depresion)))
+	(if ?depresion
+		then
+		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(assert (depresion (lowcase ?prioridad))))
 )
 
 (defrule check_partes_del_cuerpo ""
