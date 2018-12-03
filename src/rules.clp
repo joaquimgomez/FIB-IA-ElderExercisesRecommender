@@ -8,21 +8,24 @@
 ;;;
 (deffunction general-question "to ask general questions" (?pregunta)
 	(format t "%s" ?pregunta)
-	(bind ?respuesta (read))
+	(bind ?respuesta (read input))
+	(printout t ?respuesta)
 	?respuesta
 )
 
 (deffunction question-with-default-values "to ask questions with default answers values" (?pregunta ?defaultValues)
 	(format t "%s" ?pregunta)
 	(printout t "(" ?defaultValues "): ")
-	(bind ?respuesta (read))
+	(bind ?respuesta (read input))
+	(printout t ?respuesta)
 	?respuesta
 )
 
 (deffunction binary-question "" (?pregunta)
 	(format t "%s" ?pregunta)
 	(printout t " (si/no/s/n): ")
-	(bind ?respuesta (read))
+	(bind ?respuesta (read input))
+	(printout t ?respuesta)
 	(if (or (eq (str-compare (lowcase ?respuesta) si) 0) (eq (str-compare (lowcase ?respuesta) s) 0))
 		then (return TRUE)
 		else (return FALSE)
