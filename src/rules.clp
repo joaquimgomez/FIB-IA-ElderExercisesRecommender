@@ -333,6 +333,10 @@
 	(if (not ?hombros) then (assert (hombrosCorrectos)))
 	(bind ?cintura (binary-question "Presenta dolencia en la cintura?"))
 	(if (not ?cintura) then (assert (cinturaCorrecta)))
+	(bind ?rodillaDerecha (binary-question "Presenta dolencia en la rodilla derecha?"))
+	(if (not ?rodillaDerecha) then (assert (rodillaDerechaCorrecta)))
+	(bind ?rodillaIzquierda (binary-question "Presenta dolencia en la rodilla izquierda"))
+	(if (not ?rodillaIzquierda) then (assert (rodillaIzquierdaCorrecta)))
 )
 
 (defrule material ""
@@ -618,6 +622,105 @@
 	(send ?exe put-partOf ?planilla)
 )
 
+(defrule MaquinaEliptica "NUEVO"
+	(new_avi)
+	(abdominalesCorrectos)
+	(bicepDerechoCorrecto)
+	(bicepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(cuadricepDerecho)
+	(cuadricepIzquierdoCorrecto)
+	(espaldaCorrecta)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(hombrosCorrectos)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(torsoCorrecto)
+	(tricepDerechoCorrecto)
+	(tricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "MaquinaEliptica") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule FlexionPlantar "NUEVO"
+	(new_avi)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionPlantar") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule FlexionCadera "NUEVO"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionCadera") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule FlexionRodillas"NUEVO"
+	(new_avi)
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionRodillas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ExtensionRodillas "NUEVO"
+	(new_avi)
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionRodillas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ExtensionCadera "NUEVO"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionCadera") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ExtensionTriceps "NUEVO"
+	(new_avi)
+	(tricepDerechoCorrecto)
+	(tricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionTriceps") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+
+(defrule ElevacionPiernas "NUEVO"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionPiernas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
 (defrule ejercicioFortalecimientoSentadillas "NUEVO"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
@@ -629,7 +732,55 @@
 	(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Sentadillas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioFortalecimientoSentadillasBalon "NUEVO"
+	(new_avi)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(or (sobrepeso) (pulmonar))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasBalon") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioFortalecimientoSentadillasMancuernas "NUEVO"
+	(new_avi)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(or (sobrepeso) (pulmonar))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasMancuernas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioFortalecimientoLevantarseSentarse "NUEVO"
+	(new_avi)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(or (sobrepeso) (pulmonar))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "LevantarseSentarse") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )

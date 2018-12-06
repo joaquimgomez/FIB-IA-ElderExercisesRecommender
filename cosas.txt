@@ -1,0 +1,26 @@
+
+-> ELIMINAR PRIORIDADES
+-> SI QUIERES PREVENIR UNA ENFERMEDAD PONER SI.
+
+----------------------------------------------------
+
+-> DETERMINAR DURACIÓN DEL EJERCICIO SEGUN FORMA FÍSICA
+
+----------------------------------------------------
+
+FALTA:
+	Creacion planilla con dias y duración (+ imprimir).
+	De la lista de asserts ejercicios coger y clasificar hasta duración dia
+	y teniendo en cuenta repeticiones de ejercicios
+
+
+
+Crear instancias de cadas enfermedad y conectarlas con sus ejercicios relacionados
+-> Si la respuesta de enfermedad es no -> eliminar instancias
+Garantizar tiempo dentro de limites
+Ordenar ejercicios
+
+Opciones:
+mínimo 1 ej para cada enfermedad -> puede no haber ninguno por confl partes check_partes_del_cuerpo
+Elegir segun PRIORIDAD
+Escoger ejercicios segun critero

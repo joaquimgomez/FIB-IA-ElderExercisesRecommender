@@ -1,4 +1,4 @@
-; Thu Dec 06 11:19:44 GMT+01:00 2018
+; Thu Dec 06 11:58:16 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -21,14 +21,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[practicaProtege_ProjectKB_Class10122]
-		[practicaProtege_ProjectKB_Class10123]
-		[practicaProtege_ProjectKB_Class10124]
-		[practicaProtege_ProjectKB_Class10125]
-		[practicaProtege_ProjectKB_Class10126]
-		[practicaProtege_ProjectKB_Class10127]
-		[practicaProtege_ProjectKB_Class10128]
-		[practicaProtege_ProjectKB_Class10129]))
+		[practicaProtege_ProjectKB_Class10144]
+		[practicaProtege_ProjectKB_Class10145]
+		[practicaProtege_ProjectKB_Class10146]
+		[practicaProtege_ProjectKB_Class10147]
+		[practicaProtege_ProjectKB_Class10148]
+		[practicaProtege_ProjectKB_Class10149]
+		[practicaProtege_ProjectKB_Class10150]
+		[practicaProtege_ProjectKB_Class10151]))
 
 ([CLSES_TAB] of  Widget
 
@@ -81,11 +81,11 @@
 ([KB_576220_Class1] of  Map
 
 	(entries
-		[practicaProtege_ProjectKB_Class10130]
-		[practicaProtege_ProjectKB_Class10131]
-		[practicaProtege_ProjectKB_Class10133]
-		[practicaProtege_ProjectKB_Class10134])
-	(referenced_maps [practicaProtege_ProjectKB_Class10132]))
+		[practicaProtege_ProjectKB_Class10152]
+		[practicaProtege_ProjectKB_Class10153]
+		[practicaProtege_ProjectKB_Class10155]
+		[practicaProtege_ProjectKB_Class10156])
+	(referenced_maps [practicaProtege_ProjectKB_Class10154]))
 
 ([KB_576220_Class100] of  Property_List
 )
@@ -295,71 +295,71 @@
 	(property_list [practicaProtege_ProjectKB_Class11])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
 
-([practicaProtege_ProjectKB_Class10122] of  String
+([practicaProtege_ProjectKB_Class10144] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([practicaProtege_ProjectKB_Class10123] of  String
+([practicaProtege_ProjectKB_Class10145] of  String
 
 	(name "Flexibilidad")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10124] of  String
+([practicaProtege_ProjectKB_Class10146] of  String
 
 	(name "Aerobico")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10125] of  String
+([practicaProtege_ProjectKB_Class10147] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([practicaProtege_ProjectKB_Class10126] of  String
+([practicaProtege_ProjectKB_Class10148] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([practicaProtege_ProjectKB_Class10127] of  String
+([practicaProtege_ProjectKB_Class10149] of  String
 
 	(name "Fortalecimiento")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10128] of  String
+([practicaProtege_ProjectKB_Class10150] of  String
 
 	(name "Equilibrio")
 	(string_value "nombreEjercicio"))
 
-([practicaProtege_ProjectKB_Class10129] of  String
+([practicaProtege_ProjectKB_Class10151] of  String
 
 	(name "Parte del Cuerpo")
 	(string_value "nombreParteCuerpo"))
 
-([practicaProtege_ProjectKB_Class10130] of  Map_Entry
+([practicaProtege_ProjectKB_Class10152] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([practicaProtege_ProjectKB_Class10131] of  Map_Entry
+([practicaProtege_ProjectKB_Class10153] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([practicaProtege_ProjectKB_Class10132] of  Map
+([practicaProtege_ProjectKB_Class10154] of  Map
 )
 
-([practicaProtege_ProjectKB_Class10133] of  Map_Entry
+([practicaProtege_ProjectKB_Class10155] of  Map_Entry
 
 	(key "InstanceDisplay.yellow_stickies")
 	(key_class "java.lang.String")
-	(value "practicaProtege_ProjectKB_Class10132")
+	(value "practicaProtege_ProjectKB_Class10154")
 	(value_class "java.util.Map"))
 
-([practicaProtege_ProjectKB_Class10134] of  Map_Entry
+([practicaProtege_ProjectKB_Class10156] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
