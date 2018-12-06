@@ -175,23 +175,15 @@
 (defrule enfermedadCardiovascular "rule to know if avi have cardiovascular disease"
 	(new_avi)
 	=>
-	(bind ?enfCard (binary-question "Enfermedad Cardiovascular" ))
-	(if ?enfCard
-		then
-			(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-			(assert (enfermedadCardiovascular (lowcase ?prioridad)))
-	)
+	(bind ?enfCard (binary-question "Padece o quiere prevenir una enfermedad Cardiovascular" ))
+	(if ?enfCard then (assert (enfermedadCardiovascular)))
 )
 
 (defrule diabetes "rule to know if avi have diabetes"
 	(new_avi)
 	=>
-	(bind ?diabetes (binary-question "Diabetes"))
-	(if ?diabetes
-		then
-			(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-			(assert (diabetes (lowcase ?prioridad)))
-	)
+	(bind ?diabetes (binary-question "Padece o quiere prevenir la Diabetes"))
+	(if ?diabetes then (assert (diabetes)))
 )
 
 (defrule fragilidad "rule to know if avi is fragile"
@@ -204,96 +196,65 @@
 	(if (eq (length$ ?abuelos) 1) then
 		(bind ?abu (nth$ 1 ?abuelos))
 		(bind ?fragilidad (send ?abu get-esFragil))
-		(if ?fragilidad
-			then
-			(bind ?prioridad (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
-			(assert (fragil (lowcase ?prioridad)))
-		)
+		(if ?fragilidad then (assert (fragil)))
 	)
 )
 
 (defrule hipertension "rule to know if avi have hipertension"
 	(new_avi)
 	=>
-	(bind ?hipertension (binary-question "Hipertensión"))
-	(if ?hipertension
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (hipertension (lowcase ?prioridad)))
-	)
+	(bind ?hipertension (binary-question "Padece o quiere prevenir la Hipertensión"))
+	(if ?hipertension then (assert (hipertension)))
 )
 
 (defrule sobrepeso "rule to know if avi have sobrepeso or obesidad"
 	(new_avi)
 	=>
 	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
-	(if ?sobrepeso
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (sobrepeso (lowcase ?prioridad)))
-	)
+	(if ?sobrepeso then (assert (sobrepeso)))
 )
 
 (defrule pulmonar "rule to know if avi have a pulmonar disease"
 	(new_avi)
 	=>
-	(bind ?pulmonar (binary-question "Enfermedad Pulmonar"))
-	(if ?pulmonar
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (pulmonar (lowcase ?prioridad)))
-	)
+	(bind ?pulmonar (binary-question "Padece o quiere prevenir una enfermedad Pulmonar"))
+	(if ?pulmonar then (assert (pulmonar)))
 )
 
 (defrule osteoporosis "rule to know if avi have osteoporosis"
 	(new_avi)
 	=>
-	(bind ?osteoporosis (binary-question "Osteoporosis"))
-	(if ?osteoporosis
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (osteoporosis (lowcase ?prioridad))))
+	(bind ?osteoporosis (binary-question "Padece o quiere prevenir la Osteoporosis"))
+	(if ?osteoporosis then (assert (osteoporosis)))
 )
 
 ;;;;;TERMINAR
 (defrule cancer "rule to know if avi have cancer"
 	(new_avi)
 	=>
-	(bind ?cancer (binary-question "Cáncer"))
-	(if ?cancer
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (cancer (lowcase ?prioridad))))
+	(bind ?cancer (binary-question "Padece o quiere prevenir un Cáncer"))
+	(if ?cancer then (assert (cancer)))
 )
 
 (defrule artritis "rule to know if avi have artritis"
 	(new_avi)
 	=>
-	(bind ?artritis (binary-question "Artritis"))
-	(if ?artritis
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (artritis (lowcase ?prioridad))))
+	(bind ?artritis (binary-question "Padece o quiere prevenir la Artritis"))
+	(if ?artritis then (assert (artritis)))
 )
 
 (defrule fibrosis "rule to know if avi have fibrosis"
 	(new_avi)
 	=>
-	(bind ?fibrosis (binary-question "Fibrosis quística"))
-	(if ?fibrosis
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (fibrosis (lowcase ?prioridad))))
+	(bind ?fibrosis (binary-question "Padece o quiere prevenir la Fibrosis quística"))
+	(if ?fibrosis then (assert (fibrosis)))
 )
 
 (defrule depresion "rule to know if avi have depresion"
 	(new_avi)
 	=>
-	(bind ?depresion (binary-question "Depresión"))
-	(if ?depresion
-		then
-		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
-		(assert (depresion (lowcase ?prioridad))))
+	(bind ?depresion (binary-question "Padece o quiere prevenir la Depresión"))
+	(if ?depresion then	(assert (depresion)))
 )
 
 (defrule check_partes_del_cuerpo ""
