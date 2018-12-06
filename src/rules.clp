@@ -189,7 +189,7 @@
 	(bind ?diabetes (binary-question "Diabetes"))
 	(if ?diabetes
 		then
-			(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+			(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 			(assert (diabetes (lowcase ?prioridad)))
 	)
 )
@@ -206,7 +206,7 @@
 		(bind ?fragilidad (send ?abu get-esFragil))
 		(if ?fragilidad
 			then
-			(bind ?nivel (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
+			(bind ?prioridad (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
 			(assert (fragil (lowcase ?prioridad)))
 		)
 	)
@@ -218,7 +218,7 @@
 	(bind ?hipertension (binary-question "Hipertensión"))
 	(if ?hipertension
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (hipertension (lowcase ?prioridad)))
 	)
 )
@@ -229,7 +229,7 @@
 	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
 	(if ?sobrepeso
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (sobrepeso (lowcase ?prioridad)))
 	)
 )
@@ -240,7 +240,7 @@
 	(bind ?pulmonar (binary-question "Enfermedad Pulmonar"))
 	(if ?pulmonar
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (pulmonar (lowcase ?prioridad)))
 	)
 )
@@ -251,17 +251,18 @@
 	(bind ?osteoporosis (binary-question "Osteoporosis"))
 	(if ?osteoporosis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (osteoporosis (lowcase ?prioridad))))
 )
 
+;;;;;TERMINAR
 (defrule cancer "rule to know if avi have cancer"
 	(new_avi)
 	=>
 	(bind ?cancer (binary-question "Cáncer"))
 	(if ?cancer
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (cancer (lowcase ?prioridad))))
 )
 
@@ -271,7 +272,7 @@
 	(bind ?artritis (binary-question "Artritis"))
 	(if ?artritis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (artritis (lowcase ?prioridad))))
 )
 
@@ -281,7 +282,7 @@
 	(bind ?fibrosis (binary-question "Fibrosis quística"))
 	(if ?fibrosis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (fibrosis (lowcase ?prioridad))))
 )
 
@@ -291,7 +292,7 @@
 	(bind ?depresion (binary-question "Depresión"))
 	(if ?depresion
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (depresion (lowcase ?prioridad))))
 )
 
@@ -368,8 +369,8 @@
 
 (defrule ejercicioEstiramientoBicepDerecho ""
 	(new_avi)
-	(fragil)
 	(bicepDerechoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepDerecho") 0)))
@@ -379,8 +380,8 @@
 
 (defrule ejercicioEstiramientoBicepIzquierdo ""
 	(new_avi)
-	(fragil)
 	(bicepIzquierdoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepIzquierdo") 0)))
@@ -390,8 +391,8 @@
 
 (defrule ejercicioEstiramientoCadera ""
 	(new_avi)
-	(fragil)
 	(caderaCorrecta)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCadera") 0)))
@@ -412,8 +413,8 @@
 
 (defrule ejercicioEstiramientoCuadricepDerecho ""
 	(new_avi)
-	(fragil)
 	(cuadricepDerechoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepDerecho") 0)))
@@ -423,8 +424,8 @@
 
 (defrule ejercicioEstiramientoCuadricepIzquierdo ""
 	(new_avi)
-	(fragil)
 	(cuadricepIzquierdoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepIzquierdo") 0)))
@@ -434,8 +435,8 @@
 
 (defrule ejercicioEstiramientoCuello ""
 	(new_avi)
-	(fragil)
 	(cuelloCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuello") 0)))
@@ -445,8 +446,8 @@
 
 (defrule ejercicioEstiramientoEspalda ""
 	(new_avi)
-	(fragil)
 	(espaldaCorrecta)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoEspalda") 0)))
@@ -456,8 +457,8 @@
 
 (defrule ejercicioEstiramientoGemeloDerecho ""
 	(new_avi)
-	(fragil)
 	(gemeloDerechoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloDerecho") 0)))
@@ -467,8 +468,8 @@
 
 (defrule ejercicioEstiramientoGemeloIzquierdo ""
 	(new_avi)
-	(fragil)
 	(gemeloIzquierdoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloIzquierdo") 0)))
@@ -489,8 +490,8 @@
 
 (defrule ejercicioEstiramientoTobilloDerecho ""
 	(new_avi)
-	(fragil)
 	(tobilloDerechoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloDerecho") 0)))
@@ -501,6 +502,7 @@
 (defrule ejercicioEstiramientoTobilloIzquierdo ""
 	(new_avi)
 	(tobilloIzquierdoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloIzquierdo") 0)))
@@ -510,8 +512,8 @@
 
 (defrule ejercicioEstiramientoTorso ""
 	(new_avi)
-	(fragil)
 	(torsoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTorso") 0)))
@@ -521,8 +523,8 @@
 
 (defrule ejercicioEstiramientoTricepDerecho ""
 	(new_avi)
-	(fragil)
 	(tricepDerechoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepDerecho") 0)))
@@ -532,8 +534,8 @@
 
 (defrule ejercicioEstiramientoTricepIzquierdo ""
 	(new_avi)
-	(fragil)
 	(tricepIzquierdoCorrecto)
+	(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepIzquierdo") 0)))
@@ -572,7 +574,7 @@
 	(new_avi)
 	(bicepDerechoCorrecto)
 	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar))
+	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
@@ -584,7 +586,7 @@
 	(new_avi)
 	(bicepIzquierdoCorrecto)
 	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar))
+	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
@@ -596,7 +598,7 @@
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar))
+	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
@@ -608,7 +610,7 @@
 	(new_avi)
 	(tricepIzquierdoCorrecto)
 	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar))
+	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
@@ -643,7 +645,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(or (enfermedadCardiovascular) (hipertension) (sobrepeso))
+	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
@@ -660,10 +662,27 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar))
+	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Andar") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioCaminar ""
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -678,27 +697,10 @@
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(espaldaCorrecta)
-	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar))
+	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Bicicleta") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioCaminar ""
-	(new_avi)
-	(caderaCorrecta)
-	(cuadricepDerechoCorrecto)
-	(cuadricepIzquierdoCorrecto)
-	(gemeloDerechoCorrecto)
-	(gemeloIzquierdoCorrecto)
-	(tobilloIzquierdoCorrecto)
-	(tobilloDerechoCorrecto)
-	(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
