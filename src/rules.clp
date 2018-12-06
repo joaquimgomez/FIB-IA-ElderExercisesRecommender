@@ -186,7 +186,7 @@
 	(bind ?diabetes (binary-question "Diabetes"))
 	(if ?diabetes
 		then
-			(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+			(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 			(assert (diabetes (lowcase ?prioridad)))
 	)
 )
@@ -203,7 +203,7 @@
 		(bind ?fragilidad (send ?abu get-esFragil))
 		(if ?fragilidad
 			then
-			(bind ?nivel (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
+			(bind ?prioridad (question-with-default-values "Prioridad fragilidad" "baja/media/alta"))
 			(assert (fragil (lowcase ?prioridad)))
 		)
 	)
@@ -215,7 +215,7 @@
 	(bind ?hipertension (binary-question "Hipertensión"))
 	(if ?hipertension
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (hipertension (lowcase ?prioridad)))
 	)
 )
@@ -226,7 +226,7 @@
 	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
 	(if ?sobrepeso
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (sobrepeso (lowcase ?prioridad)))
 	)
 )
@@ -237,7 +237,7 @@
 	(bind ?pulmonar (binary-question "Enfermedad Pulmonar"))
 	(if ?pulmonar
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (pulmonar (lowcase ?prioridad)))
 	)
 )
@@ -248,7 +248,7 @@
 	(bind ?osteoporosis (binary-question "Osteoporosis"))
 	(if ?osteoporosis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (osteoporosis (lowcase ?prioridad))))
 )
 
@@ -259,7 +259,7 @@
 	(bind ?cancer (binary-question "Cáncer"))
 	(if ?cancer
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (cancer (lowcase ?prioridad))))
 )
 
@@ -269,7 +269,7 @@
 	(bind ?artritis (binary-question "Artritis"))
 	(if ?artritis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (artritis (lowcase ?prioridad))))
 )
 
@@ -279,7 +279,7 @@
 	(bind ?fibrosis (binary-question "Fibrosis quística"))
 	(if ?fibrosis
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (fibrosis (lowcase ?prioridad))))
 )
 
@@ -289,7 +289,7 @@
 	(bind ?depresion (binary-question "Depresión"))
 	(if ?depresion
 		then
-		(bind ?nivel (question-with-default-values "Prioridad" "baja/media/alta"))
+		(bind ?prioridad (question-with-default-values "Prioridad" "baja/media/alta"))
 		(assert (depresion (lowcase ?prioridad))))
 )
 
