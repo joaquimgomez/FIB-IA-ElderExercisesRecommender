@@ -1,4 +1,4 @@
-; Tue Dec 04 19:50:12 GMT+01:00 2018
+; Thu Dec 06 11:19:56 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -358,7 +358,7 @@
 	(diasALaSemana 3)
 	(duracion 10)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "Subir Escaleras")
+	(nombreEjercicio "SubirEscaleras")
 	(tipo Otro)
 	(trabaja
 		[practicaProtege_Class17]
