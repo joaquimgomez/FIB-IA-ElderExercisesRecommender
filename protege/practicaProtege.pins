@@ -1,4 +1,4 @@
-; Sat Dec 08 16:42:03 GMT+01:00 2018
+; Sat Dec 08 16:51:03 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -594,6 +594,19 @@
 	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class5]))
 
+([practicaProtege_Class30000] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ElevacionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
 ([practicaProtege_Class30002] of  Fortalecimiento
 
 	(diasALaSemana 2)
@@ -612,13 +625,19 @@
 	(diasALaSemana 2)
 	(duracion 2)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "ElevacionRodillas")
+	(nombreEjercicio "ElevacionPiernas")
 	(repeticiones 10)
 	(series 3)
 	(tipo Calentamiento)
 	(trabaja
 		[practicaProtege_Class20010]
-		[practicaProtege_Class20009]))
+		[practicaProtege_Class20009]
+		[practicaProtege_Class19]
+		[practicaProtege_Class18]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]))
 
 ([practicaProtege_Class30005] of  Dia
 

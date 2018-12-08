@@ -1,13 +1,321 @@
-; Fri Nov 30 16:16:11 GMT+01:00 2018
-;
+; Sat Dec 08 16:51:24 GMT+01:00 2018
+; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
+
+([practicaProtege_Class0] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 15)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Pilates")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class1] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 30)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Golf")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
 
 ([practicaProtege_Class10] of  Parte+del+Cuerpo
 
 	(grupoMuscular PiernaIzquierda)
 	(nombreParteCuerpo "CuadricepIzquierdo")
 	(parte Inferior))
+
+([practicaProtege_Class10000] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "SentadillasBalon")
+	(repeticiones 10)
+	(series 2)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class17]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]))
+
+([practicaProtege_Class10002] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 30)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Patinaje")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]))
+
+([practicaProtege_Class10003] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 10)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Caminar")
+	(porcentajeFCmax 60)
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class17]))
+
+([practicaProtege_Class10015] of  Parte+del+Cuerpo
+
+	(grupoMuscular Espalda)
+	(nombreParteCuerpo "Hombro")
+	(parte Superior))
+
+([practicaProtege_Class10016] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoHombros")
+	(tipo Calentamiento)
+	(trabaja [practicaProtege_Class10015]))
+
+([practicaProtege_Class10022] of  Flexibilidad
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "EstiramientoCintura")
+	(tipo Calentamiento))
+
+([practicaProtege_Class10024] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "Sentadillas")
+	(repeticiones 10)
+	(series 2)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class17]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class11]
+		[practicaProtege_Class9]))
+
+([practicaProtege_Class10025] of  Parte+del+Cuerpo
+
+	(grupoMuscular Torso)
+	(nombreParteCuerpo "Abdominales")
+	(parte Superior))
+
+([practicaProtege_Class10026] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Mejora)
+	(nombreEjercicio "Abdominales")
+	(repeticiones 10)
+	(series 3)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class17]))
+
+([practicaProtege_Class10027] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Mejora)
+	(nombreEjercicio "Flexiones")
+	(repeticiones 5)
+	(series 3)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class10028] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 10)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Marcha")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class10029] of  Aerobico
+
+	(diasALaSemana 2)
+	(duracion 30)
+	(faseEjercicio Mejora)
+	(nombreEjercicio "Natacion")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class10030] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 30)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "Baile")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class10032] of  Aerobico
+
+	(diasALaSemana 3)
+	(duracion 30)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Yoga")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class10033] of  Aerobico
+
+	(diasALaSemana 1)
+	(duracion 90)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "Senderismo")
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class10036] of  Equilibrio
+
+	(diasALaSemana 2)
+	(duracion 1)
+	(faseEjercicio Mejora)
+	(nombreEjercicio "Sobre un Pie")
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
 
 ([practicaProtege_Class11] of  Parte+del+Cuerpo
 
@@ -63,13 +371,166 @@
 	(nombreParteCuerpo "TobilloIzquierdo")
 	(parte Inferior))
 
-([practicaProtege_Class21] of  Aerobico
+([practicaProtege_Class2] of  Aerobico
 
 	(diasALaSemana 3)
 	(duracion 10)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "Caminar")
-	(porcentajeFCmax 60)
+	(nombreEjercicio "SubirEscaleras")
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class20000] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "FlexionCadera")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class20001] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "FlexionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
+([practicaProtege_Class20004] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "SentadillasMancuernas")
+	(repeticiones 10)
+	(series 2)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class17]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]))
+
+([practicaProtege_Class20005] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "LevantarseSentarse")
+	(repeticiones 10)
+	(series 2)
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class17]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class11]
+		[practicaProtege_Class9]))
+
+([practicaProtege_Class20006] of  Fortalecimiento
+
+	(diasALaSemana 3)
+	(duracion 10)
+	(faseEjercicio Mantenimiento)
+	(nombreEjercicio "MaquinaEliptica")
+	(tipo Otro)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
+
+([practicaProtege_Class20007] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "FlexionPlantar")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class20009] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "RodillaIzquierda")
+	(parte Inferior))
+
+([practicaProtege_Class20010] of  Parte+del+Cuerpo
+
+	(grupoMuscular PiernaIzquierda)
+	(nombreParteCuerpo "RodillaDerecha"))
+
+([practicaProtege_Class20013] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ExtensionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
+([practicaProtege_Class20014] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ExtensionCadera")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class21] of  Aerobico
+
+	(diasALaSemana 5)
+	(duracion 40)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "Carrera")
+	(porcentajeFCmax 75)
+	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class8]
 		[practicaProtege_Class10]
@@ -85,6 +546,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoBicepDerecho")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class12]))
 
 ([practicaProtege_Class26] of  Flexibilidad
@@ -93,6 +555,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoBicepIzquierdo")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class14]))
 
 ([practicaProtege_Class27] of  Flexibilidad
@@ -101,6 +564,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoCadera")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class17]))
 
 ([practicaProtege_Class28] of  Flexibilidad
@@ -109,6 +573,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoCuadricepDerecho")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class8]))
 
 ([practicaProtege_Class29] of  Flexibilidad
@@ -117,6 +582,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoCuadricepIzquierdo")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class10]))
 
 ([practicaProtege_Class30] of  Flexibilidad
@@ -125,7 +591,81 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoCuello")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class5]))
+
+([practicaProtege_Class30000] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ElevacionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
+([practicaProtege_Class30002] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ExtensionTriceps")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
+([practicaProtege_Class30003] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ElevacionPiernas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]
+		[practicaProtege_Class19]
+		[practicaProtege_Class18]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]))
+
+([practicaProtege_Class30005] of  Dia
+
+	(nombreDia "Lunes"))
+
+([practicaProtege_Class30007] of  Dia
+
+	(nombreDia "Martes"))
+
+([practicaProtege_Class30008] of  Dia
+
+	(nombreDia "Miercoles"))
+
+([practicaProtege_Class30009] of  Dia
+
+	(nombreDia "Jueves"))
+
+([practicaProtege_Class30010] of  Dia
+
+	(nombreDia "Viernes"))
+
+([practicaProtege_Class30011] of  Dia
+
+	(nombreDia "Sabado"))
+
+([practicaProtege_Class30012] of  Dia
+
+	(nombreDia "Domingo"))
 
 ([practicaProtege_Class31] of  Flexibilidad
 
@@ -133,6 +673,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoEspalda")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class16]))
 
 ([practicaProtege_Class32] of  Flexibilidad
@@ -141,6 +682,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoGemeloDerecho")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class9]))
 
 ([practicaProtege_Class33] of  Flexibilidad
@@ -149,6 +691,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoGemeloIzquierdo")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class11]))
 
 ([practicaProtege_Class34] of  Flexibilidad
@@ -157,6 +700,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoTobilloDerecho")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class18]))
 
 ([practicaProtege_Class35] of  Flexibilidad
@@ -165,6 +709,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoTobilloIzquierdo")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class19]))
 
 ([practicaProtege_Class36] of  Flexibilidad
@@ -173,6 +718,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoTorso")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class6]))
 
 ([practicaProtege_Class37] of  Flexibilidad
@@ -181,6 +727,7 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoTricepDerecho")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class13]))
 
 ([practicaProtege_Class38] of  Flexibilidad
@@ -189,14 +736,16 @@
 	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "EstiramientoTricepIzquierdo")
+	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class15]))
 
-([practicaProtege_Class40] of Equilibrio
+([practicaProtege_Class40] of  Equilibrio
 
 	(diasALaSemana 2)
 	(duracion 45)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "TaiChi"))
+	(nombreEjercicio "Tai Chi")
+	(tipo Actividad))
 
 ([practicaProtege_Class41] of  Aerobico
 
@@ -205,6 +754,7 @@
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Paseo")
 	(porcentajeFCmax 60)
+	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class8]
 		[practicaProtege_Class17]
@@ -221,6 +771,7 @@
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Andar")
 	(porcentajeFCmax 65)
+	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class8]
 		[practicaProtege_Class17]
@@ -237,6 +788,7 @@
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Bicicleta")
 	(porcentajeFCmax 65)
+	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class17]
 		[practicaProtege_Class8]
@@ -249,41 +801,45 @@
 ([practicaProtege_Class45] of  Fortalecimiento
 
 	(diasALaSemana 2)
-	(duracion 2)
+	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "PesaBicepDerecho")
 	(repeticiones 8)
 	(series 2)
+	(tipo Otro)
 	(trabaja [practicaProtege_Class12]))
 
 ([practicaProtege_Class46] of  Fortalecimiento
 
 	(diasALaSemana 2)
-	(duracion 2)
+	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "PesaBicepIzquierdo")
 	(repeticiones 8)
 	(series 2)
+	(tipo Otro)
 	(trabaja [practicaProtege_Class14]))
 
 ([practicaProtege_Class47] of  Fortalecimiento
 
 	(diasALaSemana 2)
-	(duracion 2)
+	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "PesaTricepDerecho")
 	(repeticiones 8)
 	(series 2)
+	(tipo Otro)
 	(trabaja [practicaProtege_Class13]))
 
 ([practicaProtege_Class48] of  Fortalecimiento
 
 	(diasALaSemana 2)
-	(duracion 2)
+	(duracion 1)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "PesaTricepIzquierdo")
 	(repeticiones 8)
 	(series 2)
+	(tipo Otro)
 	(trabaja [practicaProtege_Class15]))
 
 ([practicaProtege_Class5] of  Parte+del+Cuerpo
