@@ -330,7 +330,7 @@
 (defrule ejercicioEstiramientoBicepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(bicepDerechoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepDerecho") 0)))
@@ -341,7 +341,7 @@
 (defrule ejercicioEstiramientoBicepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(bicepIzquierdoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepIzquierdo") 0)))
@@ -352,7 +352,7 @@
 (defrule ejercicioEstiramientoCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCadera") 0)))
@@ -362,8 +362,8 @@
 
 (defrule ejercicioEstiramientoCintura "rule to add exercise to the plan"
 	(new_avi)
-	(fragil)
 	(cinturaCorrecta)
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCintura") 0)))
@@ -374,7 +374,7 @@
 (defrule ejercicioEstiramientoCuadricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepDerecho") 0)))
@@ -385,7 +385,7 @@
 (defrule ejercicioEstiramientoCuadricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepIzquierdoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepIzquierdo") 0)))
@@ -396,7 +396,7 @@
 (defrule ejercicioEstiramientoCuello "rule to add exercise to the plan"
 	(new_avi)
 	(cuelloCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuello") 0)))
@@ -407,7 +407,7 @@
 (defrule ejercicioEstiramientoEspalda "rule to add exercise to the plan"
 	(new_avi)
 	(espaldaCorrecta)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoEspalda") 0)))
@@ -418,7 +418,7 @@
 (defrule ejercicioEstiramientoGemeloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloDerechoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloDerecho") 0)))
@@ -429,7 +429,7 @@
 (defrule ejercicioEstiramientoGemeloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloIzquierdoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloIzquierdo") 0)))
@@ -439,8 +439,8 @@
 
 (defrule ejercicioEstiramientoHombros "rule to add exercise to the plan"
 	(new_avi)
-	(fragil)
 	(hombrosCorrectos)
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoHombros") 0)))
@@ -451,7 +451,7 @@
 (defrule ejercicioEstiramientoTobilloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloDerechoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloDerecho") 0)))
@@ -462,7 +462,7 @@
 (defrule ejercicioEstiramientoTobilloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloIzquierdoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloIzquierdo") 0)))
@@ -473,7 +473,7 @@
 (defrule ejercicioEstiramientoTorso "rule to add exercise to the plan"
 	(new_avi)
 	(torsoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTorso") 0)))
@@ -484,7 +484,7 @@
 (defrule ejercicioEstiramientoTricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepDerecho") 0)))
@@ -495,7 +495,7 @@
 (defrule ejercicioEstiramientoTricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tricepIzquierdoCorrecto)
-	(or (cancer) (fragil) (artritis))
+	;(or (cancer) (fragil) (artritis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepIzquierdo") 0)))
@@ -508,10 +508,73 @@
 (defrule ejercicioFortalecimientoAbdominales "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
-	(or (sobrepeso) (pulmonar))
+	;(or (sobrepeso) (pulmonar) (diabetes))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Abdominales") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioElevacionPiernas "rule to add exercise to the plan"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionPiernas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioElevacionRodillas "rule to add exercise to the plan"
+	(new_avi)
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionRodillas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioExtensionCadera "rule to add exercise to the plan"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionCadera") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioExtensionRodillas "rule to add exercise to the plan"
+	(new_avi)
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionRodillas") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioExtensionTriceps "rule to add exercise to the plan"
+	(new_avi)
+	(tricepDerechoCorrecto)
+	(tricepIzquierdoCorrecto)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionTriceps") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioFlexionCadera "rule to add exercise to the plan"
+	(new_avi)
+	(caderaCorrecta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionCadera") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -522,7 +585,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
-	(or (sobrepeso) (pulmonar))
+	;(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Flexiones") 0)))
@@ -530,50 +593,40 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaBicepDerecho "rule to add exercise to the plan"
+(defrule ejercicioFlexionPlantar "rule to add exercise to the plan"
 	(new_avi)
-	(bicepDerechoCorrecto)
-	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionPlantar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaBicepIzquierdo "rule to add exercise to the plan"
+(defrule ejercicioFlexionRodillas"rule to add exercise to the plan"
 	(new_avi)
-	(bicepIzquierdoCorrecto)
-	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionRodillas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaTricepDerecho "rule to add exercise to the plan"
+(defrule ejercicioFortalecimientoLevantarseSentarse "rule to add exercise to the plan"
 	(new_avi)
-	(tricepDerechoCorrecto)
-	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	;(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioFortalecimientoPesaTricepIzquierdo "rule to add exercise to the plan"
-	(new_avi)
-	(tricepIzquierdoCorrecto)
-	(tieneMancuernas)
-	(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "LevantarseSentarse") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -602,77 +655,50 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFlexionPlantar "rule to add exercise to the plan"
+(defrule ejercicioFortalecimientoPesaBicepDerecho "rule to add exercise to the plan"
 	(new_avi)
-	(tobilloDerechoCorrecto)
-	(tobilloIzquierdoCorrecto)
+	(bicepDerechoCorrecto)
+	(tieneMancuernas)
+	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionPlantar") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFlexionCadera "rule to add exercise to the plan"
+(defrule ejercicioFortalecimientoPesaBicepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
-	(caderaCorrecta)
+	(bicepIzquierdoCorrecto)
+	(tieneMancuernas)
+	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionCadera") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFlexionRodillas"rule to add exercise to the plan"
-	(new_avi)
-	(rodillaDerechaCorrecta)
-	(rodillaIzquierdaCorrecta)
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionRodillas") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioExtensionRodillas "rule to add exercise to the plan"
-	(new_avi)
-	(rodillaDerechaCorrecta)
-	(rodillaIzquierdaCorrecta)
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionRodillas") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioExtensionCadera "rule to add exercise to the plan"
-	(new_avi)
-	(caderaCorrecta)
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionCadera") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioExtensionTriceps "rule to add exercise to the plan"
+(defrule ejercicioFortalecimientoPesaTricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
-	(tricepIzquierdoCorrecto)
+	(tieneMancuernas)
+	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionTriceps") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
 
-
-(defrule ejercicioElevacionPiernas "rule to add exercise to the plan"
+(defrule ejercicioFortalecimientoPesaTricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
-	(caderaCorrecta)
+	(tricepIzquierdoCorrecto)
+	(tieneMancuernas)
+	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionPiernas") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -701,7 +727,7 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
-	(or (sobrepeso) (pulmonar))
+	;(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasBalon") 0)))
@@ -717,7 +743,7 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
-	(or (sobrepeso) (pulmonar))
+	;(or (sobrepeso) (pulmonar))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasMancuernas") 0)))
@@ -725,40 +751,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoLevantarseSentarse "rule to add exercise to the plan"
-	(new_avi)
-	(cuadricepDerechoCorrecto)
-	(cuadricepIzquierdoCorrecto)
-	(caderaCorrecta)
-	(tobilloDerechoCorrecto)
-	(tobilloIzquierdoCorrecto)
-	(gemeloDerechoCorrecto)
-	(or (sobrepeso) (pulmonar))
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "LevantarseSentarse") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
 ;;;						AERÓBICOS
-
-(defrule ejercicioPaseo "rule to add exercise to the plan"
-	(new_avi)
-	(caderaCorrecta)
-	(cuadricepDerechoCorrecto)
-	(cuadricepIzquierdoCorrecto)
-	(gemeloDerechoCorrecto)
-	(gemeloIzquierdoCorrecto)
-	(tobilloIzquierdoCorrecto)
-	(tobilloDerechoCorrecto)
-	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
 
 (defrule ejercicioAndar "rule to add exercise to the plan"
 	(new_avi)
@@ -769,6 +762,8 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
 	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
@@ -777,7 +772,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioCaminar "rule to add exercise to the plan"
+(defrule ejercicioBaile "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -786,10 +781,12 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
-	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	(rodillaDerechaCorrecta)
+	(rodillaIzquierdaCorrecta)
+	(depresion)
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Baile") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -812,43 +809,19 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioTaichi "rule to add exercise to the plan"
-	(new_avi)
-	(bicepDerechoCorrecto)
-	(bicepIzquierdoCorrecto)
-	(caderaCorrecta)
-	(cuadricepDerechoCorrecto)
-	(cuadricepIzquierdoCorrecto)
-	(cuelloCorrecto)
-	(espaldaCorrecta)
-	(gemeloDerechoCorrecto)
-	(gemeloIzquierdoCorrecto)
-	(tobilloDerechoCorrecto)
-	(tobilloIzquierdoCorrecto)
-	(torsoCorrecto)
-	(tricepDerechoCorrecto)
-	(tricepIzquierdoCorrecto)
-	(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
-	(tieneColchoneta)
-	?p <- (planilla_avi ?planilla)
-	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "TaiChi") 0)))
-	(bind ?exe (nth$ 1 ?ex))
-	(send ?exe put-partOf ?planilla)
-)
-
-(defrule ejercicioBicicleta "rule to add exercise to the plan"
+(defrule ejercicioCaminar "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
 	(gemeloIzquierdoCorrecto)
-	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
-	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Bicicleta") 0)))
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -862,6 +835,7 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(caderaCorrecta)
+	(or (fibrosis) (depresion) (hipertension) (cancer))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Carrera") 0)))
@@ -887,6 +861,7 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(depresion)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Golf") 0)))
@@ -903,6 +878,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
+	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (osteoporosis) (cancer) (artritis) (fibrosis) (depresion))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Marcha") 0)))
@@ -928,9 +904,27 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(or (diabetes) (fibrosis))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Natacion") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioPaseo "rule to add exercise to the plan"
+	(new_avi)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
@@ -947,6 +941,7 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(torsoCorrecto)
+	(depresion)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Patinaje") 0)))
@@ -972,6 +967,7 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(artritis)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Pilates") 0)))
@@ -997,6 +993,7 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(depresion)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Senderismo") 0)))
@@ -1013,6 +1010,7 @@
 	(gemeloIzquierdoCorrecto)
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
+	(or (osteoporosis) (fragil))
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SubirEscaleras") 0)))
@@ -1038,9 +1036,51 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	(artritis)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Yoga") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+;;;EQUILIBRIO
+
+(defrule ejercicioSobreUnPie "rule to add exercise to the plan"
+	(new_avi)
+	(caderaCorrecta)
+	(or (cuadricepDerechoCorrecto) (cuadricepIzquierdoCorrecto))
+	(or (gemeloDerechoCorrecto) (gemeloIzquierdoCorrecto))
+	(or (tobilloDerechoCorrecto) (tobilloIzquierdoCorrecto))
+	(or (rodillaDerechaCorrecta) (rodillaIzquierdaCorrecta))
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SobreUnPie") 0)))
+	(bind ?exe (nth$ 1 ?ex))
+	(send ?exe put-partOf ?planilla)
+)
+
+(defrule ejercicioTaichi "rule to add exercise to the plan"
+	(new_avi)
+	(bicepDerechoCorrecto)
+	(bicepIzquierdoCorrecto)
+	(caderaCorrecta)
+	(cuadricepDerechoCorrecto)
+	(cuadricepIzquierdoCorrecto)
+	(cuelloCorrecto)
+	(espaldaCorrecta)
+	(gemeloDerechoCorrecto)
+	(gemeloIzquierdoCorrecto)
+	(tobilloDerechoCorrecto)
+	(tobilloIzquierdoCorrecto)
+	(torsoCorrecto)
+	(tricepDerechoCorrecto)
+	(tricepIzquierdoCorrecto)
+	;(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
+	(tieneColchoneta)
+	?p <- (planilla_avi ?planilla)
+	=>
+	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "TaiChi") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
 )
