@@ -6,6 +6,7 @@
 ;;;
 ;;;						FUNCTIONS
 ;;;
+
 (deffunction general-question "to ask general questions" (?pregunta)
 	(format t "%s" ?pregunta)
 	(bind ?respuesta (read))
@@ -52,7 +53,6 @@
 			(assert (finFiltroAss))
 			(return FALSE)
 	)
-
 )
 
 (deffunction eliminarUno "" ()
@@ -1100,7 +1100,7 @@
 	)
 
 	(bind ?j 1)
-	(while (and (<= ?j (length$ ?exercicis)) (> ?sumaduracion 260))
+	(while (and (<= ?j (length$ ?exercicis)) (> ?sumaduracion 630))
 	 do
 		(bind ?rand (random 1 (length$ ?exercicis)))
 		(bind ?exe (nth$ ?rand ?exercicis))

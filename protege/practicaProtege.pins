@@ -1,4 +1,4 @@
-; Thu Dec 06 11:58:16 GMT+01:00 2018
+; Sat Dec 08 14:40:55 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -573,6 +573,34 @@
 	(nombreEjercicio "EstiramientoCuello")
 	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class5]))
+
+([practicaProtege_Class30005] of  Dia
+
+	(nombreDia "Lunes"))
+
+([practicaProtege_Class30007] of  Dia
+
+	(nombreDia "Martes"))
+
+([practicaProtege_Class30008] of  Dia
+
+	(nombreDia "Miercoles"))
+
+([practicaProtege_Class30009] of  Dia
+
+	(nombreDia "Jueves"))
+
+([practicaProtege_Class30010] of  Dia
+
+	(nombreDia "Viernes"))
+
+([practicaProtege_Class30011] of  Dia
+
+	(nombreDia "Sabado"))
+
+([practicaProtege_Class30012] of  Dia
+
+	(nombreDia "Domingo"))
 
 ([practicaProtege_Class31] of  Flexibilidad
 
