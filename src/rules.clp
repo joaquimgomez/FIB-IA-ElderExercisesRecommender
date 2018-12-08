@@ -75,7 +75,26 @@
 	;(assert (finFiltro))
 )
 
+(deffunction setDuracion "" (?ejercicio ?duracion)
+	(send ?ejercicio put-duracion ?duracion)
+)
 
+(deffunction setSeries "" (?ejercicio ?series)
+	(send ?ejercicio put-series ?series)
+)
+
+(deffunction setRepeticiones "" (?ejercicio ?repeticiones)
+	(send ?ejercicio put-repeticiones ?repeticiones)
+)
+
+(deffunction setFase "" (?ejercicio ?nivelForma)
+	(if (eq (str-compare ?nivelForma "Bajo") 0)
+		then (send ?ejercicio put-faseEjercicio Inicial))
+	(if (eq (str-compare ?nivelForma "Medio") 0)
+		then (send ?ejercicio put-faseEjercicio Mejora))
+	(if (eq (str-compare ?nivelForma "Alto") 0)
+		then (send ?ejercicio put-faseEjercicio Mantenimiento))
+)
 
 ;;;
 ;;;						MAIN MODULE
@@ -106,6 +125,7 @@
 			(bind ?sexo (question-with-default-values "Sexo " "Hombre/Mujer"))
 			(bind ?dependencia (question-with-default-values "Dependencia " "Independiente/Dependiente"))
 			(bind ?nivelDeForma (question-with-default-values "Nivel de Forma " "Bajo/Medio/Alto"))
+			(assert (n_forma_def ?nivelDeForma))
 			(if (eq (str-compare ?dependencia "Dependiente") 0)
 				then (make-instance ?nombre of Dependiente (nombre ?nombre)
 																									 (edad ?edad)
@@ -200,7 +220,7 @@
 (defrule sobrepeso "rule to know if avi have sobrepeso or obesidad"
 	(new_avi)
 	=>
-	(bind ?sobrepeso (binary-question "Sobrepeso/obesidad"))
+	(bind ?sobrepeso (binary-question "Padece o quiere prevenir el Sobrepeso/obesidad"))
 	(if ?sobrepeso then (assert (sobrepeso)))
 )
 
@@ -331,176 +351,240 @@
 	(new_avi)
 	(bicepDerechoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoBicepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(bicepIzquierdoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoBicepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCadera") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoCintura "rule to add exercise to the plan"
 	(new_avi)
 	(cinturaCorrecta)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCintura") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoCuadricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoCuadricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepIzquierdoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuadricepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoCuello "rule to add exercise to the plan"
 	(new_avi)
 	(cuelloCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoCuello") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoEspalda "rule to add exercise to the plan"
 	(new_avi)
 	(espaldaCorrecta)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoEspalda") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoGemeloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloDerechoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoGemeloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloIzquierdoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoGemeloIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoHombros "rule to add exercise to the plan"
 	(new_avi)
 	(hombrosCorrectos)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoHombros") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoTobilloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloDerechoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoTobilloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloIzquierdoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTobilloIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoTorso "rule to add exercise to the plan"
 	(new_avi)
 	(torsoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTorso") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoTricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioEstiramientoTricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tricepIzquierdoCorrecto)
 	;(or (cancer) (fragil) (artritis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "EstiramientoTricepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (not (eq (str-compare ?nivelDeForma Bajo) 0)) then
+		(setDuracion ?exe (* 2 (send ?exe get-duracion))))
 )
 
 ;;;						FUERZA
@@ -509,74 +593,130 @@
 	(new_avi)
 	(abdominalesCorrectos)
 	;(or (sobrepeso) (pulmonar) (diabetes))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Abdominales") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioElevacionPiernas "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionPiernas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioElevacionRodillas "rule to add exercise to the plan"
 	(new_avi)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ElevacionRodillas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioExtensionCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionCadera") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioExtensionRodillas "rule to add exercise to the plan"
 	(new_avi)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionRodillas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioExtensionTriceps "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "ExtensionTriceps") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFlexionCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionCadera") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoFlexiones "rule to add exercise to the plan"
@@ -586,33 +726,58 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	;(or (sobrepeso) (pulmonar))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Flexiones") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 5 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 2 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 2 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFlexionPlantar "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionPlantar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFlexionRodillas"rule to add exercise to the plan"
 	(new_avi)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "FlexionRodillas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoLevantarseSentarse "rule to add exercise to the plan"
@@ -624,11 +789,19 @@
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
 	;(or (sobrepeso) (pulmonar))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "LevantarseSentarse") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 2/3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioMaquinaEliptica "rule to add exercise to the plan"
@@ -648,11 +821,18 @@
 	(torsoCorrecto)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "MaquinaEliptica") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Elíptica -> No tiene repeticiones ni series
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setDuracion ?exe (+ 20 (send ?exe get-duracion))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setDuracion ?exe (+ 30 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioFortalecimientoPesaBicepDerecho "rule to add exercise to the plan"
@@ -660,11 +840,19 @@
 	(bicepDerechoCorrecto)
 	(tieneMancuernas)
 	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 2 series de 8 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoPesaBicepIzquierdo "rule to add exercise to the plan"
@@ -672,11 +860,18 @@
 	(bicepIzquierdoCorrecto)
 	(tieneMancuernas)
 	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaBicepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	;;;Ejercicios con 2 series de 8 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoPesaTricepDerecho "rule to add exercise to the plan"
@@ -684,11 +879,18 @@
 	(tricepDerechoCorrecto)
 	(tieneMancuernas)
 	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepDerecho") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	;;;Ejercicios con 2 series de 8 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoPesaTricepIzquierdo "rule to add exercise to the plan"
@@ -696,11 +898,18 @@
 	(tricepIzquierdoCorrecto)
 	(tieneMancuernas)
 	;(or (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "PesaTricepIzquierdo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	;;;Ejercicios con 2 series de 8 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoSentadillas "rule to add exercise to the plan"
@@ -711,12 +920,20 @@
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
-	(or (sobrepeso) (pulmonar))
+	;(or (sobrepeso) (pulmonar))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Sentadillas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 2/3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoSentadillasBalon "rule to add exercise to the plan"
@@ -728,11 +945,19 @@
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
 	;(or (sobrepeso) (pulmonar))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasBalon") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 2/3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 (defrule ejercicioFortalecimientoSentadillasMancuernas "rule to add exercise to the plan"
@@ -744,11 +969,19 @@
 	(tobilloIzquierdoCorrecto)
 	(gemeloDerechoCorrecto)
 	;(or (sobrepeso) (pulmonar))
+	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SentadillasMancuernas") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	;;;Ejercicios con 2/3 series de 10 repeticiones en Inicial
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setSeries ?exe (+ 1 (send ?exe get-series)))
+		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
 )
 
 ;;;						AERÓBICOS
@@ -766,10 +999,17 @@
 	(rodillaIzquierdaCorrecta)
 	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Andar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioBaile "rule to add exercise to the plan"
@@ -785,10 +1025,17 @@
 	(rodillaIzquierdaCorrecta)
 	(depresion)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Baile") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioBicicleta "rule to add exercise to the plan"
@@ -803,10 +1050,17 @@
 	(espaldaCorrecta)
 	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (pulmonar) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Bicicleta") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioCaminar "rule to add exercise to the plan"
@@ -820,10 +1074,17 @@
 	(tobilloDerechoCorrecto)
 	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Caminar") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+		(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 5 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioCarrera "rule to add exercise to the plan"
@@ -837,10 +1098,17 @@
 	(caderaCorrecta)
 	(or (fibrosis) (depresion) (hipertension) (cancer))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Carrera") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioGolf "rule to add exercise to the plan"
@@ -863,10 +1131,17 @@
 	(tricepIzquierdoCorrecto)
 	(depresion)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Golf") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioMarcha "rule to add exercise to the plan"
@@ -880,10 +1155,17 @@
 	(tobilloIzquierdoCorrecto)
 	(or (enfermedadCardiovascular) (hipertension) (sobrepeso) (osteoporosis) (cancer) (artritis) (fibrosis) (depresion))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Marcha") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 5 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 15 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioNatacion "rule to add exercise to the plan"
@@ -906,10 +1188,17 @@
 	(tricepIzquierdoCorrecto)
 	(or (diabetes) (fibrosis))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Natacion") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 5 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 15 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioPaseo "rule to add exercise to the plan"
@@ -923,10 +1212,17 @@
 	(tobilloDerechoCorrecto)
 	(or (enfermedadCardiovascular) (fragil) (hipertension) (sobrepeso) (pulmonar) (osteoporosis) (cancer) (artritis) (fibrosis))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Paseo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 15 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 30 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioPatinaje "rule to add exercise to the plan"
@@ -943,10 +1239,17 @@
 	(torsoCorrecto)
 	(depresion)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Patinaje") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioPilates "rule to add exercise to the plan"
@@ -969,10 +1272,17 @@
 	(tricepIzquierdoCorrecto)
 	(artritis)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Pilates") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioSenderismo "rule to add exercise to the plan"
@@ -995,10 +1305,14 @@
 	(tricepIzquierdoCorrecto)
 	(depresion)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Senderismo") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma))
+	;;;El senderismo ya tiene suficiente duración en la fase Inicial
 )
 
 (defrule ejercicioSubirEscaleras "rule to add exercise to the plan"
@@ -1012,10 +1326,17 @@
 	(tobilloIzquierdoCorrecto)
 	(or (osteoporosis) (fragil))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SubirEscaleras") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 5 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 15 (send ?exe get-duracion)))))
 )
 
 (defrule ejercicioYoga "rule to add exercise to the plan"
@@ -1038,10 +1359,17 @@
 	(tricepIzquierdoCorrecto)
 	(artritis)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Yoga") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(if (eq (str-compare (send ?exe get-faseEjercicio) Inicial) 0) then
+		(setFase ?exe ?nivelDeForma)
+		(if (eq (str-compare ?nivelDeForma Medio) 0) then
+			(setDuracion ?exe (+ 10 (send ?exe get-duracion))))
+		(if (eq (str-compare ?nivelDeForma Alto) 0) then
+			(setDuracion ?exe (+ 20 (send ?exe get-duracion)))))
 )
 
 ;;;EQUILIBRIO
@@ -1054,10 +1382,16 @@
 	(or (tobilloDerechoCorrecto) (tobilloIzquierdoCorrecto))
 	(or (rodillaDerechaCorrecta) (rodillaIzquierdaCorrecta))
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "SobreUnPie") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setDuracion ?exe (+ 1 (send ?exe get-duracion))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setDuracion ?exe (+ 2 (send ?exe get-duracion))))
 )
 
 (defrule ejercicioTaichi "rule to add exercise to the plan"
@@ -1079,10 +1413,16 @@
 	;(or (fragil) (hipertension) (sobrepeso) (osteoporosis))
 	(tieneColchoneta)
 	?p <- (planilla_avi ?planilla)
+	?f <- (n_forma_def ?nivelDeForma)
 	=>
 	(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "TaiChi") 0)))
 	(bind ?exe (nth$ 1 ?ex))
 	(send ?exe put-partOf ?planilla)
+	(setFase ?exe ?nivelDeForma)
+	(if (eq (str-compare ?nivelDeForma Medio) 0) then
+		(setDuracion ?exe (+ 15 (send ?exe get-duracion))))
+	(if (eq (str-compare ?nivelDeForma Alto) 0) then
+		(setDuracion ?exe (+ 30 (send ?exe get-duracion))))
 )
 
 (defrule finEjercicios

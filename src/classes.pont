@@ -1,10 +1,10 @@
-; Sat Dec 08 18:49:52 CET 2018
-; 
+; Sat Dec 08 23:33:06 CET 2018
+;
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
 
-(defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
+(defclass :CLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
 	(single-slot edad
@@ -30,7 +30,7 @@
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(multislot hasA
@@ -39,7 +39,7 @@
 		(create-accessor read-write))
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot parte
@@ -297,12 +297,12 @@
 	(role concrete)
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 

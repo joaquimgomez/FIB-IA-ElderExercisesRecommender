@@ -9,7 +9,10 @@ FALTA:
 	De la lista de asserts ejercicios coger y clasificar hasta duración dia
 	y teniendo en cuenta repeticiones de ejercicios
 
-
+-----> Revisar Rodillas Correctas (casi no aparece/aparecía)
+-----> Revisar duración Fortalecimiento segun series y repeticiones
+-----> Poner ejercicios que no se puedan hacer con nivel de forma diferente bajo (pa que lo quiere)
+-----> FC max en ejercicios aerbicos segun tabla
 
 Crear instancias de cadas enfermedad y conectarlas con sus ejercicios relacionados
 -> Si la respuesta de enfermedad es no -> eliminar instancias
