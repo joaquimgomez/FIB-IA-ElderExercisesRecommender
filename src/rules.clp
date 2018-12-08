@@ -1,20 +1,15 @@
-; Thu Nov 29 23:05:14 GMT+01:00 2018
-;
-;+ (version "3.5")
-;+ (build "Build 663")
-
 ;;;
 ;;;						FUNCTIONS
 ;;;
 
-(deffunction general-question "to ask general questions" (?pregunta)
+(deffunction general-question "function to ask general questions" (?pregunta)
 	(format t "%s" ?pregunta)
 	(bind ?respuesta (read))
 	(printout t ?respuesta)
 	?respuesta
 )
 
-(deffunction question-with-default-values "to ask questions with default answers values" (?pregunta ?defaultValues)
+(deffunction question-with-default-values "function to ask questions with default answers values" (?pregunta ?defaultValues)
 	(format t "%s" ?pregunta)
 	(printout t "(" ?defaultValues "): ")
 	(bind ?respuesta (read))
@@ -22,7 +17,7 @@
 	?respuesta
 )
 
-(deffunction binary-question "" (?pregunta)
+(deffunction binary-question "function to ask questions with binary answers values" (?pregunta)
 	(format t "%s" ?pregunta)
 	(printout t " (si/no/s/n): ")
 	(bind ?respuesta (read))
@@ -80,11 +75,15 @@
 	;(assert (finFiltro))
 )
 
+
+
 ;;;
 ;;;						MAIN MODULE
 ;;;
 
-(defmodule MAIN (export ?ALL))
+(defmodule MAIN
+	(export ?ALL)
+)
 
 (defrule initial "initial rule"
 	(initial-fact)
@@ -130,18 +129,8 @@
 	)
 )
 
-;(defrule p
-;	(new_avi)
-;	?h <- (Avi ?nombre)
-;	?aviFact <-(object (is-a Avi)(nombre ?nombreA))
-;	(test (eq (str-compare  ?nombre ?nombreA) 0))
-;	=>
-;	(printout t (send ?aviFact get-edad))
-;)
 
-
-
-(defrule noEjercicioSi ""
+(defrule noEjercicioSi "rule to check critical states"
 	(new_avi)
 	=>
 	(printout t "Esta usted alguna de las siguiente condiciones?" crlf)
@@ -161,6 +150,7 @@
 			(focus ask_questions)
 	)
 )
+
 
 
 ;;;
@@ -257,7 +247,7 @@
 	(if ?depresion then	(assert (depresion)))
 )
 
-(defrule check_partes_del_cuerpo ""
+(defrule check_partes_del_cuerpo "rule to know the status of different parts of the body"
 	(new_avi)
 	=>
 	(bind ?bicepDerecho (binary-question "Presenta dolencia en el Bicep Derecho?"))
@@ -300,7 +290,7 @@
 	(if (not ?rodillaIzquierda) then (assert (rodillaIzquierdaCorrecta)))
 )
 
-(defrule material ""
+(defrule material "rule to know the material that is available"
 	(new_avi)
 	=>
 	(printout t "Indique de los siguientes materiales si dispone de ellos o no:" crlf)
@@ -311,7 +301,7 @@
 
 )
 
-(defrule lastOfHere ""
+(defrule noMoreQuestions "rule to activate the next module"
 	(new_avi)
 	=>
 	(printout t "End of questions" crlf)
@@ -319,6 +309,8 @@
 	(assert (planilla_avi ?planilla))
 	(focus inference_of_data)
 )
+
+
 
 ;;;
 ;;;						INFERENCE MODULE
@@ -332,7 +324,7 @@
 
 ;;;						FLEXIBILIDAD
 
-(defrule ejercicioEstiramientoBicepDerecho ""
+(defrule ejercicioEstiramientoBicepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(bicepDerechoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -343,7 +335,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoBicepIzquierdo ""
+(defrule ejercicioEstiramientoBicepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(bicepIzquierdoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -354,7 +346,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoCadera ""
+(defrule ejercicioEstiramientoCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(or (cancer) (fragil) (artritis))
@@ -365,7 +357,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoCintura "NUEVO"
+(defrule ejercicioEstiramientoCintura "rule to add exercise to the plan"
 	(new_avi)
 	(fragil)
 	(cinturaCorrecta)
@@ -376,7 +368,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoCuadricepDerecho ""
+(defrule ejercicioEstiramientoCuadricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -387,7 +379,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoCuadricepIzquierdo ""
+(defrule ejercicioEstiramientoCuadricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepIzquierdoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -398,7 +390,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoCuello ""
+(defrule ejercicioEstiramientoCuello "rule to add exercise to the plan"
 	(new_avi)
 	(cuelloCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -409,7 +401,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoEspalda ""
+(defrule ejercicioEstiramientoEspalda "rule to add exercise to the plan"
 	(new_avi)
 	(espaldaCorrecta)
 	(or (cancer) (fragil) (artritis))
@@ -420,7 +412,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoGemeloDerecho ""
+(defrule ejercicioEstiramientoGemeloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloDerechoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -431,7 +423,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoGemeloIzquierdo ""
+(defrule ejercicioEstiramientoGemeloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloIzquierdoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -442,7 +434,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoHombros "NUEVO"
+(defrule ejercicioEstiramientoHombros "rule to add exercise to the plan"
 	(new_avi)
 	(fragil)
 	(hombrosCorrectos)
@@ -453,7 +445,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoTobilloDerecho ""
+(defrule ejercicioEstiramientoTobilloDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloDerechoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -464,7 +456,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoTobilloIzquierdo ""
+(defrule ejercicioEstiramientoTobilloIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloIzquierdoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -475,7 +467,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoTorso ""
+(defrule ejercicioEstiramientoTorso "rule to add exercise to the plan"
 	(new_avi)
 	(torsoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -486,7 +478,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoTricepDerecho ""
+(defrule ejercicioEstiramientoTricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -497,7 +489,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioEstiramientoTricepIzquierdo ""
+(defrule ejercicioEstiramientoTricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tricepIzquierdoCorrecto)
 	(or (cancer) (fragil) (artritis))
@@ -510,7 +502,7 @@
 
 ;;;						FUERZA
 
-(defrule ejercicioFortalecimientoAbdominales "NUEVO"
+(defrule ejercicioFortalecimientoAbdominales "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(or (sobrepeso) (pulmonar))
@@ -521,7 +513,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoFlexiones "NUEVO"
+(defrule ejercicioFortalecimientoFlexiones "rule to add exercise to the plan"
 	(new_avi)
 	(gemeloDerechoCorrecto)
 	(gemeloIzquierdoCorrecto)
@@ -535,7 +527,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaBicepDerecho ""
+(defrule ejercicioFortalecimientoPesaBicepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(bicepDerechoCorrecto)
 	(tieneMancuernas)
@@ -547,7 +539,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaBicepIzquierdo ""
+(defrule ejercicioFortalecimientoPesaBicepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(bicepIzquierdoCorrecto)
 	(tieneMancuernas)
@@ -559,7 +551,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaTricepDerecho ""
+(defrule ejercicioFortalecimientoPesaTricepDerecho "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(tieneMancuernas)
@@ -571,7 +563,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoPesaTricepIzquierdo ""
+(defrule ejercicioFortalecimientoPesaTricepIzquierdo "rule to add exercise to the plan"
 	(new_avi)
 	(tricepIzquierdoCorrecto)
 	(tieneMancuernas)
@@ -583,7 +575,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule MaquinaEliptica "NUEVO"
+(defrule ejercicioMaquinaEliptica "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -607,7 +599,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule FlexionPlantar "NUEVO"
+(defrule ejercicioFlexionPlantar "rule to add exercise to the plan"
 	(new_avi)
 	(tobilloDerechoCorrecto)
 	(tobilloIzquierdoCorrecto)
@@ -618,7 +610,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule FlexionCadera "NUEVO"
+(defrule ejercicioFlexionCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	?p <- (planilla_avi ?planilla)
@@ -628,7 +620,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule FlexionRodillas"NUEVO"
+(defrule ejercicioFlexionRodillas"rule to add exercise to the plan"
 	(new_avi)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
@@ -639,7 +631,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ExtensionRodillas "NUEVO"
+(defrule ejercicioExtensionRodillas "rule to add exercise to the plan"
 	(new_avi)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
@@ -650,7 +642,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ExtensionCadera "NUEVO"
+(defrule ejercicioExtensionCadera "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	?p <- (planilla_avi ?planilla)
@@ -660,7 +652,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ExtensionTriceps "NUEVO"
+(defrule ejercicioExtensionTriceps "rule to add exercise to the plan"
 	(new_avi)
 	(tricepDerechoCorrecto)
 	(tricepIzquierdoCorrecto)
@@ -672,7 +664,7 @@
 )
 
 
-(defrule ElevacionPiernas "NUEVO"
+(defrule ejercicioElevacionPiernas "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	?p <- (planilla_avi ?planilla)
@@ -682,7 +674,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoSentadillas "NUEVO"
+(defrule ejercicioFortalecimientoSentadillas "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
@@ -698,7 +690,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoSentadillasBalon "NUEVO"
+(defrule ejercicioFortalecimientoSentadillasBalon "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
@@ -714,7 +706,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoSentadillasMancuernas "NUEVO"
+(defrule ejercicioFortalecimientoSentadillasMancuernas "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
@@ -730,7 +722,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioFortalecimientoLevantarseSentarse "NUEVO"
+(defrule ejercicioFortalecimientoLevantarseSentarse "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
@@ -748,7 +740,7 @@
 
 ;;;						AERÓBICOS
 
-(defrule ejercicioPaseo ""
+(defrule ejercicioPaseo "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -765,7 +757,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioAndar ""
+(defrule ejercicioAndar "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -782,7 +774,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioCaminar ""
+(defrule ejercicioCaminar "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -799,7 +791,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioBicicleta ""
+(defrule ejercicioBicicleta "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -817,7 +809,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioTaichi ""
+(defrule ejercicioTaichi "rule to add exercise to the plan"
 	(new_avi)
 	(bicepDerechoCorrecto)
 	(bicepIzquierdoCorrecto)
@@ -842,7 +834,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioBicicleta "NUEVO"
+(defrule ejercicioBicicleta "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -858,7 +850,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioCarrera "NUEVO"
+(defrule ejercicioCarrera "rule to add exercise to the plan"
 	(new_avi)
 	(cuadricepDerechoCorrecto)
 	(cuadricepIzquierdoCorrecto)
@@ -874,7 +866,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioGolf "NUEVO"
+(defrule ejercicioGolf "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -899,7 +891,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioMarcha "NUEVO"
+(defrule ejercicioMarcha "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerecho)
@@ -915,7 +907,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioNatacion "NUEVO"
+(defrule ejercicioNatacion "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -940,7 +932,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioPatinaje "NUEVO"
+(defrule ejercicioPatinaje "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(caderaCorrecta)
@@ -959,7 +951,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioPilates "NUEVO"
+(defrule ejercicioPilates "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -984,7 +976,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioSenderismo "NUEVO"
+(defrule ejercicioSenderismo "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -1009,7 +1001,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioSubirEscaleras "NUEVO"
+(defrule ejercicioSubirEscaleras "rule to add exercise to the plan"
 	(new_avi)
 	(caderaCorrecta)
 	(cuadricepDerechoCorrecto)
@@ -1025,7 +1017,7 @@
 	(send ?exe put-partOf ?planilla)
 )
 
-(defrule ejercicioYoga "NUEVO"
+(defrule ejercicioYoga "rule to add exercise to the plan"
 	(new_avi)
 	(abdominalesCorrectos)
 	(bicepDerechoCorrecto)
@@ -1071,6 +1063,9 @@
 
 	(focus filter)
 )
+
+
+
 
 ;;;
 ;;;						FILTER MODULE
