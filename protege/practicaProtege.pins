@@ -1,4 +1,4 @@
-; Sat Dec 08 14:40:55 GMT+01:00 2018
+; Sat Dec 08 16:37:46 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -76,9 +76,6 @@
 		[practicaProtege_Class19]
 		[practicaProtege_Class9]
 		[practicaProtege_Class11]))
-
-([practicaProtege_Class10001] of  Parte+del+Cuerpo
-)
 
 ([practicaProtege_Class10002] of  Aerobico
 
@@ -390,8 +387,31 @@
 		[practicaProtege_Class18]
 		[practicaProtege_Class19]))
 
-([practicaProtege_Class20002] of  Parte+del+Cuerpo
-)
+([practicaProtege_Class20000] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "FlexionCadera")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]))
+
+([practicaProtege_Class20001] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "FlexionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
 
 ([practicaProtege_Class20004] of  Fortalecimiento
 
@@ -482,7 +502,7 @@
 	(diasALaSemana 2)
 	(duracion 2)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "FlexionRodillas")
+	(nombreEjercicio "ExtensionRodillas")
 	(repeticiones 10)
 	(series 3)
 	(tipo Calentamiento)
@@ -495,7 +515,7 @@
 	(diasALaSemana 2)
 	(duracion 2)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "FlexionCadera")
+	(nombreEjercicio "ExtensionCadera")
 	(repeticiones 10)
 	(series 3)
 	(tipo Calentamiento)
@@ -573,6 +593,32 @@
 	(nombreEjercicio "EstiramientoCuello")
 	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class5]))
+
+([practicaProtege_Class30002] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ExtensionTriceps")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
+
+([practicaProtege_Class30003] of  Fortalecimiento
+
+	(diasALaSemana 2)
+	(duracion 2)
+	(faseEjercicio Inicial)
+	(nombreEjercicio "ElevacionRodillas")
+	(repeticiones 10)
+	(series 3)
+	(tipo Calentamiento)
+	(trabaja
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]))
 
 ([practicaProtege_Class30005] of  Dia
 
