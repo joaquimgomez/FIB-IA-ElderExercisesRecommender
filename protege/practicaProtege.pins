@@ -1,4 +1,4 @@
-; Sat Dec 08 16:37:46 GMT+01:00 2018
+; Sat Dec 08 16:42:03 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -720,13 +720,8 @@
 	(tipo Calentamiento)
 	(trabaja [practicaProtege_Class15]))
 
-([practicaProtege_Class40] of  Aerobico Equilibrio
+([practicaProtege_Class40] of  Equilibrio
 
-	(diasALaSemana 2)
-	(duracion 45)
-	(faseEjercicio Inicial)
-	(nombreEjercicio "Tai Chi")
-	(tipo Actividad)
 	(diasALaSemana 2)
 	(duracion 45)
 	(faseEjercicio Inicial)
