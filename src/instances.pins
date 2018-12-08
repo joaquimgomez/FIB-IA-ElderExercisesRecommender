@@ -1,4 +1,4 @@
-; Sat Dec 08 16:51:24 GMT+01:00 2018
+; Sat Dec 08 18:49:52 CET 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -309,7 +309,7 @@
 	(diasALaSemana 2)
 	(duracion 1)
 	(faseEjercicio Mejora)
-	(nombreEjercicio "Sobre un Pie")
+	(nombreEjercicio "SobreUnPie")
 	(tipo Otro)
 	(trabaja
 		[practicaProtege_Class9]
@@ -744,7 +744,7 @@
 	(diasALaSemana 2)
 	(duracion 45)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "Tai Chi")
+	(nombreEjercicio "TaiChi")
 	(tipo Actividad))
 
 ([practicaProtege_Class41] of  Aerobico
