@@ -1,4 +1,4 @@
-; Sun Dec 09 22:55:12 CET 2018
+; Sun Dec 09 23:55:49 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -9,7 +9,6 @@
 	(duracion 15)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Pilates")
-	(porcentajeFCmax 60)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -35,7 +34,6 @@
 	(duracion 30)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Golf")
-	(porcentajeFCmax 60)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -65,7 +63,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "SentadillasBalon")
 	(repeticiones 10)
 	(series 2)
@@ -85,7 +83,6 @@
 	(duracion 30)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Patinaje")
-	(porcentajeFCmax 65)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -143,7 +140,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Sentadillas")
 	(repeticiones 10)
 	(series 2)
@@ -167,7 +164,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Abdominales")
 	(repeticiones 10)
 	(series 3)
@@ -180,7 +177,7 @@
 
 	(diasALaSemana 2)
 	(duracion 1)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Flexiones")
 	(repeticiones 5)
 	(series 3)
@@ -197,7 +194,6 @@
 	(duracion 10)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Marcha")
-	(porcentajeFCmax 70)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class17]
@@ -212,9 +208,8 @@
 
 	(diasALaSemana 2)
 	(duracion 30)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Natacion")
-	(porcentajeFCmax 70)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -238,9 +233,8 @@
 
 	(diasALaSemana 3)
 	(duracion 30)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Baile")
-	(porcentajeFCmax 60)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -266,7 +260,6 @@
 	(duracion 30)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "Yoga")
-	(porcentajeFCmax 65)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -290,9 +283,8 @@
 
 	(diasALaSemana 1)
 	(duracion 90)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Senderismo")
-	(porcentajeFCmax 70)
 	(tipo Actividad)
 	(trabaja
 		[practicaProtege_Class10025]
@@ -316,7 +308,7 @@
 
 	(diasALaSemana 2)
 	(duracion 1)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "SobreUnPie")
 	(tipo Otro)
 	(trabaja
@@ -385,7 +377,6 @@
 	(duracion 10)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "SubirEscaleras")
-	(porcentajeFCmax 65)
 	(tipo Otro)
 	(trabaja
 		[practicaProtege_Class17]
@@ -426,7 +417,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "SentadillasMancuernas")
 	(repeticiones 10)
 	(series 2)
@@ -444,7 +435,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "LevantarseSentarse")
 	(repeticiones 10)
 	(series 2)
@@ -462,7 +453,7 @@
 
 	(diasALaSemana 3)
 	(duracion 10)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "MaquinaEliptica")
 	(tipo Otro)
 	(trabaja
@@ -761,7 +752,26 @@
 	(duracion 45)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "TaiChi")
-	(tipo Actividad))
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
 
 ([practicaProtege_Class41] of  Aerobico
 

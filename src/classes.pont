@@ -1,4 +1,4 @@
-; Sun Dec 09 22:55:12 CET 2018
+; Sun Dec 09 23:55:49 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -7,15 +7,26 @@
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
 	(is-a USER)
 	(role abstract)
-	(single-slot libre
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-		(default FALSE)
-;+		(cardinality 0 1)
+	(multislot Recuperacion
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
-	(single-slot edad
+	(single-slot diasALaSemana
 		(type INTEGER)
 		(range 0 7)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot nombreEjercicio
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot Calentamiento
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
+		(create-accessor read-write))
+	(single-slot fase
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot does
@@ -23,61 +34,34 @@
 ;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombreEjercicio
-		(type STRING)
+	(single-slot parte
+		(type SYMBOL)
+		(allowed-values Superior Inferior)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot dias
-		(type INSTANCE)
-;+		(allowed-classes Dia)
-		(create-accessor read-write))
-	(multislot Calentamiento
-		(type INSTANCE)
-;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
 		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot hasA
-		(type INSTANCE)
-;+		(allowed-classes Enfermedad)
-		(create-accessor read-write))
-	(single-slot repeticiones
-		(type INTEGER)
-		(range 1 %3FVARIABLE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot parte
+	(single-slot tipo
 		(type SYMBOL)
-		(allowed-values Superior Inferior)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot esFragil
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot porcentajeFCmax
-		(type INTEGER)
-		(range 0 100)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot grupoMuscular
-		(type SYMBOL)
-		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot esfuerzo
-		(type SYMBOL)
-		(allowed-values Bajo Medio Alto)
+		(allowed-values Calentamiento Actividad Otro)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot faseEjercicio
 		(type SYMBOL)
 		(allowed-values Inicial Mejora Mantenimiento)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot duracion
+		(type INTEGER)
+		(range 1 90)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot trabaja
+		(type INSTANCE)
+;+		(allowed-classes Parte+del+Cuerpo)
 		(create-accessor read-write))
 	(single-slot sexo
 		(type SYMBOL)
@@ -88,72 +72,50 @@
 		(type INSTANCE)
 ;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
-	(single-slot duracion
-		(type INTEGER)
-		(range 1 90)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot fase
-		(type SYMBOL)
-		(allowed-values Inicial Mejora Mantenimiento)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot nombreDia
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot trabaja
+	(multislot hasA
 		(type INSTANCE)
-;+		(allowed-classes Parte+del+Cuerpo)
-		(create-accessor read-write))
-	(single-slot nombreParteCuerpo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot tipo
-		(type SYMBOL)
-		(allowed-values Calentamiento Actividad Otro)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
-	(single-slot diasALaSemana
-		(type INTEGER)
-		(range 1 7)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot Recuperacion
-		(type INSTANCE)
-;+		(allowed-classes Ejercicio)
+;+		(allowed-classes Enfermedad)
 		(create-accessor read-write))
 	(single-slot nivelDeForma
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot nombre
-		(type STRING)
+	(single-slot grupoMuscular
+		(type SYMBOL)
+		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot esFragil
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombreParteCuerpo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(multislot dias
+		(type INSTANCE)
+;+		(allowed-classes Dia)
+		(create-accessor read-write))
+	(single-slot porcentajeFCmax
+		(type INTEGER)
+		(range 0 100)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombreDia
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot partOf
 		(type INSTANCE)
 ;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
-		(create-accessor read-write)))
-
-(defclass Avi
-	(is-a USER)
-	(role concrete)
-	(multislot hasA
-		(type INSTANCE)
-;+		(allowed-classes Enfermedad)
 		(create-accessor read-write))
-	(single-slot edad
+	(single-slot repeticiones
 		(type INTEGER)
-		(range 0 7)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot sexo
-		(type SYMBOL)
-		(allowed-values Hombre Mujer)
+		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
@@ -165,12 +127,53 @@
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot libre
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot edad
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write)))
+
+(defclass Avi
+	(is-a USER)
+	(role concrete)
+	(single-slot sexo
+		(type SYMBOL)
+		(allowed-values Hombre Mujer)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
 	(single-slot does
 		(type INSTANCE)
 ;+		(allowed-classes Planilla)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
+	(single-slot nombre
+		(type STRING)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot esFragil
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot edad
+		(type INTEGER)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(multislot hasA
+		(type INSTANCE)
+;+		(allowed-classes Enfermedad)
+		(create-accessor read-write))
 	(single-slot nivelDeForma
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot esfuerzo
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
@@ -178,12 +181,7 @@
 
 (defclass Independiente
 	(is-a Avi)
-	(role concrete)
-	(single-slot esFragil
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 0 1)
-		(create-accessor read-write)))
+	(role concrete))
 
 (defclass Dependiente
 	(is-a Avi)
@@ -240,31 +238,41 @@
 (defclass Planilla
 	(is-a USER)
 	(role concrete)
+	(multislot dias
+		(type INSTANCE)
+;+		(allowed-classes Dia)
+		(create-accessor read-write))
 	(single-slot fase
 		(type SYMBOL)
 		(allowed-values Inicial Mejora Mantenimiento)
 ;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(multislot dias
-		(type INSTANCE)
-;+		(allowed-classes Dia)
 		(create-accessor read-write)))
 
 (defclass Ejercicio
 	(is-a USER)
 	(role concrete)
+	(single-slot partOf
+		(type INSTANCE)
+;+		(allowed-classes Planilla)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot faseEjercicio
+		(type SYMBOL)
+		(allowed-values Inicial Mejora Mantenimiento)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot duracion
 		(type INTEGER)
 		(range 1 90)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot trabaja
-		(type INSTANCE)
-;+		(allowed-classes Parte+del+Cuerpo)
+	(single-slot diasALaSemana
+		(type INTEGER)
+		(range 0 7)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot faseEjercicio
-		(type SYMBOL)
-		(allowed-values Inicial Mejora Mantenimiento)
+	(single-slot nombreEjercicio
+		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot tipo
@@ -272,19 +280,9 @@
 		(allowed-values Calentamiento Actividad Otro)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot diasALaSemana
-		(type INTEGER)
-		(range 1 7)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot nombreEjercicio
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot partOf
+	(multislot trabaja
 		(type INSTANCE)
-;+		(allowed-classes Planilla)
-;+		(cardinality 0 1)
+;+		(allowed-classes Parte+del+Cuerpo)
 		(create-accessor read-write)))
 
 (defclass Aerobico
@@ -303,12 +301,12 @@
 (defclass Fortalecimiento
 	(is-a Ejercicio)
 	(role concrete)
-	(single-slot series
+	(single-slot repeticiones
 		(type INTEGER)
 		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot repeticiones
+	(single-slot series
 		(type INTEGER)
 		(range 1 %3FVARIABLE)
 ;+		(cardinality 0 1)
@@ -321,14 +319,14 @@
 (defclass Parte+del+Cuerpo
 	(is-a USER)
 	(role concrete)
-	(single-slot grupoMuscular
-		(type SYMBOL)
-		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot parte
 		(type SYMBOL)
 		(allowed-values Superior Inferior)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot grupoMuscular
+		(type SYMBOL)
+		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot nombreParteCuerpo
@@ -339,13 +337,15 @@
 (defclass Dia
 	(is-a USER)
 	(role concrete)
-	(single-slot libre
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-		(default FALSE)
-;+		(cardinality 0 1)
+	(multislot Calentamiento
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
 	(multislot Principal
+		(type INSTANCE)
+;+		(allowed-classes Ejercicio)
+		(create-accessor read-write))
+	(multislot Recuperacion
 		(type INSTANCE)
 ;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
@@ -353,11 +353,9 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(multislot Calentamiento
-		(type INSTANCE)
-;+		(allowed-classes Ejercicio)
-		(create-accessor read-write))
-	(multislot Recuperacion
-		(type INSTANCE)
-;+		(allowed-classes Ejercicio)
+	(single-slot libre
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
