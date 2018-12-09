@@ -25,6 +25,31 @@
 	)
 )
 
+(deffunction minimum "" (?minDias)
+
+	; Init
+	(bind ?dias (find-all-instances ((?d Dia))
+		(neq ?d [nil])
+	))
+	(bind ?nDias 0)
+
+	(foreach ?dia ?dias
+		(bind ?nEjercicios 0)
+		(bind ?calentamientos (send ?dia get-Calentamiento))
+		(bind ?principales (send ?dia get-Principal))
+		(bind ?recuperaciones (send ?dia get-Recuperacion))
+		(bind ?nEjercicios (+ ?nEjercicios (length$ ?calentamientos)))
+		(bind ?nEjercicios (+ ?nEjercicios (length$ ?principales)))
+		(bind ?nEjercicios (+ ?nEjercicios (length$ ?recuperaciones)))
+		(if (> ?nEjercicios 0)
+			then
+			(bind ?nDias (+ ?nDias 1))
+		)
+	)
+
+	(return (not (< ?nDias ?minDias)))
+)
+
 (deffunction tiempoDia "" (?dia)
 	; Init
 	(bind ?timeofday 0)
@@ -265,6 +290,7 @@
 		(and
 			(neq (send ?e get-partOf) [nil])
 			(eq (send ?e get-tipo) Calentamiento)
+			(> (send ?e get-diasALaSemana) 0)
 			(trabajaCommon (send ?e get-trabaja) (send ?ejercicio get-trabaja))
 			(not (alreadyInCalentamientos ?e ?dia))
 		)
@@ -278,6 +304,7 @@
 		(and
 			(neq (send ?e get-partOf) [nil])
 			(eq (send ?e get-tipo) Calentamiento)
+			(> (send ?e get-diasALaSemana) 0)
 			(trabajaCommon (send ?e get-trabaja) (send ?ejercicio get-trabaja))
 			(not (alreadyInCalentamientos ?e ?dia))
 		)
@@ -351,11 +378,20 @@
 			(bind ?calentamiento (getCalentamiento ?ejercicio ?dia))
 			(not (> (+ (tiempoDia ?dia) (send ?calentamiento get-duracion)) ?timelimit))
 			(or (< ?nCalentamientos ?maxCalentamientos) (= ?maxCalentamientos -1))
-		)
+		) do
+
+		; Get listas dia
 		(bind ?calentamientos (insert$ ?calentamientos (+ (length$ ?calentamientos) 1) ?calentamiento))
 		(bind ?recuperaciones (insert$ ?recuperaciones (+ (length$ ?recuperaciones) 1) ?calentamiento))
+
+		; Add calentamiento
 		(send ?dia put-Calentamiento ?calentamientos)
 		(send ?dia put-Recuperacion ?recuperaciones)
+
+		; Update dias a la semana calentamiento
+		(bind ?calentamiento-diasALaSemana (- (send ?calentamiento get-diasALaSemana) 1))
+		(send ?calentamiento put-diasALaSemana ?calentamiento-diasALaSemana)
+
 		(bind ?nCalentamientos (+ ?nCalentamientos 1))
 		;(printout t (tiempoDia ?dia) crlf)
 	)
@@ -1818,6 +1854,7 @@
 		(diasALaSemana ?j&:(> ?j 0))
 		(tipo Actividad | Otro)
 		(nombreEjercicio "Paseo" | "Bicicleta" | "Andar")
+		(partOf ?planilla&:(neq ?planilla [nil]))
 	)
 	?dia <- (object (is-a Dia))
 	(not (done ?ejercicio ?dia))
@@ -1825,30 +1862,30 @@
 	(assert (done ?ejercicio ?dia))
 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
 		then
-		(assignPrincipal ?ejercicio ?dia 90 2 TRUE 5)
+		(assignPrincipal ?ejercicio ?dia 90 ?*max-calentamientos* TRUE 5)
 		(retract ?assignCardiovascular)
 		(assert (aCardiovascular (- ?i 1)))
 	)
 )
 
-; (defrule assignOtros
-; 	(declare (salience -1))
-; 	(new_avi)
-; 	?ejercicio <- (object
-; 		(is-a ?class&:(subclassp ?class Ejercicio))
-; 		(diasALaSemana ?j&:(> ?j 0))
-; 		(tipo Actividad | Otro)
-; 		(partOf ?planilla&:(neq ?planilla [nil]))
-; 	)
-; 	?dia <- (object (is-a Dia))
-; 	(not (done ?ejercicio ?dia))
-; 	=>
-; 	(assert (done ?ejercicio ?dia))
-; 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
-; 		then
-; 		(assignPrincipal ?ejercicio ?dia 90 -1)
-; 	)
-; )
+(defrule assignOtros
+	(declare (salience -1))
+	(new_avi)
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (and (canAsssign ?ejercicio ?dia ?class -1 FALSE) (not (minimum 3)))
+		then
+		(assignPrincipal ?ejercicio ?dia 90 ?*max-calentamientos* FALSE 0)
+	)
+)
 
 (defrule finAssigning
 	(declare (salience -2))

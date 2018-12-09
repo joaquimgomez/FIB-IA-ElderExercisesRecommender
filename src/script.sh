@@ -1,4 +1,5 @@
 (load "classes.pont")
 (load-instances "instances.pins")
+(defglobal ?*max-calentamientos* = 6)
 (load "rules.clp")
 (run)

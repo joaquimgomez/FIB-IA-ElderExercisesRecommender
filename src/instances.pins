@@ -1,5 +1,5 @@
-; Sun Dec 09 17:54:14 GMT+01:00 2018
-;
+; Sun Dec 09 19:46:03 GMT+01:00 2018
+; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -752,7 +752,26 @@
 	(duracion 45)
 	(faseEjercicio Inicial)
 	(nombreEjercicio "TaiChi")
-	(tipo Actividad))
+	(tipo Actividad)
+	(trabaja
+		[practicaProtege_Class10025]
+		[practicaProtege_Class12]
+		[practicaProtege_Class14]
+		[practicaProtege_Class17]
+		[practicaProtege_Class8]
+		[practicaProtege_Class10]
+		[practicaProtege_Class5]
+		[practicaProtege_Class16]
+		[practicaProtege_Class9]
+		[practicaProtege_Class11]
+		[practicaProtege_Class10015]
+		[practicaProtege_Class20010]
+		[practicaProtege_Class20009]
+		[practicaProtege_Class18]
+		[practicaProtege_Class19]
+		[practicaProtege_Class6]
+		[practicaProtege_Class13]
+		[practicaProtege_Class15]))
 
 ([practicaProtege_Class41] of  Aerobico
 

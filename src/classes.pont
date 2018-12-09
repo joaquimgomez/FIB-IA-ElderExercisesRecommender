@@ -1,4 +1,4 @@
-; Sun Dec 09 17:54:14 GMT+01:00 2018
+; Sun Dec 09 19:46:03 GMT+01:00 2018
 ;
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -39,14 +39,14 @@
 		(allowed-values Superior Inferior)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot series
-		(type INTEGER)
-		(range 1 ?VARIABLE)
-;+		(cardinality 0 1)
-		(create-accessor read-write))
 	(single-slot tipo
 		(type SYMBOL)
 		(allowed-values Calentamiento Actividad Otro)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot series
+		(type INTEGER)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot faseEjercicio
@@ -72,19 +72,19 @@
 		(type INSTANCE)
 ;+		(allowed-classes Ejercicio)
 		(create-accessor read-write))
-	(multislot hasA
-		(type INSTANCE)
-;+		(allowed-classes Enfermedad)
+	(single-slot grupoMuscular
+		(type SYMBOL)
+		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot nivelDeForma
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot grupoMuscular
-		(type SYMBOL)
-		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
-;+		(cardinality 1 1)
+	(multislot hasA
+		(type INSTANCE)
+;+		(allowed-classes Enfermedad)
 		(create-accessor read-write))
 	(single-slot esFragil
 		(type SYMBOL)
@@ -159,19 +159,19 @@
 		(type INTEGER)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(multislot hasA
-		(type INSTANCE)
-;+		(allowed-classes Enfermedad)
+	(single-slot esfuerzo
+		(type SYMBOL)
+		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nivelDeForma
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
-	(single-slot esfuerzo
-		(type SYMBOL)
-		(allowed-values Bajo Medio Alto)
-;+		(cardinality 0 1)
+	(multislot hasA
+		(type INSTANCE)
+;+		(allowed-classes Enfermedad)
 		(create-accessor read-write)))
 
 (defclass Independiente
@@ -271,14 +271,14 @@
 		(range 0 7)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
-	(single-slot nombreEjercicio
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
 	(single-slot tipo
 		(type SYMBOL)
 		(allowed-values Calentamiento Actividad Otro)
 ;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot nombreEjercicio
+		(type STRING)
+;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(multislot trabaja
 		(type INSTANCE)
@@ -324,13 +324,13 @@
 		(allowed-values Superior Inferior)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot nombreParteCuerpo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot grupoMuscular
 		(type SYMBOL)
 		(allowed-values PiernaDerecha PiernaIzquierda BrazoDerecho BrazoIzquierdo Torso Espalda Cuello)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot nombreParteCuerpo
-		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write)))
 
