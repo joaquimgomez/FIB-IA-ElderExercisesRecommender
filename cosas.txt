@@ -4,8 +4,6 @@ FALTA:
 	De la lista de asserts ejercicios coger y clasificar hasta duración dia
 	y teniendo en cuenta repeticiones de ejercicios
 
------> Revisar Rodillas Correctas (casi no aparece/aparecía)
------> Revisar ejercicios que requieran mancuernas
 -----> Poner ejercicios que no se puedan hacer con nivel de forma diferente bajo (pa que lo quiere)
 -----> FC max en ejercicios aerbicos segun tabla
 
