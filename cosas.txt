@@ -1,9 +1,4 @@
 
-
--> DETERMINAR DURACIÓN DEL EJERCICIO SEGUN FORMA FÍSICA
-
-----------------------------------------------------
-
 FALTA:
 	Creacion planilla con dias y duración (+ imprimir).
 	De la lista de asserts ejercicios coger y clasificar hasta duración dia
