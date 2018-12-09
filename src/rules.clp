@@ -185,42 +185,6 @@
 	)
 )
 
-(deffunction canAsssign "" (?ejercicio ?dia ?class ?maxFort ?fortNoConsecutivo)
-
-	; Check time
-	(bind ?timeofday (tiempoDia ?dia))
-	(if (> (+ ?timeofday (send ?ejercicio get-duracion)) 90)
-		then (return FALSE)
-	)
-
-	; If isFortalecimiento
-	(if (eq ?class Fortalecimiento)
-		then
-
-		; Count fortalecimiento
-		(if (> ?maxFort -1)
-			then
-			(bind ?nFort (countSubclass Fortalecimiento ?dia))
-			(if (not (< ?nFort ?maxFort))
-				then (return FALSE)
-			)
-		)
-
-		; Non-consecutive days
-		(if ?fortNoConsecutivo
-			then
-			(bind ?prevDay (prevDay ?dia))
-			(bind ?nextDay (nextDay ?dia))
-			(if (or (hasSubclass Fortalecimiento ?prevDay) (hasSubclass Fortalecimiento ?nextDay))
-				then
-				(return FALSE)
-			)
-		)
-	)
-
-	(return TRUE)
-)
-
 (deffunction setDuracion "" (?ejercicio ?duracion)
 	(send ?ejercicio put-duracion ?duracion)
 )
@@ -304,7 +268,48 @@
 	(return (nth$ 1 ?possibleCalentamientos))
 )
 
-(deffunction assignPrincipal "" (?ejercicio ?dia ?timelimit ?maxCalentamientos)
+(deffunction canAsssign "" (?ejercicio ?dia ?class ?maxFort ?fortNoConsecutivo)
+
+	; Check time
+	(bind ?timeofday (tiempoDia ?dia))
+	(if (> (+ ?timeofday (send ?ejercicio get-duracion)) 90)
+		then
+		(printout t "Time max")
+		(return FALSE)
+	)
+
+	; If isFortalecimiento
+	(if (eq ?class Fortalecimiento)
+		then
+
+		; Count fortalecimiento
+		(if (> ?maxFort -1)
+			then
+			(bind ?nFort (countSubclass Fortalecimiento ?dia))
+			(if (not (< ?nFort ?maxFort))
+				then
+				(printout t "Max alcanzado: " ?nFort " " ?maxFort)
+				(return FALSE)
+			)
+		)
+
+		; Non-consecutive days
+		(if ?fortNoConsecutivo
+			then
+			(bind ?prevDay (prevDay ?dia))
+			(bind ?nextDay (nextDay ?dia))
+			(if (or (hasSubclass Fortalecimiento ?prevDay) (hasSubclass Fortalecimiento ?nextDay))
+				then
+				(printout t "No consecutivos")
+				(return FALSE)
+			)
+		)
+	)
+
+	(return TRUE)
+)
+
+(deffunction assignPrincipal "" (?ejercicio ?dia ?timelimit ?maxCalentamientos ?addFortalecimiento ?nFortalecimiento)
 	(printout t (send ?dia get-nombreDia) ": ")
 	(printout t (send ?ejercicio get-nombreEjercicio) crlf)
 
@@ -336,6 +341,21 @@
 		(send ?dia put-Recuperacion ?recuperaciones)
 		(bind ?nCalentamientos (+ ?nCalentamientos 1))
 		;(printout t (tiempoDia ?dia) crlf)
+	)
+
+	; Insert fortalecimiento
+	(if ?addFortalecimiento
+		then
+		(bind ?fortalecimientos (find-all-instances ((?e Fortalecimiento))
+			(neq (send ?e get-partOf) [nil])
+		))
+		(foreach ?ex ?fortalecimientos
+			(if (canAsssign ?ex ?dia Fortalecimiento ?nFortalecimiento FALSE)
+				then
+				(assignPrincipal ?ex ?dia ?timelimit ?maxCalentamientos FALSE 0)
+				(printout t crlf (send ?ex get-nombreEjercicio) crlf crlf)
+			)
+		)
 	)
 )
 
@@ -1730,30 +1750,30 @@
 	(assert (done ?ejercicio ?dia))
 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
 		then
-		(assignPrincipal ?ejercicio ?dia 90 -1)
+		(assignPrincipal ?ejercicio ?dia 90 2 TRUE 5)
 		(retract ?assignCardiovascular)
 		(assert (aCardiovascular (- ?i 1)))
 	)
 )
 
-(defrule assignOtros
-	(declare (salience -1))
-	(new_avi)
-	?ejercicio <- (object
-		(is-a ?class&:(subclassp ?class Ejercicio))
-		(diasALaSemana ?j&:(> ?j 0))
-		(tipo Actividad | Otro)
-		(partOf ?planilla&:(neq ?planilla [nil]))
-	)
-	?dia <- (object (is-a Dia))
-	(not (done ?ejercicio ?dia))
-	=>
-	(assert (done ?ejercicio ?dia))
-	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
-		then
-		(assignPrincipal ?ejercicio ?dia 90 -1)
-	)
-)
+; (defrule assignOtros
+; 	(declare (salience -1))
+; 	(new_avi)
+; 	?ejercicio <- (object
+; 		(is-a ?class&:(subclassp ?class Ejercicio))
+; 		(diasALaSemana ?j&:(> ?j 0))
+; 		(tipo Actividad | Otro)
+; 		(partOf ?planilla&:(neq ?planilla [nil]))
+; 	)
+; 	?dia <- (object (is-a Dia))
+; 	(not (done ?ejercicio ?dia))
+; 	=>
+; 	(assert (done ?ejercicio ?dia))
+; 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
+; 		then
+; 		(assignPrincipal ?ejercicio ?dia 90 -1)
+; 	)
+; )
 
 (defrule finAssigning
 	(declare (salience -2))
