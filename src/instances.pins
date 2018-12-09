@@ -1,4 +1,4 @@
-; Sat Dec 08 23:33:06 CET 2018
+; Sun Dec 09 17:54:14 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -63,7 +63,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "SentadillasBalon")
 	(repeticiones 10)
 	(series 2)
@@ -140,7 +140,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Sentadillas")
 	(repeticiones 10)
 	(series 2)
@@ -164,7 +164,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Abdominales")
 	(repeticiones 10)
 	(series 3)
@@ -177,7 +177,7 @@
 
 	(diasALaSemana 2)
 	(duracion 1)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Flexiones")
 	(repeticiones 5)
 	(series 3)
@@ -208,7 +208,7 @@
 
 	(diasALaSemana 2)
 	(duracion 30)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "Natacion")
 	(tipo Actividad)
 	(trabaja
@@ -233,7 +233,7 @@
 
 	(diasALaSemana 3)
 	(duracion 30)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Baile")
 	(tipo Actividad)
 	(trabaja
@@ -283,7 +283,7 @@
 
 	(diasALaSemana 1)
 	(duracion 90)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "Senderismo")
 	(tipo Actividad)
 	(trabaja
@@ -308,7 +308,7 @@
 
 	(diasALaSemana 2)
 	(duracion 1)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mejora)
 	(nombreEjercicio "SobreUnPie")
 	(tipo Otro)
 	(trabaja
@@ -417,7 +417,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "SentadillasMancuernas")
 	(repeticiones 10)
 	(series 2)
@@ -435,7 +435,7 @@
 
 	(diasALaSemana 2)
 	(duracion 2)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "LevantarseSentarse")
 	(repeticiones 10)
 	(series 2)
@@ -453,7 +453,7 @@
 
 	(diasALaSemana 3)
 	(duracion 10)
-	(faseEjercicio Inicial)
+	(faseEjercicio Mantenimiento)
 	(nombreEjercicio "MaquinaEliptica")
 	(tipo Otro)
 	(trabaja
@@ -641,30 +641,37 @@
 
 ([practicaProtege_Class30005] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Lunes"))
 
 ([practicaProtege_Class30007] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Martes"))
 
 ([practicaProtege_Class30008] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Miercoles"))
 
 ([practicaProtege_Class30009] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Jueves"))
 
 ([practicaProtege_Class30010] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Viernes"))
 
 ([practicaProtege_Class30011] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Sabado"))
 
 ([practicaProtege_Class30012] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Domingo"))
 
 ([practicaProtege_Class31] of  Flexibilidad
@@ -744,7 +751,7 @@
 	(diasALaSemana 2)
 	(duracion 45)
 	(faseEjercicio Inicial)
-	(nombreEjercicio "TaiChi")
+	(nombreEjercicio "Tai Chi")
 	(tipo Actividad))
 
 ([practicaProtege_Class41] of  Aerobico

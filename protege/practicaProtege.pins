@@ -1,4 +1,4 @@
-; Sat Dec 08 16:51:03 GMT+01:00 2018
+; Sun Dec 09 17:54:14 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -309,7 +309,7 @@
 	(diasALaSemana 2)
 	(duracion 1)
 	(faseEjercicio Mejora)
-	(nombreEjercicio "Sobre un Pie")
+	(nombreEjercicio "SobreUnPie")
 	(tipo Otro)
 	(trabaja
 		[practicaProtege_Class9]
@@ -641,30 +641,37 @@
 
 ([practicaProtege_Class30005] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Lunes"))
 
 ([practicaProtege_Class30007] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Martes"))
 
 ([practicaProtege_Class30008] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Miercoles"))
 
 ([practicaProtege_Class30009] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Jueves"))
 
 ([practicaProtege_Class30010] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Viernes"))
 
 ([practicaProtege_Class30011] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Sabado"))
 
 ([practicaProtege_Class30012] of  Dia
 
+	(libre TRUE)
 	(nombreDia "Domingo"))
 
 ([practicaProtege_Class31] of  Flexibilidad

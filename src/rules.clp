@@ -4,83 +4,253 @@
 
 (deffunction general-question "function to ask general questions" (?pregunta)
 	(format t "%s" ?pregunta)
-	(bind ?respuesta (read))
-	(printout t ?respuesta)
+	(bind ?respuesta (read input))
 	?respuesta
 )
 
 (deffunction question-with-default-values "function to ask questions with default answers values" (?pregunta ?defaultValues)
 	(format t "%s" ?pregunta)
 	(printout t "(" ?defaultValues "): ")
-	(bind ?respuesta (read))
-	(printout t ?respuesta)
+	(bind ?respuesta (read input))
 	?respuesta
 )
 
 (deffunction binary-question "function to ask questions with binary answers values" (?pregunta)
 	(format t "%s" ?pregunta)
 	(printout t " (si/no/s/n): ")
-	(bind ?respuesta (read))
-	(printout t ?respuesta)
+	(bind ?respuesta (read input))
 	(if (or (eq (str-compare (lowcase ?respuesta) si) 0) (eq (str-compare (lowcase ?respuesta) s) 0))
 		then (return TRUE)
 		else (return FALSE)
 	)
 )
 
-(deffunction esNecesarioFiltrar "" ()
-	;(printout t "esNecesarioFiltrar" crlf)
-	(bind ?exercicis (find-all-instances ((?e Ejercicio))
-		(neq (send ?e get-partOf) [nil])
-	))
+(deffunction tiempoDia "" (?dia)
+	; Init
+	(bind ?timeofday 0)
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+	(bind ?principales (send ?dia get-Principal))
+	(bind ?recuperaciones (send ?dia get-Recuperacion))
 
-	(bind ?sumaduracion 0)
-
-	(loop-for-count (?i 1 (length$ ?exercicis)) do
-		(bind ?exe (nth$ ?i ?exercicis))
-		(bind ?sumaduracion (+ ?sumaduracion (* (send ?exe get-diasALaSemana) (send ?exe get-duracion))))
+	; Sum time calentamiento
+	(foreach ?calentamiento ?calentamientos do
+		(bind ?timeofday (+ ?timeofday (send ?calentamiento get-duracion)))
 	)
-	;(printout t ?sumaduracion)
-	(if (<= ?sumaduracion 100)
-		then
-			(return TRUE)
-		else
-			(assert (finFiltroAss))
-			(return FALSE)
+
+	; Sum time principales
+	(foreach ?principal ?principales do
+		(bind ?timeofday (+ ?timeofday (send ?principal get-duracion)))
+	)
+
+	; Sum time recuperaciones
+	(foreach ?recuperacion ?recuperaciones do
+		(bind ?timeofday (+ ?timeofday (send ?recuperacion get-duracion)))
+	)
+
+	; Return
+	(return ?timeofday)
+)
+
+(deffunction countCalentamientos "" (?dia)
+	; Init
+	(bind ?count 0)
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+
+	; Sum count calentamiento
+	(foreach ?calentamiento ?calentamientos do
+			(bind ?count (+ ?count 1))
+	)
+
+	(return ?count)
+)
+
+(deffunction countSubclass "" (?class ?dia)
+	; Init
+	(bind ?count 0)
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+	(bind ?principales (send ?dia get-Principal))
+	(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+	; Sum count subclass calentamiento
+	(foreach ?calentamiento ?calentamientos do
+		(if (eq (class ?calentamiento) ?class)
+			then
+			(bind ?count (+ ?count 1))
+		)
+	)
+
+	; Sum count subclass principales
+	(foreach ?principal ?principales do
+		(if (eq (class ?principal) ?class)
+			then
+			(bind ?count (+ ?count 1))
+		)
+	)
+
+	; Sum count subclass recuperaciones
+	(foreach ?recuperacion ?recuperaciones do
+		(if (eq (class ?recuperacion) ?class)
+			then
+			(bind ?count (+ ?count 1))
+		)
+	)
+
+	(return ?count)
+)
+
+(deffunction hasSubclass "" (?class ?dia)
+
+	; Init
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+	(bind ?principales (send ?dia get-Principal))
+	(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+	; Sum count subclass calentamiento
+	(foreach ?calentamiento ?calentamientos do
+		(if (eq (class ?calentamiento) ?class)
+			then (return TRUE)
+		)
+	)
+
+	; Sum count subclass principales
+	(foreach ?principal ?principales do
+		(if (eq (class ?principal) ?class)
+			then (return TRUE)
+		)
+	)
+
+	; Sum count subclass recuperaciones
+	(foreach ?recuperacion ?recuperaciones do
+		(if (eq (class ?recuperacion) ?class)
+			then (return TRUE)
+		)
+	)
+
+	(return FALSE)
+)
+
+(deffunction findDia "" (?name)
+	(bind ?dia (find-instance ((?d Dia))
+		(eq (send ?d get-nombreDia) ?name)
+	))
+	(bind ?dia (nth$ 1 ?dia))
+	(return ?dia)
+)
+
+(deffunction prevDay "" (?dia)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Lunes") 0)
+		then (return (findDia "Domingo"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Martes") 0)
+		then (return (findDia "Lunes"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Miercoles") 0)
+		then (return (findDia "Martes"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Jueves") 0)
+		then (return (findDia "Miercoles"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Viernes") 0)
+		then (return (findDia "Jueves"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Sabado") 0)
+		then (return (findDia "Viernes"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Domingo") 0)
+		then (return (findDia "Sabado"))
 	)
 )
 
-(deffunction eliminarUno "" ()
+(deffunction nextDay "" (?dia)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Lunes") 0)
+		then (return (findDia "Martes"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Martes") 0)
+		then (return (findDia "Miercoles"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Miercoles") 0)
+		then (return (findDia "Jueves"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Jueves") 0)
+		then (return (findDia "Viernes"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Viernes") 0)
+		then (return (findDia "Sabado"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Sabado") 0)
+		then (return (findDia "Domingo"))
+	)
+	(if (eq (str-compare (send ?dia get-nombreDia) "Domingo") 0)
+		then (return (findDia "Lunes"))
+	)
+)
 
-	(bind ?exercicis (find-all-instances ((?e Ejercicio))
-		(neq (send ?e get-partOf) [nil])
-	))
+(deffunction canAsssign "" (?ejercicio ?dia ?class ?maxFort ?fortNoConsecutivo)
 
-	(bind ?sumadias 0)
-
-	(loop-for-count (?i 1 (length$ ?exercicis)) do
-		(bind ?exe (nth$ ?i ?exercicis))
-		(bind ?sumadias (+ ?sumadias (send ?exe get-diasALaSemana)))
+	; Check time
+	(bind ?timeofday (tiempoDia ?dia))
+	(if (> (+ ?timeofday (send ?ejercicio get-duracion)) 90)
+		then (return FALSE)
 	)
 
-	(loop-for-count (?j 1 (length$ ?exercicis)) do
-		(bind ?rand (random 1 (length$ ?exercicis)))
-		(bind ?exe (nth$ ?j ?exercicis))
-		(if (>= (- ?sumadias (send ?exe get-diasALaSemana)) 3)
+	; If isFortalecimiento
+	(if (eq ?class Fortalecimiento)
+		then
+
+		; Count fortalecimiento
+		(if (> ?maxFort -1)
 			then
-				(send ?exe put-partOf [nil])
-				(return TRUE)
+			(bind ?nFort (countSubclass Fortalecimiento ?dia))
+			(if (not (< ?nFort ?maxFort))
+				then (return FALSE)
+			)
+		)
+
+		; Non-consecutive days
+		(if ?fortNoConsecutivo
+			then
+			(bind ?prevDay (prevDay ?dia))
+			(bind ?nextDay (nextDay ?dia))
+			(if (or (hasSubclass Fortalecimiento ?prevDay) (hasSubclass Fortalecimiento ?nextDay))
+				then
+				(return FALSE)
+			)
 		)
 	)
-	;(assert (finFiltro))
+
+	(return TRUE)
 )
 
 (deffunction setDuracion "" (?ejercicio ?duracion)
 	(send ?ejercicio put-duracion ?duracion)
 )
 
+(deffunction trabajaCommon(?trabaja1 ?trabaja2)
+	(foreach ?musculo1 ?trabaja1
+		(foreach ?musculo2 ?trabaja2
+			(if (eq ?musculo1 ?musculo2)
+				then (return TRUE)
+			)
+		)
+	)
+	(return FALSE)
+)
+
 (deffunction setSeries "" (?ejercicio ?series)
 	(send ?ejercicio put-series ?series)
+)
+
+(deffunction alreadyInCalentamientos (?ejercicio ?dia)
+	; Init
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+
+	; Check calentamiento
+	(foreach ?calentamiento ?calentamientos do
+		(if (eq ?calentamiento ?ejercicio) then (return TRUE))
+	)
+
+	; Return
+	(return FALSE)
 )
 
 (deffunction setRepeticiones "" (?ejercicio ?repeticiones)
@@ -94,6 +264,83 @@
 		then (send ?ejercicio put-faseEjercicio Mejora))
 	(if (eq (str-compare ?nivelForma "Alto") 0)
 		then (send ?ejercicio put-faseEjercicio Mantenimiento))
+)
+
+(deffunction alreadyInRecuperacion (?ejercicio ?dia)
+	; Init
+	(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+	; Check recuperaciones
+	(foreach ?recuperacion ?recuperaciones do
+		(if (eq ?recuperacion ?ejercicio) then (return TRUE))
+	)
+
+	; Return
+	(return FALSE)
+)
+
+(deffunction hasCalentamiento "" (?ejercicio ?dia)
+	(bind ?possibleCalentamientos (find-all-instances ((?e Ejercicio))
+		(and
+			(neq (send ?e get-partOf) [nil])
+			(eq (send ?e get-tipo) Calentamiento)
+			(trabajaCommon (send ?e get-trabaja) (send ?ejercicio get-trabaja))
+			(not (alreadyInCalentamientos ?e ?dia))
+		)
+	))
+	;(printout t ?possibleCalentamientos crlf)
+	(return (> (length$ ?possibleCalentamientos) 0))
+)
+
+(deffunction getCalentamiento "" (?ejercicio ?dia)
+	(bind ?possibleCalentamientos (find-instance ((?e Ejercicio))
+		(and
+			(neq (send ?e get-partOf) [nil])
+			(eq (send ?e get-tipo) Calentamiento)
+			(trabajaCommon (send ?e get-trabaja) (send ?ejercicio get-trabaja))
+			(not (alreadyInCalentamientos ?e ?dia))
+		)
+	))
+	(return (nth$ 1 ?possibleCalentamientos))
+)
+
+(deffunction assignPrincipal "" (?ejercicio ?dia ?timelimit ?maxCalentamientos)
+	(printout t (send ?dia get-nombreDia) ": ")
+	(printout t (send ?ejercicio get-nombreEjercicio) crlf)
+
+	; Init
+	(bind ?calentamientos (send ?dia get-Calentamiento))
+	(bind ?principales (send ?dia get-Principal))
+	(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+	; Insert ejercicio
+	(bind ?principales (insert$ ?principales (+ (length$ ?principales) 1) ?ejercicio))
+	(send ?dia put-Principal ?principales)
+
+	; Update diasALaSemana
+	(bind ?new-diasALaSemana (- (send ?ejercicio get-diasALaSemana) 1))
+	(send ?ejercicio put-diasALaSemana ?new-diasALaSemana)
+
+	(bind ?nCalentamientos (countCalentamientos ?dia))
+
+	; Insert calentamientos
+	(while (and
+			(hasCalentamiento ?ejercicio ?dia)
+			(bind ?calentamiento (getCalentamiento ?ejercicio ?dia))
+			(not (> (+ (tiempoDia ?dia) (send ?calentamiento get-duracion)) ?timelimit))
+			(or (< ?nCalentamientos ?maxCalentamientos) (= ?maxCalentamientos -1))
+		)
+		(bind ?calentamientos (insert$ ?calentamientos (+ (length$ ?calentamientos) 1) ?calentamiento))
+		(bind ?recuperaciones (insert$ ?recuperaciones (+ (length$ ?recuperaciones) 1) ?calentamiento))
+		(send ?dia put-Calentamiento ?calentamientos)
+		(send ?dia put-Recuperacion ?recuperaciones)
+		(bind ?nCalentamientos (+ ?nCalentamientos 1))
+		;(printout t (tiempoDia ?dia) crlf)
+	)
+)
+
+(deffunction assignCalentamientosExtra "" ()
+	(printout t "Assigning extra!")
 )
 
 ;;;
@@ -1428,88 +1675,103 @@
 (defrule finEjercicios
 	(new_avi)
 	=>
-	(printout t "Fin" crlf crlf)
-	;(watch all)
-
-	(bind ?exercicis (find-all-instances ((?e Ejercicio))
-		(neq (send ?e get-partOf) [nil])
-	))
-
-	(bind ?sumaduracion 0)
-
-	(loop-for-count (?i 1 (length$ ?exercicis)) do
-		(bind ?exe (nth$ ?i ?exercicis))
-		(bind ?sumaduracion (+ ?sumaduracion (* (send ?exe get-diasALaSemana) (send ?exe get-duracion))))
-	)
-	;(printout t ?sumaduracion)
-	(if (> ?sumaduracion 100) then (assert (necesitaFiltro ?sumaduracion)))
-
-	(focus filter)
+	(assert (aCardiovascular 2))
+	(focus recomendation)
 )
 
 
 
 
 ;;;
-;;;						FILTER MODULE
+;;;						RECOMENDATION MODULE
 ;;;
 
-(defmodule filter
+(defmodule recomendation
 	(import MAIN ?ALL)
 	(import ask_questions ?ALL)
 	(import inference_of_data ?ALL)
 	(export ?ALL)
 )
 
-(defrule filtrar
-	?f <- (necesitaFiltro ?sumaduracion)
+; (defrule assignFragilidad
+; 	(declare (salience 0))
+; 	(new_avi)
+; 	?assignFragilidad <- (aFragilidad ?i&:(> ?i 0))
+; 	?ejercicio <- (object
+; 		(is-a ?class&:(subclassp ?class Ejercicio))
+; 		(diasALaSemana ?j&:(> ?j 0))
+; 		(tipo Actividad | Otro)
+; 	)
+; 	?dia <- (object (is-a Dia))
+; 	(not (done ?ejercicio ?dia))
+; 	=>
+; 	(assert (done ?ejercicio ?dia))
+; 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
+; 		then
+; 		(assignPrincipal ?ejercicio ?dia 90 -1)
+; 		(retract ?assignFragilidad)
+; 		(assert (aFragilidad (- ?i 1)))
+; 	)
+; )
 
+(defrule assignCardiovascular
+	(declare (salience 0))
+	(new_avi)
+	?assignCardiovascular <- (aCardiovascular ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Paseo" | "Bicicleta" | "Andar")
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
 	=>
-
-	(bind ?exercicis (find-all-instances ((?e Ejercicio))
-		(neq (send ?e get-partOf) [nil])
-	))
-
-	(bind ?sumadias 0)
-
-	(loop-for-count (?i 1 (length$ ?exercicis)) do
-		(bind ?exe (nth$ ?i ?exercicis))
-		(bind ?sumadias (+ ?sumadias (send ?exe get-diasALaSemana)))
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia 90 -1)
+		(retract ?assignCardiovascular)
+		(assert (aCardiovascular (- ?i 1)))
 	)
-
-	(bind ?j 1)
-	(while (and (<= ?j (length$ ?exercicis)) (> ?sumaduracion 630))
-	 do
-		(bind ?rand (random 1 (length$ ?exercicis)))
-		(bind ?exe (nth$ ?rand ?exercicis))
-		(if (>= (- ?sumadias (send ?exe get-diasALaSemana)) 3)
-			then
-				(bind ?sumadias (- ?sumadias (send ?exe get-diasALaSemana)))
-				(bind ?sumaduracion (- ?sumaduracion (send ?exe get-duracion)))
-				(send ?exe put-partOf [nil])
-		)
-		(bind ?j (+ ?j 1))
-	)
-
-	(assert (finFiltroAss))
 )
 
-(defrule finFiltro
-	(finFiltroAss)
+(defrule assignOtros
+	(declare (salience -1))
+	(new_avi)
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
 	=>
-	(focus recomendations)
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia 90 -1)
+	)
+)
+
+(defrule finAssigning
+	(declare (salience -2))
+	=>
+	(assignCalentamientosExtra)
+	(focus printing)
 )
 
 
 ;;;
-;;;						RECOMENDATIONS MODULE
+;;;						PRINTING MODULE
 ;;;
 
-(defmodule recomendations
+(defmodule printing
 	(import MAIN ?ALL)
 	(import ask_questions ?ALL)
 	(import inference_of_data ?ALL)
-	(import filter ?ALL)
+	(import recomendation ?ALL)
 	(export ?ALL)
 )
 
@@ -1520,9 +1782,54 @@
 		(neq (send ?e get-partOf) [nil])
 	))
 
-	(loop-for-count (?i 1 (length$ ?exercicis)) do
-		(bind ?exe (nth$ ?i ?exercicis))
-		(send ?exe print)
+	(bind ?dias (find-all-instances ((?d Dia))
+		(neq ?d [nil])
+	))
+
+	(printout t crlf)
+
+	(foreach ?exe ?exercicis do
+		(printout t (send ?exe get-nombreEjercicio))
 		(printout t crlf)
 	)
+
+	(printout t crlf)
+
+	(foreach ?dia ?dias do
+
+		(printout t (upcase (send ?dia get-nombreDia)))
+		(printout t crlf)
+
+		(bind ?calentamientos (send ?dia get-Calentamiento))
+		(bind ?principales (send ?dia get-Principal))
+		(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+		(printout t "  " "Calentamiento:" crlf)
+
+		(foreach ?calentamiento ?calentamientos do
+			(printout t "    " (send ?calentamiento get-nombreEjercicio))
+			(printout t " - " (send ?calentamiento get-duracion) " min.")
+			(printout t crlf)
+		)
+
+		(printout t crlf "  " "Ejercicio:" crlf)
+
+		(foreach ?principal ?principales do
+			(printout t "    " (send ?principal get-nombreEjercicio))
+			(printout t " - " (send ?principal get-duracion) " min.")
+			(printout t crlf)
+		)
+
+		(printout t crlf "  " "Recuperacion:" crlf)
+
+		(foreach ?recuperacion ?recuperaciones do
+			(printout t "    " (send ?recuperacion get-nombreEjercicio))
+			(printout t " - " (send ?recuperacion get-duracion) " min.")
+			(printout t crlf)
+		)
+
+		(printout t crlf)
+	)
+
+	(printout t crlf "FIN" crlf crlf)
 )

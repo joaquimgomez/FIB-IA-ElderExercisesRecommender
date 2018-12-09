@@ -1,4 +1,4 @@
-; Sat Dec 08 16:51:03 GMT+01:00 2018
+; Sun Dec 09 17:54:14 GMT+01:00 2018
 ; 
 ;+ (version "3.5")
 ;+ (build "Build 663")
@@ -13,7 +13,7 @@
 		(create-accessor read-write))
 	(single-slot diasALaSemana
 		(type INTEGER)
-		(range 1 7)
+		(range 0 7)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot nombreEjercicio
@@ -125,6 +125,12 @@
 	(single-slot esfuerzo
 		(type SYMBOL)
 		(allowed-values Bajo Medio Alto)
+;+		(cardinality 0 1)
+		(create-accessor read-write))
+	(single-slot libre
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot edad
@@ -262,7 +268,7 @@
 		(create-accessor read-write))
 	(single-slot diasALaSemana
 		(type INTEGER)
-		(range 1 7)
+		(range 0 7)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot nombreEjercicio
@@ -346,4 +352,10 @@
 	(single-slot nombreDia
 		(type STRING)
 ;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot libre
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+		(default FALSE)
+;+		(cardinality 0 1)
 		(create-accessor read-write)))
