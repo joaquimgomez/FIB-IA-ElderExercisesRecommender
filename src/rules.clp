@@ -412,6 +412,109 @@
 	)
 )
 
+(deffunction calculaFCmax "calcula la frecuencia cardíaca máxima de un avi" (?avi)
+	return (integer (- 208 (* 0.7 (send ?avi get-edad))))
+)
+
+(deffunction setFCejercicio "calcula la FC de un ejercicio indicado para una enfermedad y avi"(?ejercicio ?enfermedad ?avi)
+	(switch ?enfermedad
+		;;FRAGILIDAD
+		(case Fragilidad then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 80))))
+		;;CARDIOVASCULAR
+		(case Cardiovascular then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 65))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 80))))
+		;;HIPERTENSIÓN
+		(case Hipertension then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 75))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 80))))
+		;;SOBREPESO
+		(case Sobrepeso then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 80))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 90))))
+		;;DIABTETES
+		(case Diabetes then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 65))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 70))))
+		;;PULMONAR
+		(case Pulmonar then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 80))))
+		;;OSTEOPOROSIS
+		(case Osteoporosis then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 80))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 85))))
+		;;CÁNCER
+		(case Cancer then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 75))))
+		;;ARTRITIS
+		(case Artritis then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 70))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 80))))
+		;;FIBROSIS
+		(case Fibrosis then
+			(send ?ejercicio put-porcentajeFCmax 75))
+		;;DEPRESIÓN
+		(case Despresion then
+			(switch (send ?ejercicio get-faseEjercicio)
+				(case Inicial then
+					(send ?ejercicio put-porcentajeFCmax 60))
+				(case Mejora then
+					(send ?ejercicio put-porcentajeFCmax 75))
+				(case Mantenimiento then
+					(send ?ejercicio put-porcentajeFCmax 90))))
+		)
+	return (/ (* (calculaFCmax ?avi) (send ?ejercicio get-porcentajeFCmax)) 100)
+)
+
 (deffunction assignCalentamientosExtra "" ()
 	(printout t "Assigning extra!")
 )
@@ -460,7 +563,7 @@
 																		 (esFragil ?esFragil))
 							(assert (Independiente))
 			)
-			(bind ?esfuerzo (question-with-default-values "Esfuerzo dispuesto a asumir" "Bajo(0-2)/Moderado(2-4)/Alto(4-10)"))
+			(bind ?esfuerzo (question-with-default-values "Esfuerzo dispuesto a asumir" "Bajo(0-3)/Moderado(4-6)/Alto(7-10)"))
 			(assert (Avi ?nombre))
 		else
 			(printout t "No cumple los requisitos de edad para utilizar este programa." crlf)
