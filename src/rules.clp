@@ -189,6 +189,23 @@
 	(send ?ejercicio put-duracion ?duracion)
 )
 
+(deffunction setDuracionFuerza "determina la duración del ejercicio de fuerza según series y repeticiones" (?ejercicio)
+	(bind ?duracion 0)
+	(bind ?repeticiones (* (send ?ejercicio get-repeticiones) (send ?ejercicio get-series)))
+	;;entre 20 y 30 repeticiones -> 3 min
+	;;entre 10 y 20 -> 2 min
+	;;entre 0 y 10 -> 1 min
+	(if (< ?repeticiones 31) then
+		(bind ?duracion 2)
+		else
+			(if (< ?repeticiones 46) then
+				(bind ?duracion 3)
+				else
+					(bind ?duracion 5)))
+
+	(send ?ejercicio put-duracion ?duracion)
+)
+
 (deffunction trabajaCommon(?trabaja1 ?trabaja2)
 	(foreach ?musculo1 ?trabaja1
 		(foreach ?musculo2 ?trabaja2
@@ -873,6 +890,8 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioElevacionPiernas "rule to add exercise to the plan"
@@ -891,6 +910,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioElevacionRodillas "rule to add exercise to the plan"
@@ -910,6 +930,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioExtensionCadera "rule to add exercise to the plan"
@@ -928,6 +949,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioExtensionRodillas "rule to add exercise to the plan"
@@ -947,6 +969,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioExtensionTriceps "rule to add exercise to the plan"
@@ -966,6 +989,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFlexionCadera "rule to add exercise to the plan"
@@ -984,6 +1008,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoFlexiones "rule to add exercise to the plan"
@@ -1007,6 +1032,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 2 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFlexionPlantar "rule to add exercise to the plan"
@@ -1026,6 +1052,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFlexionRodillas"rule to add exercise to the plan"
@@ -1045,6 +1072,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoLevantarseSentarse "rule to add exercise to the plan"
@@ -1069,6 +1097,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioMaquinaEliptica "rule to add exercise to the plan"
@@ -1120,6 +1149,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoPesaBicepIzquierdo "rule to add exercise to the plan"
@@ -1139,6 +1169,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoPesaTricepDerecho "rule to add exercise to the plan"
@@ -1158,6 +1189,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoPesaTricepIzquierdo "rule to add exercise to the plan"
@@ -1177,6 +1209,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 5 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoSentadillas "rule to add exercise to the plan"
@@ -1201,6 +1234,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoSentadillasBalon "rule to add exercise to the plan"
@@ -1225,6 +1259,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 (defrule ejercicioFortalecimientoSentadillasMancuernas "rule to add exercise to the plan"
@@ -1249,6 +1284,7 @@
 	(if (eq (str-compare ?nivelDeForma Alto) 0) then
 		(setSeries ?exe (+ 1 (send ?exe get-series)))
 		(setRepeticiones ?exe (+ 7 (send ?exe get-repeticiones))))
+	(setDuracionFuerza ?exe)
 )
 
 ;;;						AERÓBICOS
