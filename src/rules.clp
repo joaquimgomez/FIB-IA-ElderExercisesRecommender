@@ -2002,10 +2002,10 @@
 
 
 ;;;
-;;;						RECOMENDATION MODULE
+;;;						RECOMMENDATION MODULE
 ;;;
 
-(defmodule recomendation
+(defmodule recommendation
 	(import MAIN ?ALL)
 	(import ask_questions ?ALL)
 	(import inference_of_data ?ALL)
