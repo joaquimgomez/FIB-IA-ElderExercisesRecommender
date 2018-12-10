@@ -513,6 +513,45 @@
 	return (/ (* (calculaFCmax ?avi) (send ?ejercicio get-porcentajeFCmax)) 100)
 )
 
+(deffunction is-assigned "" (?ejercicio ?dias)
+	(foreach ?dia ?dias
+		; Init
+		(bind ?calentamientos (send ?dia get-Calentamiento))
+		(bind ?principales (send ?dia get-Principal))
+		(bind ?recuperaciones (send ?dia get-Recuperacion))
+
+		; Sum count subclass calentamiento
+		(foreach ?calentamiento ?calentamientos do
+			(if (eq (str-compare
+				(send ?calentamiento get-nombreEjercicio)
+				(send ?ejercicio get-nombreEjercicio)) 0)
+				then
+				(return TRUE)
+			)
+		)
+
+		; Sum count subclass principales
+		(foreach ?principal ?principales do
+			(if (eq (str-compare
+				(send ?principal get-nombreEjercicio)
+				(send ?ejercicio get-nombreEjercicio)) 0)
+				then
+				(return TRUE)
+			)
+		)
+
+		; Sum count subclass recuperaciones
+		(foreach ?recuperacion ?recuperaciones do
+			(if (eq (str-compare
+				(send ?recuperacion get-nombreEjercicio)
+				(send ?ejercicio get-nombreEjercicio)) 0)
+				then
+				(return TRUE)
+			)
+		)
+	)
+	(return FALSE)
+)
 
 
 ;;;
@@ -527,7 +566,9 @@
 	(initial-fact)
 	=>
 	(printout t "--------------------------------------------------------------" crlf)
-	(printout t "------------ Sistema de Recomendacion de Ejercicios ----------" crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t "------------ SISTEMA DE RECOMENDACION DE EJERCICIOS ----------" crlf)
+	(printout t "--------------------------------------------------------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t crlf)
 	(assert (new_avi))
@@ -587,6 +628,11 @@
 			(printout t "Recomendamos que no haga ejercicio y acuda a su médico de cabecera.")
 			(assert (FIN))
 		else
+			(printout t crlf)
+			(printout t "--------------------------------------------------------------" crlf)
+			(printout t "-------------------- Dolencias musculares --------------------" crlf)
+			(printout t "--------------------------------------------------------------" crlf)
+			(printout t crlf)
 			(focus ask_questions)
 	)
 )
@@ -722,6 +768,11 @@
 (defrule check_partes_del_cuerpo "rule to know the status of different parts of the body"
 	(new_avi)
 	=>
+	(printout t crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t "-------------------- Dolencias musculares --------------------" crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t crlf)
 	(bind ?bicepDerecho (binary-question "Presenta dolencia en el Bicep Derecho?"))
 	(if (not ?bicepDerecho) then (assert (bicepDerechoCorrecto)))
 	(bind ?bicepIzquierdo (binary-question "Presenta dolencia en el Bicep Izquierdo?"))
@@ -2283,10 +2334,17 @@
 	))
 
 	(printout t crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t "------------------- Planilla de ejercicios -------------------" crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t crlf)
 
+	(printout t "EXERCICIS NO ASIGNATS" crlf)
 	(foreach ?exe ?exercicis do
-		(printout t (send ?exe get-nombreEjercicio))
-		(printout t crlf)
+		(if (not (is-assigned ?exe ?dias))
+			then
+			(printout t "   " (send ?exe get-nombreEjercicio) crlf)
+		)
 	)
 
 	(printout t crlf)
