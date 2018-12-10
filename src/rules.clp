@@ -631,7 +631,7 @@
 		else
 			(printout t crlf)
 			(printout t "--------------------------------------------------------------" crlf)
-			(printout t "-------------------- Dolencias musculares --------------------" crlf)
+			(printout t "------------------------ Enfermedades ------------------------" crlf)
 			(printout t "--------------------------------------------------------------" crlf)
 			(printout t crlf)
 			(focus ask_questions)
@@ -833,7 +833,7 @@
 (defrule noMoreQuestions "rule to activate the next module"
 	(new_avi)
 	=>
-	(printout t "End of questions" crlf crlf)
+	(printout t "FIN PREGUNTAS" crlf crlf)
 	(bind ?planilla (make-instance planilla of Planilla
 		(fase Inicial)
 		(dias (find-all-instances ((?d Dia)) (neq ?d [nil])))
@@ -1996,7 +1996,7 @@
 (defrule finEjercicios
 	(new_avi)
 	=>
-	(focus recomendation)
+	(focus recommendation)
 )
 
 
@@ -2326,7 +2326,7 @@
 	(import MAIN ?ALL)
 	(import ask_questions ?ALL)
 	(import inference_of_data ?ALL)
-	(import recomendation ?ALL)
+	(import recommendation ?ALL)
 	(export ?ALL)
 )
 
@@ -2348,7 +2348,7 @@
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t crlf)
 
-	(printout t "EXERCICIS NO ASIGNATS" crlf)
+	(printout t "EJERCICIOS NO ASIGNADOS" crlf)
 	(foreach ?exe ?exercicis do
 		(if (not (is-assigned ?exe ?dias))
 			then
