@@ -316,9 +316,8 @@
 
 	; Check time
 	(bind ?timeofday (tiempoDia ?dia))
-	(if (> (+ ?timeofday (send ?ejercicio get-duracion)) 90)
+	(if (> (+ ?timeofday (send ?ejercicio get-duracion)) ?*max-duracion*)
 		then
-		(printout t "Time max")
 		(return FALSE)
 	)
 
@@ -332,7 +331,6 @@
 			(bind ?nFort (countSubclass Fortalecimiento ?dia))
 			(if (not (< ?nFort ?maxFort))
 				then
-				(printout t "Max alcanzado: " ?nFort " " ?maxFort)
 				(return FALSE)
 			)
 		)
@@ -344,7 +342,6 @@
 			(bind ?nextDay (nextDay ?dia))
 			(if (or (hasSubclass Fortalecimiento ?prevDay) (hasSubclass Fortalecimiento ?nextDay))
 				then
-				(printout t "No consecutivos")
 				(return FALSE)
 			)
 		)
@@ -354,8 +351,6 @@
 )
 
 (deffunction assignPrincipal "" (?ejercicio ?dia ?timelimit ?maxCalentamientos ?addFortalecimiento ?nFortalecimiento)
-	(printout t (send ?dia get-nombreDia) ": ")
-	(printout t (send ?ejercicio get-nombreEjercicio) crlf)
 
 	; Init
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -389,8 +384,11 @@
 		(send ?dia put-Recuperacion ?recuperaciones)
 
 		; Update dias a la semana calentamiento
-		(bind ?calentamiento-diasALaSemana (- (send ?calentamiento get-diasALaSemana) 1))
-		(send ?calentamiento put-diasALaSemana ?calentamiento-diasALaSemana)
+		(if (neq (class ?calentamiento) Flexibilidad)
+			then
+			(bind ?calentamiento-diasALaSemana (- (send ?calentamiento get-diasALaSemana) 1))
+			(send ?calentamiento put-diasALaSemana ?calentamiento-diasALaSemana)
+		)
 
 		(bind ?nCalentamientos (+ ?nCalentamientos 1))
 		;(printout t (tiempoDia ?dia) crlf)
@@ -406,7 +404,6 @@
 			(if (canAsssign ?ex ?dia Fortalecimiento ?nFortalecimiento FALSE)
 				then
 				(assignPrincipal ?ex ?dia ?timelimit ?maxCalentamientos FALSE 0)
-				(printout t crlf (send ?ex get-nombreEjercicio) crlf crlf)
 			)
 		)
 	)
@@ -748,7 +745,7 @@
 (defrule noMoreQuestions "rule to activate the next module"
 	(new_avi)
 	=>
-	(printout t "End of questions" crlf)
+	(printout t "End of questions" crlf crlf)
 	(bind ?planilla (make-instance planilla of Planilla
 		(fase Inicial)
 		(dias (find-all-instances ((?d Dia)) (neq ?d [nil])))
@@ -1910,7 +1907,12 @@
 (defrule finEjercicios
 	(new_avi)
 	=>
+	(assert (aFragilidad 3))
 	(assert (aCardiovascular 2))
+	(assert (aHipertension 7))
+	(assert (aSobrepeso 7))
+	(assert (aDiabetes 3))
+	(assert (aPulmonar 4))
 	(focus recomendation)
 )
 
@@ -1928,26 +1930,28 @@
 	(export ?ALL)
 )
 
-; (defrule assignFragilidad
-; 	(declare (salience 0))
-; 	(new_avi)
-; 	?assignFragilidad <- (aFragilidad ?i&:(> ?i 0))
-; 	?ejercicio <- (object
-; 		(is-a ?class&:(subclassp ?class Ejercicio))
-; 		(diasALaSemana ?j&:(> ?j 0))
-; 		(tipo Actividad | Otro)
-; 	)
-; 	?dia <- (object (is-a Dia))
-; 	(not (done ?ejercicio ?dia))
-; 	=>
-; 	(assert (done ?ejercicio ?dia))
-; 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
-; 		then
-; 		(assignPrincipal ?ejercicio ?dia 90 -1)
-; 		(retract ?assignFragilidad)
-; 		(assert (aFragilidad (- ?i 1)))
-; 	)
-; )
+(defrule assignFragilidad
+	(declare (salience 0))
+	(new_avi)
+	?assignFragilidad <- (aFragilidad ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Caminar" | "Bicicleta")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 8 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 6)
+		(retract ?assignFragilidad)
+		(assert (aFragilidad (- ?i 1)))
+	)
+)
 
 (defrule assignCardiovascular
 	(declare (salience 0))
@@ -1966,9 +1970,116 @@
 	(assert (done ?ejercicio ?dia))
 	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
 		then
-		(assignPrincipal ?ejercicio ?dia 90 ?*max-calentamientos* TRUE 5)
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 5)
 		(retract ?assignCardiovascular)
 		(assert (aCardiovascular (- ?i 1)))
+	)
+)
+
+(defrule assignHipertension
+	(declare (salience 0))
+	(new_avi)
+	?assignHipertension <- (aHipertension ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Caminar" | "Trotar" | "Correr" | "Remo" | "Nadar" | "Bicicleta"
+		 | "Abdominales" | "ElevacionPiernas" | "ElevacionRodillas" | "ExtensionCadera"
+		 | "ExtensionRodillas" | "ExtensionTriceps" | "FlexionCadera" | "Flexiones"
+		 | "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse" | "MaquinaEliptica"
+		 | "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho" | "PesaTricepIzquierdo"
+		 | "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas" | "TaiChi" | "SobreUnPie"
+		)
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 10 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia 60 ?*max-calentamientos* FALSE 0)
+		(retract ?assignHipertension)
+		(assert (aHipertension (- ?i 1)))
+	)
+)
+
+(defrule assignSobrepeso
+	(declare (salience 0))
+	(new_avi)
+	?assignSobrepeso <- (aSobrepeso ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Caminar" | "Trotar" | "Bicicleta" | "Abdominales"
+		| "ElevacionPiernas" | "ElevacionRodillas" | "ExtensionCadera"
+		| "ExtensionRodillas" | "ExtensionTriceps" | "FlexionCadera" | "Flexiones"
+		| "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse" | "MaquinaEliptica"
+		| "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho" | "PesaTricepIzquierdo"
+		| "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 10 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia 60 ?*max-calentamientos* FALSE 0)
+		(retract ?assignSobrepeso)
+		(assert (aSobrepeso (- ?i 1)))
+	)
+)
+
+(defrule assignDiabetes
+	(declare (salience 0))
+	(new_avi)
+	?assignDiabetes <- (aDiabetes ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Natacion" | "Remo" | "Bicicleta" | "MaquinaEliptica")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 8 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 6)
+		(retract ?assignDiabetes)
+		(assert (aDiabetes (- ?i 1)))
+	)
+)
+
+(defrule assignPulmonar
+	(declare (salience 0))
+	(new_avi)
+	?assignPulmonar <- (aPulmonar ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Andar" | "Bicicleta" | "Abdominales" | "ElevacionPiernas"
+		| "ElevacionRodillas" | "ExtensionCadera" | "ExtensionRodillas" | "ExtensionTriceps"
+		| "FlexionCadera" | "Flexiones" | "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse"
+		| "MaquinaEliptica" | "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho"
+		| "PesaTricepIzquierdo" | "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 5 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 5)
+		(retract ?assignPulmonar)
+		(assert (aPulmonar (- ?i 1)))
 	)
 )
 
@@ -1985,16 +2096,15 @@
 	(not (done ?ejercicio ?dia))
 	=>
 	(assert (done ?ejercicio ?dia))
-	(if (and (canAsssign ?ejercicio ?dia ?class -1 FALSE) (not (minimum 3)))
+	(if (and (canAsssign ?ejercicio ?dia ?class -1 TRUE) (not (minimum ?*min-dias*)))
 		then
-		(assignPrincipal ?ejercicio ?dia 90 ?*max-calentamientos* FALSE 0)
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* FALSE 0)
 	)
 )
 
 (defrule finAssigning
 	(declare (salience -2))
 	=>
-	(assignCalentamientosExtra)
 	(focus printing)
 )
 
@@ -2068,4 +2178,5 @@
 	)
 
 	(printout t crlf "FIN" crlf crlf)
+	(exit)
 )
