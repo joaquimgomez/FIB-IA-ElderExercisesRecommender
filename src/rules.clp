@@ -607,14 +607,20 @@
 	(new_avi)
 	=>
 	(bind ?enfCard (binary-question "Padece o quiere prevenir una enfermedad Cardiovascular" ))
-	(if ?enfCard then (assert (enfermedadCardiovascular)))
+	(if ?enfCard then
+		(assert (enfermedadCardiovascular))
+		(assert (aCardiovascular 2))
+	)
 )
 
 (defrule diabetes "rule to know if avi have diabetes"
 	(new_avi)
 	=>
 	(bind ?diabetes (binary-question "Padece o quiere prevenir la Diabetes"))
-	(if ?diabetes then (assert (diabetes)))
+	(if ?diabetes then
+		(assert (diabetes))
+		(assert (aDiabetes 3))
+	)
 )
 
 (defrule fragilidad "rule to know if avi is fragile"
@@ -627,7 +633,10 @@
 	(if (eq (length$ ?abuelos) 1) then
 		(bind ?abu (nth$ 1 ?abuelos))
 		(bind ?fragilidad (send ?abu get-esFragil))
-		(if ?fragilidad then (assert (fragil)))
+		(if ?fragilidad then
+			(assert (fragil))
+			(assert (aFragilidad 3))
+		)
 	)
 )
 
@@ -635,21 +644,30 @@
 	(new_avi)
 	=>
 	(bind ?hipertension (binary-question "Padece o quiere prevenir la Hipertensión"))
-	(if ?hipertension then (assert (hipertension)))
+	(if ?hipertension then
+		(assert (hipertension))
+		(assert (aHipertension 7))
+	)
 )
 
 (defrule sobrepeso "rule to know if avi have sobrepeso or obesidad"
 	(new_avi)
 	=>
 	(bind ?sobrepeso (binary-question "Padece o quiere prevenir el Sobrepeso/obesidad"))
-	(if ?sobrepeso then (assert (sobrepeso)))
+	(if ?sobrepeso then
+		(assert (sobrepeso))
+		(assert (aSobrepeso 7))
+	)
 )
 
 (defrule pulmonar "rule to know if avi have a pulmonar disease"
 	(new_avi)
 	=>
 	(bind ?pulmonar (binary-question "Padece o quiere prevenir una enfermedad Pulmonar"))
-	(if ?pulmonar then (assert (pulmonar)))
+	(if ?pulmonar then
+		(assert (pulmonar))
+		(assert (aPulmonar 4))
+	)
 )
 
 (defrule osteoporosis "rule to know if avi have osteoporosis"
@@ -1907,12 +1925,6 @@
 (defrule finEjercicios
 	(new_avi)
 	=>
-	(assert (aFragilidad 3))
-	(assert (aCardiovascular 2))
-	(assert (aHipertension 7))
-	(assert (aSobrepeso 7))
-	(assert (aDiabetes 3))
-	(assert (aPulmonar 4))
 	(focus recomendation)
 )
 
