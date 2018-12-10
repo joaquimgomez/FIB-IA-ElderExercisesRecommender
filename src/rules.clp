@@ -1,3 +1,4 @@
+
 ;;;
 ;;;						FUNCTIONS
 ;;;
@@ -512,9 +513,7 @@
 	return (/ (* (calculaFCmax ?avi) (send ?ejercicio get-porcentajeFCmax)) 100)
 )
 
-(deffunction assignCalentamientosExtra "" ()
-	(printout t "Assigning extra!")
-)
+
 
 ;;;
 ;;;						MAIN MODULE
@@ -674,36 +673,50 @@
 	(new_avi)
 	=>
 	(bind ?osteoporosis (binary-question "Padece o quiere prevenir la Osteoporosis"))
-	(if ?osteoporosis then (assert (osteoporosis)))
+	(if ?osteoporosis then
+		(assert (osteoporosis))
+		(assert (aOsteoporosis 6))
+	)
 )
 
-;;;;;TERMINAR
 (defrule cancer "rule to know if avi have cancer"
 	(new_avi)
 	=>
 	(bind ?cancer (binary-question "Padece o quiere prevenir un Cáncer"))
-	(if ?cancer then (assert (cancer)))
+	(if ?cancer then
+		(assert (cancer))
+		(assert (aCancer 5))
+	)
 )
 
 (defrule artritis "rule to know if avi have artritis"
 	(new_avi)
 	=>
 	(bind ?artritis (binary-question "Padece o quiere prevenir la Artritis"))
-	(if ?artritis then (assert (artritis)))
+	(if ?artritis then
+		(assert (artritis))
+		(assert (aArtritis 11))
+	)
 )
 
 (defrule fibrosis "rule to know if avi have fibrosis"
 	(new_avi)
 	=>
 	(bind ?fibrosis (binary-question "Padece o quiere prevenir la Fibrosis quística"))
-	(if ?fibrosis then (assert (fibrosis)))
+	(if ?fibrosis then
+		(assert (fibrosis))
+		(assert (aFibrosis 7))
+	)
 )
 
 (defrule depresion "rule to know if avi have depresion"
 	(new_avi)
 	=>
 	(bind ?depresion (binary-question "Padece o quiere prevenir la Depresión"))
-	(if ?depresion then	(assert (depresion)))
+	(if ?depresion then
+		(assert (depresion))
+		(assert (aDepresion 4))
+	)
 )
 
 (defrule check_partes_del_cuerpo "rule to know the status of different parts of the body"
@@ -757,7 +770,6 @@
 	(if ?colchoneta then (assert (tieneColchoneta)))
 	(bind ?mancuernas (binary-question "Mancuernas"))
 	(if ?mancuernas then (assert (tieneMancuernas)))
-
 )
 
 (defrule noMoreQuestions "rule to activate the next module"
@@ -1930,7 +1942,6 @@
 
 
 
-
 ;;;
 ;;;						RECOMENDATION MODULE
 ;;;
@@ -2092,6 +2103,133 @@
 		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 5)
 		(retract ?assignPulmonar)
 		(assert (aPulmonar (- ?i 1)))
+	)
+)
+
+(defrule assignOsteoporosis
+	(declare (salience 0))
+	(new_avi)
+	?assignOsteoporosis <- (aOsteoporosis ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Andar" | "Caminar" | "SubirEscaleras" | "Abdominales" | "ElevacionPiernas"
+		| "ElevacionRodillas" | "ExtensionCadera" | "ExtensionRodillas" | "ExtensionTriceps"
+		| "FlexionCadera" | "Flexiones" | "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse"
+		| "MaquinaEliptica" | "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho"
+		| "PesaTricepIzquierdo" | "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 13 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 13)
+		(retract ?assignOsteoporosis)
+		(assert (aOsteoporosis (- ?i 1)))
+	)
+)
+
+(defrule assignCancer
+	(declare (salience 0))
+	(new_avi)
+	?assignCancer <- (aCancer ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Andar" | "Correr" | "Bicicleta" | "Nadar" | "Remo"
+		| "SubirEscaleras" | "Abdominales" | "ElevacionPiernas"
+		| "ElevacionRodillas" | "ExtensionCadera" | "ExtensionRodillas" | "ExtensionTriceps"
+		| "FlexionCadera" | "Flexiones" | "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse"
+		| "MaquinaEliptica" | "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho"
+		| "PesaTricepIzquierdo" | "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 13 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 13)
+		(retract ?assignCancer)
+		(assert (aCancer (- ?i 1)))
+	)
+)
+
+(defrule assignArtritis
+	(declare (salience 0))
+	(new_avi)
+	?assignArtritis <- (aArtritis ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 10 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* TRUE 8)
+		(retract ?assignArtritis)
+		(assert (aArtritis (- ?i 1)))
+	)
+)
+
+(defrule assignFibrosis
+	(declare (salience 0))
+	(new_avi)
+	?assignFibrosis <- (aFibrosis ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(subclassp ?class Ejercicio))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad | Otro)
+		(nombreEjercicio "Carrera" | "Correr" | "Bicicleta" | "Nadar" | "Remo"
+		| "SubirEscaleras" | "Abdominales" | "ElevacionPiernas"
+		| "ElevacionRodillas" | "ExtensionCadera" | "ExtensionRodillas" | "ExtensionTriceps"
+		| "FlexionCadera" | "Flexiones" | "FlexionPlantar" | "FlexionRodillas" | "LevantarseSentarse"
+		| "MaquinaEliptica" | "PesaBicepDerecho" | "PesaBicepIzquierdo" | "PesaTricepDerecho"
+		| "PesaTricepIzquierdo" | "Sentadillas" | "SentadillasBalon" | "SentadillasMancuernas")
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class 11 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia 60 ?*max-calentamientos* TRUE 11)
+		(retract ?assignFibrosis)
+		(assert (aFibrosis (- ?i 1)))
+	)
+)
+
+(defrule assignDepresion
+	(declare (salience 0))
+	(new_avi)
+	?assignDepresion <- (aDepresion ?i&:(> ?i 0))
+	?ejercicio <- (object
+		(is-a ?class&:(eq ?class Aerobico))
+		(diasALaSemana ?j&:(> ?j 0))
+		(tipo Actividad)
+		(partOf ?planilla&:(neq ?planilla [nil]))
+	)
+	?dia <- (object (is-a Dia))
+	(not (done ?ejercicio ?dia))
+	=>
+	(assert (done ?ejercicio ?dia))
+	(if (canAsssign ?ejercicio ?dia ?class -1 TRUE)
+		then
+		(assignPrincipal ?ejercicio ?dia ?*max-duracion* ?*max-calentamientos* FALSE 0)
+		(retract ?assignDepresion)
+		(assert (aDepresion (- ?i 1)))
 	)
 )
 
