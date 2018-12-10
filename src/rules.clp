@@ -26,7 +26,7 @@
 	)
 )
 
-(deffunction minimum "" (?minDias)
+(deffunction minimum "function to find the day with less exercices" (?minDias)
 
 	; Init
 	(bind ?dias (find-all-instances ((?d Dia))
@@ -51,7 +51,7 @@
 	(return (not (< ?nDias ?minDias)))
 )
 
-(deffunction tiempoDia "" (?dia)
+(deffunction tiempoDia "function to calculate the duration of a day's session" (?dia)
 	; Init
 	(bind ?timeofday 0)
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -77,7 +77,7 @@
 	(return ?timeofday)
 )
 
-(deffunction countCalentamientos "" (?dia)
+(deffunction countCalentamientos "function to count the number of Calentamientos in a day" (?dia)
 	; Init
 	(bind ?count 0)
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -90,7 +90,7 @@
 	(return ?count)
 )
 
-(deffunction countSubclass "" (?class ?dia)
+(deffunction countSubclass "count number of exercices of a class" (?class ?dia)
 	; Init
 	(bind ?count 0)
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -124,7 +124,7 @@
 	(return ?count)
 )
 
-(deffunction hasSubclass "" (?class ?dia)
+(deffunction hasSubclass "to know if the planilla has exercices of a class" (?class ?dia)
 
 	; Init
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -155,7 +155,7 @@
 	(return FALSE)
 )
 
-(deffunction findDia "" (?name)
+(deffunction findDia "to get a Dia by name" (?name)
 	(bind ?dia (find-instance ((?d Dia))
 		(eq (send ?d get-nombreDia) ?name)
 	))
@@ -163,7 +163,7 @@
 	(return ?dia)
 )
 
-(deffunction prevDay "" (?dia)
+(deffunction prevDay "returns the previous day of dia" (?dia)
 	(if (eq (str-compare (send ?dia get-nombreDia) "Lunes") 0)
 		then (return (findDia "Domingo"))
 	)
@@ -187,7 +187,7 @@
 	)
 )
 
-(deffunction nextDay "" (?dia)
+(deffunction nextDay "returns the next day of dia" (?dia)
 	(if (eq (str-compare (send ?dia get-nombreDia) "Lunes") 0)
 		then (return (findDia "Martes"))
 	)
@@ -211,7 +211,7 @@
 	)
 )
 
-(deffunction setDuracion "" (?ejercicio ?duracion)
+(deffunction setDuracion "function to change the duration of an ejercicio" (?ejercicio ?duracion)
 	(send ?ejercicio put-duracion ?duracion)
 )
 
@@ -232,7 +232,7 @@
 	(send ?ejercicio put-duracion ?duracion)
 )
 
-(deffunction trabajaCommon(?trabaja1 ?trabaja2)
+(deffunction trabajaCommon "to know if two exercises work a muscle in common" (?trabaja1 ?trabaja2)
 	(foreach ?musculo1 ?trabaja1
 		(foreach ?musculo2 ?trabaja2
 			(if (eq ?musculo1 ?musculo2)
@@ -243,11 +243,11 @@
 	(return FALSE)
 )
 
-(deffunction setSeries "" (?ejercicio ?series)
+(deffunction setSeries "defines the number of series of a ejercicio of fortalecimiento" (?ejercicio ?series)
 	(send ?ejercicio put-series ?series)
 )
 
-(deffunction alreadyInCalentamientos (?ejercicio ?dia)
+(deffunction alreadyInCalentamientos "to know if an exercicise is already in calentamiento" (?ejercicio ?dia)
 	; Init
 	(bind ?calentamientos (send ?dia get-Calentamiento))
 
@@ -260,11 +260,11 @@
 	(return FALSE)
 )
 
-(deffunction setRepeticiones "" (?ejercicio ?repeticiones)
+(deffunction setRepeticiones "defines the number of repeticiones of a ejercicio of fortalecimiento" (?ejercicio ?repeticiones)
 	(send ?ejercicio put-repeticiones ?repeticiones)
 )
 
-(deffunction setFase "" (?ejercicio ?nivelForma)
+(deffunction setFase "defines the fase of an ejercicio depending on the nivelDeForma" (?ejercicio ?nivelForma)
 	(if (eq (str-compare ?nivelForma "Bajo") 0)
 		then (send ?ejercicio put-faseEjercicio Inicial))
 	(if (eq (str-compare ?nivelForma "Medio") 0)
@@ -273,7 +273,7 @@
 		then (send ?ejercicio put-faseEjercicio Mantenimiento))
 )
 
-(deffunction alreadyInRecuperacion (?ejercicio ?dia)
+(deffunction alreadyInRecuperacion "to know if an exercicise is already in calentamiento" (?ejercicio ?dia)
 	; Init
 	(bind ?recuperaciones (send ?dia get-Recuperacion))
 
@@ -286,7 +286,7 @@
 	(return FALSE)
 )
 
-(deffunction hasCalentamiento "" (?ejercicio ?dia)
+(deffunction hasCalentamiento "to know if there's any Calentamiento available that works a muscle in common with ejercicio" (?ejercicio ?dia)
 	(bind ?possibleCalentamientos (find-all-instances ((?e Ejercicio))
 		(and
 			(neq (send ?e get-partOf) [nil])
@@ -300,7 +300,7 @@
 	(return (> (length$ ?possibleCalentamientos) 0))
 )
 
-(deffunction getCalentamiento "" (?ejercicio ?dia)
+(deffunction getCalentamiento "returns a Calentamiento that works a muscle in common with ejercicio" (?ejercicio ?dia)
 	(bind ?possibleCalentamientos (find-instance ((?e Ejercicio))
 		(and
 			(neq (send ?e get-partOf) [nil])
@@ -313,7 +313,7 @@
 	(return (nth$ 1 ?possibleCalentamientos))
 )
 
-(deffunction canAsssign "" (?ejercicio ?dia ?class ?maxFort ?fortNoConsecutivo)
+(deffunction canAsssign "to know if can assign an exercise" (?ejercicio ?dia ?class ?maxFort ?fortNoConsecutivo)
 
 	; Check time
 	(bind ?timeofday (tiempoDia ?dia))
@@ -351,7 +351,7 @@
 	(return TRUE)
 )
 
-(deffunction assignPrincipal "" (?ejercicio ?dia ?timelimit ?maxCalentamientos ?addFortalecimiento ?nFortalecimiento)
+(deffunction assignPrincipal "to assign a exercise of class Principal and its Calentamientos" (?ejercicio ?dia ?timelimit ?maxCalentamientos ?addFortalecimiento ?nFortalecimiento)
 
 	; Init
 	(bind ?calentamientos (send ?dia get-Calentamiento))
@@ -570,6 +570,7 @@
 	(printout t "------------ SISTEMA DE RECOMENDACION DE EJERCICIOS ----------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
+
 	(printout t crlf)
 	(assert (new_avi))
 	(seed (round (time)))
@@ -672,8 +673,6 @@
 	(new_avi)
 	?h <- (Avi ?nombre)
 	=>
-	;(bind ?ex (find-instance ((?e Ejercicio)) (eq (str-compare ?e:nombreEjercicio "Tai Chi") 0)))
-	;(bind ?exe (nth$ 1 ?ex))
 	(bind ?abuelos (find-instance ((?a Independiente)) (eq (str-compare ?a:nombre ?nombre) 0)))
 	(if (eq (length$ ?abuelos) 1) then
 		(bind ?abu (nth$ 1 ?abuelos))
@@ -816,11 +815,19 @@
 (defrule material "rule to know the material that is available"
 	(new_avi)
 	=>
+	(printout t crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t "------------------- Disposición de material ------------------" crlf)
+	(printout t "--------------------------------------------------------------" crlf)
+	(printout t crlf)
 	(printout t "Indique de los siguientes materiales si dispone de ellos o no:" crlf)
 	(bind ?colchoneta (binary-question "Colchoneta"))
 	(if ?colchoneta then (assert (tieneColchoneta)))
 	(bind ?mancuernas (binary-question "Mancuernas"))
 	(if ?mancuernas then (assert (tieneMancuernas)))
+	(bind ?balon (binary-question "Balón medicinal"))
+	(if ?balon then (assert (tieneBalon)))
+
 )
 
 (defrule noMoreQuestions "rule to activate the next module"
@@ -1472,6 +1479,7 @@
 	(gemeloIzquierdoCorrecto)
 	(rodillaDerechaCorrecta)
 	(rodillaIzquierdaCorrecta)
+	(tieneBalon)
 	;(or (sobrepeso) (pulmonar))
 	?f <- (n_forma_def ?nivelDeForma)
 	?p <- (planilla_avi ?planilla)
@@ -2334,6 +2342,7 @@
 	))
 
 	(printout t crlf)
+
 	(printout t "--------------------------------------------------------------" crlf)
 	(printout t "------------------- Planilla de ejercicios -------------------" crlf)
 	(printout t "--------------------------------------------------------------" crlf)
