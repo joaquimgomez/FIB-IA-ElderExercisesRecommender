@@ -8,5 +8,13 @@ Para ejecutar el programa se debe realizar el comando en la carpeta src:
 - Realiza pregunta sobre situaciones en las que no debería realizar ejercicios de ninguna forma.
 - Realiza preguntas sobre las enfermedades de la persona.
 - Realiza peguntas sobre si tiene dolencias en alguna parte del cuerpo a ejercitar.
-- Pregunt sobre el materia del que dispone.
+- Pregunta sobre el material del que dispone.
 - Realiza la inferencia instanciando los diferentes ejercicios como parte de la planilla.
+
+	ENTREGA:
+- Hace todo lo que hacía el prototipo, añadiendo las siguientes características:
+
+	- Según las enfermedades realiza una organización de sesiones de ejercicios con calentamientos y recuperaciones que tengan sentido con aquellos ejercicios principales que se realicen en el día.
+	- Estructura los ejercicios en un horario semanal donde cada sesión no excede los 90 minutos.
+
+- Cabe destacar que se pueden cambiar los parámetros globales del programa desde el archivo 'script.sh'. Donde hay definidas unas variables globales que el usuario podría modificar según su conveniencia.
