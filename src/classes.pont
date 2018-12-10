@@ -1,5 +1,5 @@
 ; Sun Dec 09 23:55:49 GMT+01:00 2018
-; 
+;
 ;+ (version "3.5")
 ;+ (build "Build 663")
 
@@ -41,7 +41,7 @@
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot tipo
@@ -115,7 +115,7 @@
 		(create-accessor read-write))
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot nombre
@@ -303,12 +303,12 @@
 	(role concrete)
 	(single-slot repeticiones
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write))
 	(single-slot series
 		(type INTEGER)
-		(range 1 %3FVARIABLE)
+		(range 1 ?VARIABLE)
 ;+		(cardinality 0 1)
 		(create-accessor read-write)))
 
